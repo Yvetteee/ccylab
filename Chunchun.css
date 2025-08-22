@@ -253,7 +253,7 @@ body {
 
 .research-items {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 2fr;
   gap: 30px;
   align-items: start;
   margin: 30px 0;
