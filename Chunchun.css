@@ -375,6 +375,7 @@ body {
 }
 
 .chinese-quote {
+  font-size: 1.2rem;
   font-style: italic;
   margin: 20px 0;
   padding: 20px;
@@ -442,7 +443,7 @@ body {
 .career-section h3, .education-section h3, .awards-section h3 {
   color: #333;
   margin-bottom: 10px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
 }
 
 .career-section ul, .education-section ul, .awards-section ul {
@@ -452,7 +453,7 @@ body {
 .career-section li, .education-section li, .awards-section li {
   margin-bottom: 5px;
   color: #555;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
 }
 
 /* Members Page */
