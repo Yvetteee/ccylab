@@ -221,9 +221,9 @@ body {
 }
 
 .research-hero p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #666;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto 40px;
 }
 
@@ -307,7 +307,7 @@ body {
 
 .pub-intro {
   font-size: 1.2rem;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto 40px;
   color: #666;
   line-height: 1.6;
