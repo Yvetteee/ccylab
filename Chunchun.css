@@ -390,7 +390,7 @@ body {
 
 .pi-row {
   display: grid;
-  grid-template-columns: 2fr 1fr;   /* text left, image right */
+  grid-template-columns: 2fr 2fr;   /* text left, image right */
   gap: 30px;
   align-items: start;
 }
