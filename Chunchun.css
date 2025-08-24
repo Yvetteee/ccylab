@@ -190,6 +190,7 @@ body {
   font-size: 14px;
 }
 
+
 .back-to-top {
   background: #b62938;
   width: 40px;
@@ -203,17 +204,15 @@ body {
   position: relative;
 }
 
-/* 使用伪元素创建箭头 */
+/* 创建箭头图标 */
 .back-to-top::before {
   content: "";
+  display: block;
   width: 16px;
   height: 16px;
   border-top: 3px solid white;
   border-right: 3px solid white;
   transform: rotate(-45deg);
-  position: absolute;
-  top: 50%;
-  margin-top: -4px;
 }
 
 .back-to-top:hover { filter: brightness(0.95); }
