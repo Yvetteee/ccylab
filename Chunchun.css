@@ -230,16 +230,6 @@ body {
   position: relative;
 }
 
-/* 创建箭头图标 */
-.back-to-top::before {
-  content: "";
-  display: block;
-  width: 16px;
-  height: 16px;
-  border-top: 3px solid white;
-  border-right: 3px solid white;
-  transform: rotate(-45deg);
-}
 
 .back-to-top:hover { filter: brightness(0.95); }
 .back-to-top:active { transform: translateY(1px); }
