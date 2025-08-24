@@ -297,6 +297,76 @@ body {
   margin-bottom: 20px;
 }
 
+
+/* Research main hero image */
+.research-main {
+  width: 90%;
+  max-width: 600px;   /* limit width */
+  margin: 0 auto 40px; /* center & spacing */
+  display: block;
+  border-radius: 10px; /* optional, makes edges smooth */
+}
+
+/* Right column research images */
+.research-image {
+  width: 100%;
+  max-width: 300px;   /* controls image size */
+  height: auto;       /* keeps correct aspect ratio */
+  margin: 0 auto 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;  /* prevents distortion */
+}
+
+/* MAIN research hero image (smaller + centered) */
+.research-main {
+  width: 100%;
+  max-width: 900px;          /* adjust this down to 800/700 if you want even smaller */
+  margin: 0 auto 40px;
+  padding: 0 20px;           /* keeps some side breathing room on small screens */
+}
+.research-main img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Rows that align each text section with its image */
+.research-rows {
+  display: grid;
+  gap: 32px;                 /* space between the three rows */
+}
+
+.research-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;   /* text left, image right */
+  gap: 70px;
+  align-items: start;
+}
+
+.research-thumb {
+  width: 100%;
+  max-width: 320px;          /* final image size on desktop */
+  height: auto;
+  justify-self: end;         /* hugs the right edge neatly */
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+/* Mobile: stack image under its text and make it a bit smaller */
+@media (max-width: 768px) {
+  .research-row {
+    grid-template-columns: 1fr;
+  }
+  .research-thumb {
+    max-width: 220px;
+    justify-self: start;     /* sits under the text, left-aligned */
+  }
+}
+
+
 /* Publications Page */
 .publications-hero {
   text-align: center;
@@ -693,74 +763,6 @@ body {
   }
 }
 
-
-/* Research main hero image */
-.research-main {
-  width: 90%;
-  max-width: 600px;   /* limit width */
-  margin: 0 auto 40px; /* center & spacing */
-  display: block;
-  border-radius: 10px; /* optional, makes edges smooth */
-}
-
-/* Right column research images */
-.research-image {
-  width: 100%;
-  max-width: 300px;   /* controls image size */
-  height: auto;       /* keeps correct aspect ratio */
-  margin: 0 auto 20px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  display: block;
-  object-fit: cover;  /* prevents distortion */
-}
-
-/* MAIN research hero image (smaller + centered) */
-.research-main {
-  width: 100%;
-  max-width: 900px;          /* adjust this down to 800/700 if you want even smaller */
-  margin: 0 auto 40px;
-  padding: 0 20px;           /* keeps some side breathing room on small screens */
-}
-.research-main img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-}
-
-/* Rows that align each text section with its image */
-.research-rows {
-  display: grid;
-  gap: 32px;                 /* space between the three rows */
-}
-
-.research-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr;   /* text left, image right */
-  gap: 70px;
-  align-items: start;
-}
-
-.research-thumb {
-  width: 100%;
-  max-width: 320px;          /* final image size on desktop */
-  height: auto;
-  justify-self: end;         /* hugs the right edge neatly */
-  border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-
-/* Mobile: stack image under its text and make it a bit smaller */
-@media (max-width: 768px) {
-  .research-row {
-    grid-template-columns: 1fr;
-  }
-  .research-thumb {
-    max-width: 220px;
-    justify-self: start;     /* sits under the text, left-aligned */
-  }
-}
 
 
 /* ===================
