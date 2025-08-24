@@ -412,6 +412,18 @@ body {
 
 }
 
+.pub-btn {
+  background: #071d3d;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+}
+.pub-btn:hover { filter: brightness(0.95); }
+
 .pub-theme {
   margin-bottom: 40px;
 }
