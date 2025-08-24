@@ -489,50 +489,6 @@ body {
   color: #666;
 }
 
-.pi-rows {
-  display: grid;
-  gap: 32px;                 /* space between the three rows */
-}
-
-.pi-row {
-  display: grid;
-  grid-template-columns: 2fr 2fr;   /* text left, image right */
-  gap: 30px;
-  align-items: start;
-}
-
-.pi-thumb {
-  width: 100%;
-  max-width: 320px;          /* final image size on desktop */
-  height: auto;
-  justify-self: end;         /* hugs the right edge neatly */
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(0,0,0,.05);
-}
-.pi-items {
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  gap: 30px;
-  align-items: start;
-  margin: 30px 0;
-}
-
-.pi-item {
-  margin-bottom: 30px;
-}
-
-.pi-item h2 {
-  font-size: 1.3rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.pi-item p {
-  font-size: 1.2rem;
-  color: #666;
-  line-height: 1.6;
-}
 
 .biography-note {
   color: #c41e3a;
