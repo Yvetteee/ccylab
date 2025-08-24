@@ -134,11 +134,9 @@
 
   <!-- Application Form -->
   <main class="content-section">
-      <main class="application-page">
-
-    <section class="application-form">
+    <section class="application-form" id="applicationArea">
       <h2>Application Form</h2>
-      
+
       <form id="applicationForm" enctype="multipart/form-data">
         <label for="full-name">Full Name </label>
         <input type="text" id="full-name" name="fullName" required>
@@ -151,21 +149,25 @@
       
         <label for="singlePdf">Combined PDF document </label>
         <input type="file" id="singlePdf" name="singlePdf" accept=".pdf" />
-      
-      
-        <button type="submit">Submit</button>
+
+
+        <button type="submit">Submit </button>
+
+        <p id="uploadNotice" style="display:none; color:#555; margin-top:10px;">
+          Uploading may take a few seconds. Please wait until you see a confirmation message.
+        </p>
       </form>
-      
+
       <div id="thankYouMessage" style="display:none; text-align:center; margin-top:40px;">
         <h3>Thank you for your application!</h3>
         <p>We’ve received your submission.</p>
-        <button onclick="goBack()">Go Back</button>
+        <button type="button" onclick="location.reload()">Submit another application</button>
       </div>
-      
     </section>
-  </main>
 
 
+
+    <!-- Map -->
     <section class="content-section">
         <div class="contact-grid">
           <div class="contact-info">
