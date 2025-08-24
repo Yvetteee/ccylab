@@ -876,6 +876,8 @@ body {
   font-weight: 600;
   color: #555;
   border-bottom: 3px solid transparent;
+  font-size: 1.2rem;
+
 }
 
 .positions-tabs .tab:hover { color: #222; }
