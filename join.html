@@ -134,32 +134,42 @@
 
   <!-- Application Form -->
   <main class="content-section">
-    <section class="application-form" id="applicationArea">
+      <main class="application-page">
+
+    <section class="application-form">
       <h2>Application Form</h2>
-
-        <label for="fullName">Name *</label>
-        <input type="text" id="fullName" name="fullName" required />
-
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" required />
-
+      
+      <form id="applicationForm" enctype="multipart/form-data">
+        <label for="full-name">Full Name </label>
+        <input type="text" id="full-name" name="fullName" required>
+      
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="research">Message</label>
+        <textarea id="research" name="research" rows="4" required></textarea>
+      
         <label for="singlePdf">Combined PDF document *</label>
         <input type="file" id="singlePdf" name="singlePdf" accept=".pdf" />
-
-        <label for="Message">Message*</label>
-        <input type="text" id="Message" name="Message" required />
-      <br>
-
+      
+      
         <button type="submit">Submit</button>
+      </form>
+      
+      <div id="thankYouMessage" style="display:none; text-align:center; margin-top:40px;">
+        <h3>Thank you for your application!</h3>
+        <p>We’ve received your submission.</p>
+        <button onclick="goBack()">Go Back</button>
+      </div>
+      
+    </section>
+  </main>
 
         <p id="uploadNotice" style="display:none; color:#555; margin-top:10px;">
           Uploading may take a few seconds. Please wait until you see a confirmation message.
         </p>
       </form>
 
-      <div id="thankYouMessage" style="display:none; text-align:center; margin-top:40px;">
-        <h3>Thank you for applying!</h3>
-        <p>We’ll review your application and get back to you soon.</p>
         <button type="button" onclick="location.reload()">Submit another application</button>
       </div>
     </section>
