@@ -538,7 +538,7 @@ body {
 .member-profile {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 100px;
   margin-bottom: 50px;
   max-width: 600px;
 }
