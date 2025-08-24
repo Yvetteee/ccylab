@@ -275,7 +275,7 @@ body {
 .research-item p {
   font-size: 1rem;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.4;
   text-align:justify
 }
 
@@ -316,6 +316,12 @@ body {
 
 .pub-theme {
   margin-bottom: 40px;
+}
+
+.pub-theme h1 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 }
 
 .pub-theme h2 {
