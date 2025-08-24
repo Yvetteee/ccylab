@@ -698,8 +698,8 @@ body {
 
 /* MAIN research hero image (smaller + centered) */
 .research-main {
-  width: 95%;
-  max-width: 1100px;          /* adjust this down to 800/700 if you want even smaller */
+  width: 100%;
+  max-width: 900px;          /* adjust this down to 800/700 if you want even smaller */
   margin: 0 auto 40px;
   padding: 0 20px;           /* keeps some side breathing room on small screens */
 }
