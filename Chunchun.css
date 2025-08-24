@@ -738,7 +738,7 @@ body {
 .research-row {
   display: grid;
   grid-template-columns: 2fr 1fr;   /* text left, image right */
-  gap: 30px;
+  gap: 70px;
   align-items: start;
 }
 
