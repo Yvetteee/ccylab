@@ -976,16 +976,3 @@ body {
   font-size: 0.9rem;
 }
 
-.back-to-top {
-  background: #c8102e;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.back-to-top:hover {
-  background: #a50d24;
-}
