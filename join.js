@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } finally {
           // Reset button state
           submitButton.disabled = false;
-          submitButton.textContent = 'Submit Application';
+          submitButton.textContent = 'Submit';
           notice.style.display = 'none';
         }
       });
