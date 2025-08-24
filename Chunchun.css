@@ -191,8 +191,7 @@ body {
 }
 
 .back-to-top {
-  background: #c41e3a;
-  color: white;
+  background: #b62938;
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -200,8 +199,21 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 18px;
   transition: filter 0.2s, transform 0.1s;
+  position: relative;
+}
+
+/* 使用伪元素创建箭头 */
+.back-to-top::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 50%;
+  margin-top: -4px;
 }
 
 .back-to-top:hover { filter: brightness(0.95); }
