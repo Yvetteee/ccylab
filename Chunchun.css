@@ -337,7 +337,7 @@ body {
 
 /* MAIN research hero image (smaller + centered) */
 .research-main {
-  margin-top: 50px;
+  margin-top: 150px;
   width: 100%;
   max-width: 900px;          /* adjust this down to 800/700 if you want even smaller */
   padding: 0 20px;           /* keeps some side breathing room on small screens */
@@ -658,7 +658,7 @@ body {
 }
 
 .future-member-info a {
-  font-weight: 700;
+  /* font-weight: 700; */
   color: #0000ee;
 }
 
