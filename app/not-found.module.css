@@ -1,0 +1,12 @@
+.content {
+  padding: var(--space-8) 0 var(--space-16);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-foreground);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -1,0 +1,123 @@
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile toggle: plain text button, shown only below the desktop breakpoint.
+   White on the red header band (legacy identity). */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--color-background);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-background);
+  outline-offset: 2px;
+}
+
+.list {
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  gap: 0;
+}
+
+/* Mobile open state — full-width panel just below the header. top:100% (not
+   a fixed header-height offset) so it stays put even when the header grows
+   to fit a wrapping group name. */
+.open {
+  display: flex;
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  top: 100%;
+  z-index: 50;
+  background: var(--color-background);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.item {
+  width: 100%;
+}
+
+.item a {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  /* The mobile panel is white but sits inside the red header band, whose
+     white text would otherwise be inherited here (white on white). */
+  color: var(--color-foreground);
+}
+
+.item a:hover {
+  background: var(--color-surface);
+  text-decoration: none;
+}
+
+.item a.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+/* Below 1080px (incl. iPad landscape and many laptops) the nav stays behind
+   the Menu toggle; from 1080px the full 8-item horizontal list fits beside
+   the group-name brand without crowding (measured with a 40-char name). */
+@media (min-width: 1080px) {
+  .toggle {
+    display: none;
+  }
+
+  .list,
+  .open {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    position: static;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .item {
+    width: auto;
+  }
+
+  .item a {
+    padding: var(--space-2) 0;
+    font-size: var(--text-base);
+    color: var(--color-background);
+  }
+
+  .item a:hover {
+    background: none;
+    color: var(--color-background);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .item a.active {
+    color: var(--color-background);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+  }
+
+  /* Light focus ring on the red band — the shared red ring is invisible here */
+  .item a:focus-visible {
+    outline: 2px solid var(--color-background);
+    outline-offset: 2px;
+  }
+}

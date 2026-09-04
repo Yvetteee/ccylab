@@ -1,0 +1,39 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+  border-top: var(--border-width) solid var(--color-border);
+  /* anchor jumps from /research#project-id land below the fixed header */
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+}
+
+.status {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  font-size: var(--text-xl);
+}
+
+.summary {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.meta {
+  font-size: var(--text-sm);
+  color: var(--color-foreground);
+  margin-top: var(--space-2);
+}
+
+.label {
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--text-xs);
+  margin-right: var(--space-3);
+}

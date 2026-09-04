@@ -1,0 +1,10 @@
+# Local development values (wrangler dev reads .dev.vars) — no real secrets.
+# Mirrors the committed .dev.vars.example; secrets live only in your machine
+# or in `wrangler secret put` on deployment.
+
+RESEND_API_KEY=local-test-key
+APPLICATION_FROM_EMAIL=applications@test.example
+# TEST PHASE recipient (approved). PRODUCTION RECIPIENT: NOT YET AUTHORIZED.
+APPLICATION_TO_EMAIL=JZHANG193@e.ntu.edu.sg
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+ALLOWED_ORIGINS=http://localhost:3000

@@ -1,0 +1,9 @@
+.title {
+  font-size: var(--text-lg);
+}
+
+.description {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  flex: 1;
+}

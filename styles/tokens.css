@@ -1,0 +1,86 @@
+/*
+ * Design tokens — Phase 3A visual foundation, translated to the legacy lab
+ * site's visual DNA (docs/legacy-integration/LEGACY-DESIGN-DNA.md).
+ *
+ * Editorial-academic visual language kept: neutral palette, ONE accent color,
+ * serif headings + sans body, thin borders, no shadows, small radii.
+ * The accent is now the legacy NTU red (header band #b62938 / accent #c41e3a
+ * collapsed into one semantic token) and the surface is the legacy grey hero
+ * band (#f8f9fa). Change values here to re-skin the whole site; components
+ * never hard-code colors / sizes.
+ *
+ * Font stacks are injected on <html> by next/font in app/layout.tsx:
+ *   --font-sans (Inter), --font-serif (Source Serif 4)
+ * so tokens.css does NOT redefine them.
+ */
+
+:root {
+  /* Color — neutral first, single accent */
+  --color-background: #ffffff;
+  --color-foreground: #161616;
+  --color-muted: #666666;
+  --color-border: #dadada;
+  --color-surface: #f8f9fa;
+  --color-accent: #b62938;
+  --color-accent-dark: #a3182e;
+  /* Stronger accent used by filled buttons (hover) — same dark red. */
+  --color-accent-strong: var(--color-accent-dark);
+  /* Focus — D-B: high-contrast NEUTRAL ring, not red. Red focus was
+     invisible on red elements (red-on-red) and painted every control red.
+     Neutral foreground ring is visible on white; the red header band
+     overrides with its own white ring (SiteHeader.module.css). */
+  --color-focus: #161616;
+  /* Legacy dark footer band (#444). */
+  --color-footer: #444444;
+
+  /* Typography scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.75rem;
+  --text-5xl: 3.5rem;
+
+  /* Monospace stack (e.g. copyable email subject lines) */
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas,
+    monospace;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Layout — three container widths mixed on the home page */
+  --container-narrow: 46rem;
+  --container-width: 74rem;
+  --container-wide: 84rem;
+  --container-padding: var(--space-4);
+  --section-space: var(--space-16);
+  --header-height: 4.5rem;
+
+  /* Shape — flat editorial */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  /* Image system aspect ratios */
+  --aspect-hero: 4 / 3;
+  --aspect-figure: 4 / 3;
+  --aspect-wide: 16 / 7;
+  --aspect-news: 3 / 2;
+  --aspect-portrait: 4 / 5;
+
+  /* Misc */
+  --border-width: 1px;
+  --focus-ring: 2px solid var(--color-focus);
+}

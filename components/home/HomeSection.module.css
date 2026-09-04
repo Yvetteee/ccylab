@@ -1,0 +1,19 @@
+.section {
+  /* Phase 5: 5rem → 4rem section rhythm — verified 80px of padding above and
+     below every home section was generous; 4rem keeps the editorial breathing
+     room while tightening the page's vertical density (~20% cut). */
+  padding: var(--space-16) 0;
+}
+
+/* Full-bleed background band — the visual breakpoint of the page */
+.surface {
+  background: var(--color-surface);
+}
+
+.heading {
+  margin-bottom: var(--space-12);
+}
+
+.centered {
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+.wrapper {
+  margin-bottom: var(--space-8);
+}
+
+.kicker {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* D-B: labels are neutral — red is reserved for brand moments */
+  color: var(--color-muted);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-3);
+}
+
+.titleL1 {
+  font-size: var(--text-4xl);
+}
+
+.description {
+  color: var(--color-muted);
+  max-width: 60ch;
+}

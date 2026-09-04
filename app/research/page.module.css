@@ -1,0 +1,145 @@
+.intro {
+  max-width: var(--container-narrow);
+  padding: var(--space-12) 0 var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.intro p {
+  color: var(--color-muted);
+}
+
+.intro p:first-child {
+  color: var(--color-foreground);
+  font-size: var(--text-xl);
+  font-family: var(--font-serif);
+}
+
+.overview {
+  padding: var(--space-8) 0 var(--space-12);
+}
+
+.area {
+  /* Phase 5: 4rem → 3rem vertical rhythm per research area (~25% cut).
+     First area keeps its zero top padding so the overview image hands off
+     tightly; section → section stays clearly divided by the border. */
+  padding: var(--space-12) 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.area:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.index {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  /* D-B: numbering is metadata → neutral, not red */
+  color: var(--color-muted);
+}
+
+.title {
+  font-size: var(--text-3xl);
+}
+
+.question {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-foreground);
+}
+
+.description {
+  color: var(--color-muted);
+  max-width: 62ch;
+  /* legacy print-like justified long-form on desktop (D-7); left-aligned on
+     mobile to avoid rivers on narrow columns */
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+@media (max-width: 767px) {
+  .description {
+    text-align: left;
+  }
+}
+
+/* Detailed points (legacy research.html): a restrained single-column list in
+   the same text column — bold label + normal explanatory line, 12px spacing,
+   no bullets, no cards, no backgrounds. */
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 62ch;
+}
+
+.point {
+  display: block;
+}
+
+.pointLabel {
+  font-weight: 600;
+}
+
+.pointText {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.related {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.related a {
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.related a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.empty {
+  padding: var(--space-12) 0;
+  color: var(--color-muted);
+}
+
+@media (min-width: 900px) {
+  .row {
+    /* 40/60 image/text split (image column reduced). Flip swaps the track
+       widths so the image stays ~40% in BOTH orientations. */
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: var(--space-16);
+  }
+
+  .flip {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+
+  .flip .text {
+    order: -1;
+  }
+}

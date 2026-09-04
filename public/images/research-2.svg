@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t">
+  <title id="t">Research figure placeholder — transport dynamics</title>
+  <rect width="1200" height="900" fill="#F7F6F2"/>
+  <rect width="1200" height="900" fill="none" stroke="#DADADA" stroke-width="2"/>
+  <path d="M180 700 C 320 560, 460 820, 600 660 S 900 480, 1020 600" fill="none" stroke="#C7C1B4" stroke-width="12" stroke-linecap="round"/>
+  <path d="M180 640 C 320 500, 460 760, 600 600 S 900 420, 1020 540" fill="none" stroke="#3E7A6B" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
+  <path d="M180 580 C 320 440, 460 700, 600 540 S 900 360, 1020 480" fill="none" stroke="#C7C1B4" stroke-width="10" stroke-linecap="round"/>
+  <!-- species along the transport path -->
+  <g fill="#C9823C">
+    <circle cx="330" cy="560" r="24"/>
+    <circle cx="560" cy="622" r="22"/>
+    <circle cx="860" cy="512" r="26"/>
+  </g>
+  <g fill="#4E7F96">
+    <circle cx="470" cy="668" r="22"/>
+    <circle cx="760" cy="560" r="20"/>
+  </g>
+  <!-- driving field markers -->
+  <g stroke="#3E7A6B" stroke-width="5" opacity="0.6">
+    <line x1="180" y1="240" x2="1020" y2="240"/>
+    <line x1="180" y1="300" x2="1020" y2="300"/>
+  </g>
+  <g fill="none" stroke="#C7C1B4" stroke-width="5">
+    <path d="M1020 200 l20 20 -20 20"/>
+    <path d="M1020 260 l20 20 -20 20"/>
+  </g>
+  <text x="120" y="830" font-family="Arial, sans-serif" font-size="26" fill="#9C9484">Research figure — replace</text>
+</svg>

@@ -1,0 +1,250 @@
+/* Standalone Dr. Ye profile (Variant B) — the frozen People PIProfile
+   identity grammar (circular portrait + one right-hand text axis) extended
+   with the legacy academic record: Academic Career + Education share ONE
+   period | content record grammar; Honors & Awards is a two-column index.
+   Typography and whitespace carry the hierarchy — no cards, icons, or
+   decorative years. */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Identity top — same padding grammar as a page's first Section. */
+.top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: start;
+  padding-top: var(--space-8);
+}
+
+.portrait {
+  /* mobile ceiling for the circular PI portrait (desktop overrides below) */
+  max-width: 13.75rem;
+}
+
+/* Same verified crop lift as the People PI portrait (see
+   PIProfile.module.css) — do not diverge. */
+.portrait img {
+  object-position: 50% 12%;
+}
+
+/* 1:1 circular PI portrait — legacy identity. Compound selector beats the
+   shared frame's square border/radius. */
+.profile .portrait {
+  border-radius: 50%;
+  border: 0;
+}
+
+.placeholder {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: var(--text-4xl);
+  color: var(--color-muted);
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+/* Bilingual identity anchor — same deliberate above-token size as the
+   People PIProfile name. A <p>, not a heading: the PageHeader h1 already
+   announces the page subject. */
+.name {
+  font-size: 2.375rem;
+  line-height: 1.2;
+}
+
+.nameZh {
+  font-size: 2.125rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-left: var(--space-4);
+}
+
+/* Current position block: role + school + university as one tight group. */
+.affiliations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.role {
+  font-size: var(--text-lg);
+}
+
+.affiliation {
+  color: var(--color-muted);
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  padding: 0;
+}
+
+.links a {
+  color: var(--color-foreground);
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Signature quote panel — kept visually identical to the People PIProfile
+   quote (quiet surface, dark left rule, Chinese serif emphasis). */
+.quote {
+  margin: var(--space-2) 0 0;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border-left: 4px solid var(--color-foreground);
+}
+
+.quoteText {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  line-height: 1.6;
+  color: var(--color-foreground);
+}
+
+.quoteTranslation {
+  margin-top: var(--space-3);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-base);
+  color: var(--color-muted);
+}
+
+.quoteSource {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-style: normal;
+}
+
+/* Bio on the same right-hand text axis, same measure/leading as People. */
+.bio {
+  max-width: 74ch;
+  line-height: 1.7;
+}
+
+/* ---- Academic record system (career + education share one grammar) ---- */
+
+.records {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 46rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.record {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
+  gap: var(--space-1) var(--space-8);
+  align-items: baseline;
+}
+
+.period {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.recordBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.recordRole {
+  font-weight: 600;
+}
+
+.recordUnit {
+  color: var(--color-muted);
+}
+
+/* ---- Honors & Awards — restrained academic index ---- */
+
+.awardIndex {
+  max-width: 56rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4) var(--space-12);
+}
+
+.awards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.award {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.awardYear {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.awardMeta {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+/* At mobile the year column would squeeze the content — stack period above
+   content instead (period first keeps the record readable). */
+@media (max-width: 639px) {
+  .record {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .top {
+    grid-template-columns: minmax(0, 17.5rem) minmax(0, 1fr);
+    gap: var(--space-12);
+  }
+
+  .portrait {
+    max-width: 17.5rem;
+  }
+
+  .quote {
+    padding: var(--space-6) var(--space-8);
+  }
+
+  /* Deterministic two-column index: recent half left, earlier half right. */
+  .awardIndex {
+    grid-template-columns: 1fr 1fr;
+  }
+}

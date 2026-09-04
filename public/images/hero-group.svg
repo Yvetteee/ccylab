@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t">
+  <title id="t">Lab photo placeholder</title>
+  <!-- warm room -->
+  <rect width="1200" height="900" fill="#F5F1EA"/>
+  <rect width="1200" height="360" fill="#EDE7DC"/>
+  <!-- window light -->
+  <rect x="150" y="60" width="300" height="260" fill="#FBF8F2"/>
+  <rect x="520" y="60" width="300" height="260" fill="#F8F4EC"/>
+  <rect x="890" y="60" width="160" height="260" fill="#FBF8F2"/>
+  <g stroke="#E0D9CB" stroke-width="6">
+    <line x1="150" y1="60" x2="150" y2="320"/><line x1="450" y1="60" x2="450" y2="320"/>
+    <line x1="520" y1="60" x2="520" y2="320"/><line x1="820" y1="60" x2="820" y2="320"/>
+    <line x1="890" y1="60" x2="890" y2="320"/><line x1="1050" y1="60" x2="1050" y2="320"/>
+    <line x1="150" y1="190" x2="450" y2="190"/><line x1="520" y1="190" x2="820" y2="190"/>
+    <line x1="890" y1="190" x2="1050" y2="190"/>
+  </g>
+  <!-- people -->
+  <g>
+    <circle cx="360" cy="300" r="86" fill="#D9C6AE"/>
+    <path d="M280 300 a80 80 0 0 1 160 0" fill="#7E6F5C"/>
+    <rect x="260" y="380" width="200" height="180" rx="18" fill="#D8CFC1"/>
+  </g>
+  <g>
+    <circle cx="600" cy="285" r="92" fill="#D3BC9F"/>
+    <path d="M514 285 a86 86 0 0 1 172 0" fill="#6E5F4E"/>
+    <rect x="496" y="375" width="208" height="185" rx="18" fill="#C8BFAF"/>
+  </g>
+  <g>
+    <circle cx="840" cy="305" r="82" fill="#DCCAB2"/>
+    <path d="M764 305 a76 76 0 0 1 152 0" fill="#85745F"/>
+    <rect x="748" y="385" width="184" height="175" rx="18" fill="#D3C9BA"/>
+  </g>
+  <!-- lab bench -->
+  <rect x="0" y="560" width="1200" height="120" fill="#E5DFD2"/>
+  <rect x="0" y="680" width="1200" height="60" fill="#D7D0C1"/>
+  <rect x="0" y="560" width="1200" height="8" fill="#EFEAE0"/>
+  <!-- equipment on bench -->
+  <path d="M180 560 h70 v40 a35 35 0 0 1 -70 0 z" fill="#3E7A6B" opacity="0.8"/>
+  <rect x="150" y="540" width="130" height="22" rx="6" fill="#C8BFAE"/>
+  <rect x="420" y="520" width="90" height="42" rx="8" fill="#C9823C" opacity="0.85"/>
+  <path d="M880 560 h64 v34 a32 32 0 0 1 -64 0 z" fill="#4E7F96" opacity="0.8"/>
+  <rect x="850" y="536" width="124" height="26" rx="6" fill="#C8BFAE"/>
+  <line x1="120" y1="600" x2="1080" y2="600" stroke="#CFC8B8" stroke-width="4"/>
+  <path d="M120 830 H1080" stroke="#D8D1C2" stroke-width="2"/>
+  <path d="M120 840 H420" stroke="#0F5E4F" stroke-width="3"/>
+  <text x="120" y="870" font-family="Arial, sans-serif" font-size="26" fill="#9C9484">Lab photo — replace</text>
+</svg>

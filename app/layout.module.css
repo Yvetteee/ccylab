@@ -1,0 +1,26 @@
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Visually-hidden skip link that appears on keyboard focus */
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.skipLink:focus {
+  left: 0;
+}

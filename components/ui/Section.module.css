@@ -1,0 +1,13 @@
+.section {
+  padding: var(--section-space) 0;
+}
+
+.section + .section {
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+/* First section on a page: no separator, tighter top padding. */
+.first {
+  border-top: 0;
+  padding-top: var(--space-8);
+}

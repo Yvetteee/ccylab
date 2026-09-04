@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t">
+  <title id="t">Research figure placeholder — selective channels</title>
+  <rect width="1200" height="900" fill="#F7F6F2"/>
+  <rect width="1200" height="900" fill="none" stroke="#DADADA" stroke-width="2"/>
+  <!-- membrane channels -->
+  <g stroke="#3E7A6B" stroke-width="18" stroke-linecap="round" opacity="0.9">
+    <line x1="240" y1="180" x2="240" y2="720"/>
+    <line x1="600" y1="180" x2="600" y2="720"/>
+    <line x1="960" y1="180" x2="960" y2="720"/>
+  </g>
+  <g stroke="#5E8F82" stroke-width="10" stroke-linecap="round" opacity="0.7">
+    <line x1="420" y1="180" x2="420" y2="720"/>
+    <line x1="780" y1="180" x2="780" y2="720"/>
+  </g>
+  <!-- ions travelling through channels -->
+  <g fill="#C9823C">
+    <circle cx="240" cy="420" r="26"/>
+    <circle cx="420" cy="330" r="30"/>
+    <circle cx="600" cy="510" r="24"/>
+    <circle cx="780" cy="390" r="32"/>
+    <circle cx="960" cy="450" r="22"/>
+  </g>
+  <g fill="#8A5A2B">
+    <circle cx="420" cy="560" r="26"/>
+    <circle cx="780" cy="610" r="24"/>
+  </g>
+  <!-- retained larger species -->
+  <g fill="none" stroke="#C7C1B4" stroke-width="8">
+    <circle cx="160" cy="300" r="34"/>
+    <circle cx="1040" cy="300" r="38"/>
+    <circle cx="160" cy="620" r="34"/>
+    <circle cx="1040" cy="620" r="38"/>
+  </g>
+  <text x="120" y="830" font-family="Arial, sans-serif" font-size="26" fill="#9C9484">Research figure — replace</text>
+</svg>

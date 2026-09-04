@@ -1,0 +1,60 @@
+.profiles {
+  padding: var(--space-4) 0 var(--space-8);
+  font-size: var(--text-sm);
+  color: var(--color-foreground);
+}
+
+.profiles a {
+  color: var(--color-foreground);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.profiles a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.themeSection {
+  /* Phase 5: fix an invalid token — `var(--space-10)` is undefined, which
+     silently dropped this padding to 0 and made theme sections butt together
+     with no separation. Use the dense 1.5rem step so each theme reads as a
+     distinct group while keeping the academic bibliography tight. */
+  padding: var(--space-6) 0;
+}
+
+.themeHeading {
+  margin-bottom: var(--space-4);
+}
+
+.themeTitle {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-1);
+}
+
+.themeCode {
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.themeDescriptor {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  max-width: 72ch;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.rows :global(article:last-child) {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.empty {
+  padding: var(--space-12) 0;
+  color: var(--color-muted);
+}

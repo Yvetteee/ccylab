@@ -1,0 +1,266 @@
+/* Join Us visual rhythm:
+   - every module takes its width from ONE shared 12-column grid — no
+     per-module max-widths — so right edges align across the whole page
+   - strict L2 (section) vs L3 (label) hierarchy
+   - macro spacing between modules > micro spacing inside them            */
+
+.grid {
+  padding-top: var(--space-8); /* tab row → intro */
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--space-16); /* between modules: 64px */
+  align-items: start;
+}
+
+.intro {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4); /* heading → content: 16px */
+}
+
+/* Level 2 — the section hierarchy (Qualifications, Research Scholarships,
+   How to Apply…). One clear level, kept uppercase but restrained. */
+.sectionTitle {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.body {
+  color: var(--color-muted);
+  max-width: 58ch;
+}
+
+/* Structured bullet lists (Qualifications, Responsibilities) use the full
+   column width — they are NOT prose. Only the How to Apply document list
+   keeps a natural cap via .applyList. */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.list li {
+  padding-left: var(--space-4);
+  position: relative;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  /* D-B: list bullets are metadata → neutral, not brand red */
+  background: var(--color-muted);
+  opacity: 0.7;
+}
+
+.applyList {
+  max-width: 58ch;
+}
+
+/* The primary application action — a restrained academic button, not a
+   marketing CTA: solid accent, white text, small radius, fit-to-content. */
+.applyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-accent);
+  color: var(--color-background);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 4px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.applyButton:hover {
+  background: var(--color-accent-strong, #0a4a3e);
+  text-decoration: none;
+}
+
+/* Email is the clearly-labelled fallback channel below the primary button. */
+.alternative {
+  margin-top: var(--space-8);
+}
+
+.alternativeLabel {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.emailNote {
+  color: var(--color-muted);
+  margin-bottom: var(--space-4);
+}
+
+/* Application Period — compact rail, stays secondary */
+.intakes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.intakeIntro {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.intakeLabel {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.intakePeriod {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+}
+
+/* Scholarships — a nested 12-column grid sharing the page tracks: the two
+   equal groups sit at cols 1-6 / 7-12, the global note at cols 1-7. */
+.scholarshipGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--space-6); /* note hugs the groups */
+  align-items: start;
+}
+
+.scholarshipLabel {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+}
+
+.scholarshipList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Global scholarship note — italic serif; its 1/8 span on the shared grid
+   defines the width (no per-element max-width). */
+.note {
+  color: var(--color-foreground);
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* How to Apply — the final action area */
+.applyMeta {
+  margin: var(--space-6) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.applyItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.applyItem dt {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.applyItem dd {
+  margin: 0;
+}
+
+.applyItem a {
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.applyItem a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Email subject — a quiet copyable chip: mono type on a light surface with
+   a thin border. Wraps long subjects; never overflows the rail. */
+.subject {
+  display: inline-block;
+  max-width: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-foreground);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) {
+  .applyMeta {
+    flex-direction: row;
+    gap: var(--space-12);
+  }
+}
+
+@media (min-width: 900px) {
+  /* ONE shared 12-column content grid. Both the outer module grid and the
+     nested scholarship grid use the same tracks, so every right edge comes
+     from the same grid (1-8 intro/quals/apply, 9-13 rail, 6/6 postdoc and
+     scholarship groups, 1-8 note) instead of per-module rem widths. */
+  .grid,
+  .scholarshipGrid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-8);
+  }
+
+  .span4 {
+    grid-column: span 4;
+  }
+
+  .span6 {
+    grid-column: span 6;
+  }
+
+  .span7 {
+    grid-column: span 7;
+  }
+
+  .span8 {
+    grid-column: span 8;
+  }
+
+  .span12 {
+    grid-column: span 12;
+  }
+}

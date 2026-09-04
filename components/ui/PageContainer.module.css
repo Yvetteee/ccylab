@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  /* Horizontal padding only — vertical rhythm is owned by sections. */
+  padding: 0 var(--container-padding);
+}
+
+/* Width variants must come after .container so they win at equal specificity */
+.narrow {
+  max-width: var(--container-narrow);
+}
+
+.wide {
+  max-width: var(--container-wide);
+}

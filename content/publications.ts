@@ -1,0 +1,356 @@
+import type { Publication } from "@/types/content";
+
+/**
+ * Real publications (source: Ye Group site publications page, verified
+ * 2026-09-02). Theme-grouped in the source; rendered here via the shared
+ * publication list (sorted by year). DOIs are the full legacy URLs.
+ */
+export const publications: Publication[] = [
+  // ---- Theme 1A: Flow Battery Energy Storage ----
+  {
+    id: "pub-2023-nature-triazine",
+    title:
+      "Near-frictionless ion transport from rigid nanoconfinement by triazine framework membranes",
+    authors: ["Zuo P.*", "Ye C.*", "Jiao Z.", "Luo J.", "Fang J.", "Schubert U. S.", "McKeown N. B.", "Liu T.", "Yang Z.", "Xu T."],
+    venue: "Nature",
+    year: 2023,
+    volume: "617",
+    pages: "299–305",
+    doi: "10.1038/s41586-023-05888-x",
+    url: "https://doi.org/10.1038/s41586-023-05888-x",
+    type: "journal",
+    featured: true,
+    keywords: ["flow battery", "ion transport", "triazine framework membranes"],
+  },
+  {
+    id: "pub-2022-natcom-sulfonated",
+    title:
+      "Development of efficient aqueous organic redox flow batteries using ion-sieving sulfonated polymer membranes",
+    authors: ["Ye C.", "Wang A.", "Breakwell C.", "Tan R.", "Grazia Bezzu C.", "Hunter-Sellars E.", "Williams D. R.", "Brandon N. P.", "Klusener P. A. A.", "Kucernak A. R.", "Jelfs K. E.", "McKeown N. B.", "Song Q."],
+    venue: "Nature Communications",
+    year: 2022,
+    volume: "13",
+    pages: "3184",
+    doi: "10.1038/s41467-022-30905-4",
+    url: "https://www.ncbi.nlm.nih.gov/pubmed/35676263",
+    type: "journal",
+    keywords: ["redox flow battery", "sulfonated polymer membranes"],
+  },
+  {
+    id: "pub-2022-angew-amidoxime",
+    title:
+      "Long-Life Aqueous Organic Redox Flow Batteries Enabled by Amidoxime-Functionalized Ion-Selective Polymer Membranes",
+    authors: ["Ye C.", "Tan R.", "Wang A.", "Chen J.", "Comesana Gandara B.", "Breakwell C.", "Alvarez-Fernandez A.", "Fan Z.", "Weng J.", "Bezzu C. G.", "Guldin S.", "Brandon N. P.", "Kucernak A. R.", "Jelfs K. E.", "McKeown N. B.", "Song Q."],
+    venue: "Angewandte Chemie International Edition",
+    year: 2022,
+    volume: "61",
+    pages: "e202207580",
+    doi: "10.1002/anie.202207580",
+    url: "https://www.ncbi.nlm.nih.gov/pubmed/35876472",
+    type: "journal",
+    keywords: ["redox flow battery", "amidoxime", "ion-selective membranes"],
+  },
+  {
+    id: "pub-2024-acsnano-micropore",
+    title:
+      "Advancing ion selective membranes with micropore ion channels in the interaction confinement regime",
+    authors: ["Zuo P.*", "Ran J.*", "Ye C.*", "Li X.", "Xu T.", "Yang Z."],
+    venue: "ACS Nano",
+    year: 2024,
+    volume: "18",
+    pages: "6016–6027",
+    doi: "10.1021/acsnano.3c12616",
+    url: "https://doi.org/10.1021/acsnano.3c12616",
+    type: "journal",
+    keywords: ["ion selective membranes", "micropore ion channels"],
+  },
+  {
+    id: "pub-2023-advsci-tfc",
+    title:
+      "Thin film composite membranes with regulated crossover and water migration for long-life aqueous redox flow batteries",
+    authors: ["Tan R.", "Wang A.", "Ye C.", "Li J.", "Liu D.", "Dawich B. P.", "Petit L.", "Fan Z.", "Alvarez-Fernandez A.", "Furedi M.", "Wong T.", "Guldin S.", "Breakwell C.", "Jelfs K. E.", "McKeown N. B.", "Song Q."],
+    venue: "Advanced Science",
+    year: 2023,
+    volume: "10",
+    pages: "2206888",
+    doi: "10.1002/advs.202206888",
+    url: "https://doi.org/10.1002/advs.202206888",
+    type: "journal",
+    keywords: ["thin film composite membranes", "redox flow battery"],
+  },
+  {
+    id: "pub-2023-advmat-microporous",
+    title:
+      "Ion-selective Microporous Polymer Membranes with Hydrogen-bond and Salt-bridge Networks for Aqueous Organic Redox Flow Batteries",
+    authors: ["Wang A.", "Tan R.", "Liu D.", "Lu J.", "Wei X.", "Alvarez-Fernandez A.", "Ye C.", "Breakwell C.", "Guldin S.", "Kucernak A. R.", "Jelfs K. E.", "Brandon N. P.", "McKeown N. B.", "Song Q."],
+    venue: "Advanced Materials",
+    year: 2023,
+    pages: "e2210098",
+    doi: "10.1002/adma.202210098",
+    url: "https://www.ncbi.nlm.nih.gov/pubmed/36634684",
+    type: "journal",
+    keywords: ["microporous polymer membranes", "redox flow battery"],
+  },
+  {
+    id: "pub-2025-joule-speek",
+    title:
+      "Sulfonated poly(ether-ether-ketone) membranes with intrinsic microporosity enable efficient redox flow batteries for energy storage",
+    authors: ["Wong T.", "Yang Y.", "Tan R.", "Wang A.", "Zhou Z.", "Yuan Z.", "Li J.", "Liu D.", "Alvarez-Fernandez A.", "Ye C.", "Sankey M.", "Ainsworth D.", "Guldin S.", "Foglia F.", "McKeown N. B.", "Jelfs K. E.", "Li X.", "Song Q."],
+    venue: "Joule",
+    year: 2025,
+    volume: "9",
+    issue: "2",
+    doi: "10.1016/j.joule.2024.11.012",
+    url: "https://doi.org/10.1016/j.joule.2024.11.012",
+    type: "journal",
+    keywords: ["SPEEK", "intrinsic microporosity", "redox flow battery"],
+  },
+  {
+    id: "pub-2020-natmat-hydrophilic",
+    title:
+      "Hydrophilic microporous membranes for selective ion separation and flow-battery energy storage",
+    authors: ["Tan R.", "Wang A.", "Malpass-Evans R.", "Williams R.", "Zhao E. W.", "Liu T.", "Ye C.", "Zhou X.", "Darwich B. P.", "Fan Z.", "Turcani L.", "Jackson E.", "Chen L.", "Chong S. Y.", "Li T.", "Jelfs K. E.", "Cooper A. I.", "Brandon N. P.", "Grey C. P.", "McKeown N. B.", "Song Q."],
+    venue: "Nature Materials",
+    year: 2020,
+    volume: "19",
+    pages: "195–202",
+    doi: "10.1038/s41563-019-0536-8",
+    url: "https://doi.org/10.1038/s41563-019-0536-8",
+    type: "journal",
+    featured: true,
+    keywords: ["microporous membranes", "ion separation", "flow battery"],
+  },
+  // ---- Theme 1B: Other Energy Conversion & Storage Technologies ----
+  {
+    id: "pub-2024-carbon-energy",
+    title:
+      "Carbon coated current collectors in lithium-ion batteries and supercapacitors: Materials, Manufacture and Applications",
+    authors: ["Hao H.", "Rui T.", "Ye C.", "Low C."],
+    venue: "Carbon Energy",
+    year: 2024,
+    volume: "6",
+    pages: "e604",
+    doi: "10.1002/cey2.604",
+    url: "https://doi.org/10.1002/cey2.604",
+    type: "journal",
+    keywords: ["carbon coating", "current collectors", "energy storage"],
+  },
+  {
+    id: "pub-2024-angew-zinc",
+    title:
+      "Interfacial Engineering of Polymer Membranes with Intrinsic Microporosity for Dendrite-free Zinc Metal Batteries",
+    authors: ["Tan R.", "He H.", "Wang A.", "Wong T.", "Yang Y.", "Iguodala S.", "Ye C.", "Liu D.", "Fan Z.", "Furedi M.", "He G.", "Guldin S.", "Brett D.", "McKeown N. B.", "Song Q."],
+    venue: "Angewandte Chemie International Edition",
+    year: 2024,
+    pages: "e202409322",
+    doi: "10.1002/anie.202409322",
+    url: "https://doi.org/10.1002/anie.202409322",
+    type: "journal",
+    keywords: ["zinc metal batteries", "PIM membranes", "dendrite-free"],
+  },
+  {
+    id: "pub-2022-jacs-redox-pim",
+    title:
+      "Solution-processable redox-active polymers of intrinsic microporosity for electrochemical energy storage",
+    authors: ["Wang A.", "Tan R.", "Breakwell C.", "Wei X.", "Fan Z.", "Ye C.", "Malpass-Evans R.", "Liu T.", "Zwijnenburg M. A.", "Jelfs K. E.", "McKeown N. B.", "Chen J.", "Song Q."],
+    venue: "Journal of the American Chemical Society",
+    year: 2022,
+    volume: "144",
+    pages: "17198–17208",
+    doi: "10.1021/jacs.2c07575",
+    url: "https://doi.org/10.1021/jacs.2c07575",
+    type: "journal",
+    keywords: ["PIMs", "electrochemical energy storage"],
+  },
+  // ---- Theme 2A: Membrane Processes for Liquid Separation ----
+  {
+    id: "pub-2025-advmat-li-recycling",
+    title:
+      "Advancing membrane materials for efficient Li recycling and recovery",
+    authors: ["Tian X.*", "Ye C.*", "Zhang L.", "Sugumar M.", "Zhao Y.", "Margadonna S.", "McKeown N. B.", "Tan R."],
+    venue: "Advanced Materials",
+    year: 2025,
+    volume: "37",
+    pages: "2402335",
+    doi: "10.1002/adma.202402335",
+    url: "https://doi.org/10.1002/adma.202402335",
+    type: "journal",
+    keywords: ["lithium recycling", "membrane materials"],
+  },
+  {
+    id: "pub-2019-cej-heavy-metal",
+    title:
+      "Nanofiltration membranes consisting of quaternized polyelectrolyte complex nanoparticles for heavy metal removal",
+    authors: ["Ye C.", "An Q.", "Wu J.", "Zhao F.", "Zheng P.", "Wang N."],
+    venue: "Chemical Engineering Journal",
+    year: 2019,
+    volume: "359",
+    pages: "994–1005",
+    doi: "10.1016/j.cej.2018.11.085",
+    url: "https://doi.org/10.1016/j.cej.2018.11.085",
+    type: "journal",
+    keywords: ["nanofiltration", "heavy metal removal"],
+  },
+  {
+    id: "pub-2019-cej-dye-desal",
+    title:
+      "Sulfated polyelectrolyte complex nanoparticles structured nanofiltration membrane for dye desalination",
+    authors: ["Ye C.", "Zhao F.", "Wu J.", "Weng X.", "Zheng P.", "Mi Y.", "An Q.", "Gao C."],
+    venue: "Chemical Engineering Journal",
+    year: 2019,
+    volume: "307",
+    pages: "526–536",
+    doi: "10.1016/j.cej.2016.08.122",
+    url: "https://doi.org/10.1016/j.cej.2016.08.122",
+    type: "journal",
+    keywords: ["nanofiltration", "dye desalination"],
+  },
+  {
+    id: "pub-2024-adfm-thin-film",
+    title:
+      "Rapid and precise molecular nanofiltration using ultra-thin-film membranes derived from 6,6′-dihydroxy-2,2′-biphenyldiamine",
+    authors: ["Chen Y.", "Shi W.", "Li S.*", "Wang M.", "Hao S.", "Gong G.", "Ye C.*", "McKeown N. B.", "Hu Y.*"],
+    venue: "Advanced Functional Materials",
+    year: 2024,
+    pages: "2406430",
+    doi: "10.1002/adfm.202406430",
+    url: "https://doi.org/10.1002/adfm.202406430",
+    type: "journal",
+    keywords: ["molecular nanofiltration", "ultra-thin-film membranes"],
+  },
+  {
+    id: "pub-2018-progchem-nf",
+    title: "Nanofiltration membrane based on novel materials",
+    authors: ["Zhao F.", "Jiang Y.", "Liu T.", "Ye C."],
+    venue: "Progress in Chemistry",
+    year: 2018,
+    volume: "30",
+    pages: "1013",
+    doi: "10.7536/pc171104",
+    url: "https://doi.org/10.7536/pc171104",
+    type: "journal",
+    keywords: ["nanofiltration", "novel materials"],
+  },
+  {
+    id: "pub-2017-jms-zwitterionic",
+    title:
+      "Constructing zwitterionic surface of nanofiltration membrane for high flux and antifouling performance",
+    authors: ["Mi Y.", "Zhao F.", "Guo Y.", "Weng X.", "Ye C.", "An Q."],
+    venue: "Journal of Membrane Science",
+    year: 2017,
+    volume: "541",
+    pages: "29–38",
+    doi: "10.1016/j.memsci.2017.06.091",
+    url: "https://doi.org/10.1016/j.memsci.2017.06.091",
+    type: "journal",
+    keywords: ["zwitterionic", "nanofiltration", "antifouling"],
+  },
+  {
+    id: "pub-2016-jms-polyvinylsulfonate",
+    title:
+      "Poly(sodium vinylsulfonate)/chitosan membranes with sulfonate ionic cross-linking and free sulfate groups: preparation and application in alcohol dehydration",
+    authors: ["Zheng P.", "Ye C.", "Wang X.", "Chen K.", "An Q.", "Lee K.", "Gao C."],
+    venue: "Journal of Membrane Science",
+    year: 2016,
+    volume: "510",
+    pages: "220–228",
+    doi: "10.1016/j.memsci.2016.02.060",
+    url: "https://doi.org/10.1016/j.memsci.2016.02.060",
+    type: "journal",
+    keywords: ["membrane", "alcohol dehydration"],
+  },
+  // ---- Theme 2B: Nanomaterials Engineering for Membrane Processes ----
+  {
+    id: "pub-2019-jms-go-polyelectrolyte",
+    title:
+      "Construction of well-arranged graphene oxide/polyelectrolyte complex nanoparticles membranes for pervaporation ethylene glycol dehydration",
+    authors: ["Wu J.", "Ye C.", "Zhang W.", "Wang N.", "Lee K.", "An Q."],
+    venue: "Journal of Membrane Science",
+    year: 2019,
+    volume: "577",
+    pages: "104–112",
+    doi: "10.1016/j.memsci.2019.02.004",
+    url: "https://doi.org/10.1016/j.memsci.2019.02.004",
+    type: "journal",
+    keywords: ["graphene oxide", "pervaporation", "dehydration"],
+  },
+  {
+    id: "pub-2017-matdes-cnt-go",
+    title:
+      "Synergistic effects of CNT and GO on enhancing mechanical properties and separation performance of polyelectrolyte complex membranes",
+    authors: ["Wu J.", "Ye C.", "Liu T.", "An Q.", "Song Y.", "Lee K.", "Hung W.", "Gao C."],
+    venue: "Materials & Design",
+    year: 2017,
+    volume: "119",
+    pages: "38–46",
+    doi: "10.1016/j.matdes.2017.01.056",
+    url: "https://doi.org/10.1016/j.matdes.2017.01.056",
+    type: "journal",
+    keywords: ["CNT", "graphene oxide", "polyelectrolyte membranes"],
+  },
+  {
+    id: "pub-2016-acsami-nanocomposite",
+    title:
+      "High-Flux Positively Charged Nanocomposite Nanofiltration Membranes Filled with Poly(dopamine) Modified Multiwall Carbon Nanotubes",
+    authors: ["Zhao F.", "Ji Y.", "Weng X.", "Mi Y.", "Ye C.", "An Q.", "Gao C."],
+    venue: "ACS Applied Materials & Interfaces",
+    year: 2016,
+    volume: "8",
+    pages: "6693–6700",
+    doi: "10.1021/acsami.6b00394",
+    url: "https://doi.org/10.1021/acsami.6b00394",
+    type: "journal",
+    keywords: ["nanofiltration", "carbon nanotubes", "nanocomposite"],
+  },
+  // ---- Theme 3A: Membrane Material Design & Synthesis ----
+  {
+    id: "pub-2024-polymchem-cf3tms",
+    title:
+      "The CF3TMS adduct of anthraquinone as a monomer for making polymers with potential as separation membranes",
+    authors: ["Wu K. J.", "Tobin J.", "Ji A.", "Shi Y.", "Ye C.", "Nichol G.", "Fuoco A.", "Longo M.", "Jansen J.", "McKeown N. B."],
+    venue: "Polymer Chemistry",
+    year: 2024,
+    volume: "15",
+    pages: "4312–4318",
+    doi: "10.1039/D4PY01002G",
+    url: "https://doi.org/10.1039/D4PY01002G",
+    type: "journal",
+    keywords: ["anthraquinone", "separation membranes", "polymer synthesis"],
+  },
+  {
+    id: "pub-2024-chemsci-triptycene",
+    title:
+      "Triptycene-like naphthopleiadene as a readily accessible scaffold for supramolecular and materials chemistry",
+    authors: ["Amin M. K.", "Ye C.", "Pang S.", "Liu Y.", "Taylor D.", "Nicol G. S.", "McKeown N. B."],
+    venue: "Chemical Science",
+    year: 2024,
+    volume: "15",
+    pages: "14968–14976",
+    doi: "10.1039/D4SC02755H",
+    url: "https://doi.org/10.1039/D4SC02755H",
+    type: "journal",
+    keywords: ["triptycene", "materials chemistry"],
+  },
+  {
+    id: "pub-2021-arkivoc-mmm",
+    title:
+      "Mixed matrix membranes derived from a spirobifluorene polymer of intrinsic microporosity and polyphenylene networks for the separation of toluene from dimethyl sulfoxide",
+    authors: ["Kirk R. A.", "Ye C.", "Foster A. B.", "Volkov A. V.", "McKeown N. B.", "Budd P. M."],
+    venue: "Arkivoc",
+    year: 2021,
+    pages: "120–130",
+    doi: "10.24820/ark.5550190.p011.650",
+    url: "https://www.arkat-usa.org/get-file/73987/",
+    type: "journal",
+    keywords: ["mixed matrix membranes", "PIM", "toluene separation"],
+  },
+];
+
+/** Sorted newest-first, used across the site. */
+export const sortedPublications = [...publications].sort(
+  (a, b) => b.year - a.year
+);
+
+export const featuredPublications = sortedPublications.filter(
+  (p) => p.featured
+);

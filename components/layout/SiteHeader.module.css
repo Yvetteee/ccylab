@@ -1,0 +1,58 @@
+.header {
+  /* sticky also establishes the containing block for the mobile nav panel.
+     Legacy identity: solid NTU-red band, white text (see
+     docs/legacy-integration/LEGACY-DESIGN-DNA.md). */
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+.inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--space-3) var(--container-padding);
+  /* min-height (not fixed height) so a long group name can wrap to a second
+     line without clipping. Short names keep the header at exactly
+     --header-height. */
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.brand {
+  /* D-A: single-line compact flag-mark in the red band — sans/semibold,
+     not the two-line serif editorial identity. */
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  color: var(--color-background);
+  /* long wordmarks wrap naturally (up to ~2 lines) on small screens */
+  white-space: normal;
+  min-width: 0;
+  /* leave room for the Menu toggle / first nav item beside the brand */
+  max-width: calc(100vw - 6rem);
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+/* Focus on the red band must be a light ring — the shared red focus ring
+   would be invisible against the header background. */
+.brand:focus-visible {
+  outline: 2px solid var(--color-background);
+  outline-offset: 2px;
+}
+
+/* Once there is room, keep the flag-mark on a single line. */
+@media (min-width: 640px) {
+  .brand {
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,32 @@
+name = "application-submit"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+
+# Secrets — set via `wrangler secret put <NAME>` (never commit them):
+#   RESEND_API_KEY
+#   APPLICATION_FROM_EMAIL   (verified sender, e.g. applications@your-domain)
+#   APPLICATION_TO_EMAIL     (TEST PHASE: JZHANG193@e.ntu.edu.sg
+#                             PRODUCTION RECIPIENT: NOT YET AUTHORIZED)
+#   TURNSTILE_SECRET_KEY
+#
+# Non-secret configuration:
+# [vars]
+# ALLOWED_ORIGINS = "http://localhost:3000,https://lab-website-git-review-legacy-conten-9519dd-shaonianradius-4833.vercel.app"
+#
+# RATE LIMITING — native Workers rate-limiting bindings require account-level
+# support for the binding type. The handler uses them only when present;
+# until they are enabled Turnstile + origin validation + honeypot + strict
+# field/file validation remain the active defenses
+# (RATE_LIMIT_BINDING_REQUIRES_DEPLOYMENT_CONFIGURATION).
+#
+# [[unsafe.bindings]]
+# name = "RATE_LIMITER_GLOBAL"
+# type = "ratelimit"
+# namespace_id = "1001"
+# simple = { limit = 20, period = 60 }
+#
+# [[unsafe.bindings]]
+# name = "RATE_LIMITER_EMAIL"
+# type = "ratelimit"
+# namespace_id = "1002"
+# simple = { limit = 3, period = 60 }

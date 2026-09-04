@@ -1,0 +1,49 @@
+/* Editorial tabs: two pieces of content, not a web-app tab component.
+   Thin (1px) underline, modest padding, generous space to the panel. */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-8);
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding-top: var(--space-12);
+}
+
+.tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px; /* sit on the divider line */
+  padding: var(--space-2) 0 var(--space-2);
+  font: inherit;
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.tab:hover {
+  color: var(--color-foreground);
+}
+
+.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.panel {
+  padding-top: var(--space-12);
+}
+
+/* Visually hidden heading keeps the document outline (h1 → h2 → h3) intact
+   without duplicating the tab label on screen. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

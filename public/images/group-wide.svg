@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" role="img" aria-labelledby="t">
+  <title id="t">Group photo placeholder (wide)</title>
+  <!-- warm room -->
+  <rect width="1600" height="700" fill="#F5F1EA"/>
+  <rect width="1600" height="240" fill="#EDE7DC"/>
+  <rect x="120" y="50" width="420" height="180" fill="#FBF8F2"/>
+  <rect x="600" y="50" width="420" height="180" fill="#F8F4EC"/>
+  <rect x="1080" y="50" width="400" height="180" fill="#FBF8F2"/>
+  <g stroke="#E0D9CB" stroke-width="5">
+    <line x1="120" y1="50" x2="120" y2="230"/><line x1="540" y1="50" x2="540" y2="230"/>
+    <line x1="600" y1="50" x2="600" y2="230"/><line x1="1020" y1="50" x2="1020" y2="230"/>
+    <line x1="1080" y1="50" x2="1080" y2="230"/><line x1="1480" y1="50" x2="1480" y2="230"/>
+  </g>
+  <!-- five people -->
+  <g>
+    <circle cx="300" cy="210" r="70" fill="#D9C6AE"/><path d="M234 210 a66 66 0 0 1 132 0" fill="#7E6F5C"/>
+    <rect x="216" y="278" width="168" height="150" rx="16" fill="#D8CFC1"/>
+  </g>
+  <g>
+    <circle cx="520" cy="200" r="74" fill="#D3BC9F"/><path d="M450 200 a70 70 0 0 1 140 0" fill="#6E5F4E"/>
+    <rect x="432" y="272" width="176" height="156" rx="16" fill="#C8BFAF"/>
+  </g>
+  <g>
+    <circle cx="800" cy="190" r="78" fill="#DCCAB2"/><path d="M726 190 a74 74 0 0 1 148 0" fill="#85745F"/>
+    <rect x="708" y="266" width="184" height="162" rx="16" fill="#D3C9BA"/>
+  </g>
+  <g>
+    <circle cx="1080" cy="204" r="72" fill="#D9C6AE"/><path d="M1012 204 a68 68 0 0 1 136 0" fill="#7E6F5C"/>
+    <rect x="994" y="274" width="172" height="154" rx="16" fill="#D8CFC1"/>
+  </g>
+  <g>
+    <circle cx="1300" cy="212" r="68" fill="#D3BC9F"/><path d="M1236 212 a64 64 0 0 1 128 0" fill="#6E5F4E"/>
+    <rect x="1218" y="278" width="164" height="150" rx="16" fill="#C8BFAF"/>
+  </g>
+  <!-- bench -->
+  <rect x="0" y="430" width="1600" height="100" fill="#E5DFD2"/>
+  <rect x="0" y="530" width="1600" height="50" fill="#D7D0C1"/>
+  <rect x="0" y="430" width="1600" height="7" fill="#EFEAE0"/>
+  <!-- equipment -->
+  <path d="M180 430 h62 v36 a31 31 0 0 1 -62 0 z" fill="#3E7A6B" opacity="0.8"/>
+  <rect x="150" y="410" width="120" height="20" rx="6" fill="#C8BFAE"/>
+  <path d="M420 430 h58 v32 a29 29 0 0 1 -58 0 z" fill="#C9823C" opacity="0.85"/>
+  <rect x="392" y="408" width="112" height="24" rx="6" fill="#C8BFAE"/>
+  <path d="M760 430 h64 v36 a32 32 0 0 1 -64 0 z" fill="#4E7F96" opacity="0.8"/>
+  <rect x="730" y="408" width="124" height="24" rx="6" fill="#C8BFAE"/>
+  <path d="M1020 430 h60 v34 a30 30 0 0 1 -60 0 z" fill="#3E7A6B" opacity="0.7"/>
+  <rect x="992" y="408" width="116" height="24" rx="6" fill="#C8BFAE"/>
+  <path d="M1280 430 h64 v34 a32 32 0 0 1 -64 0 z" fill="#C9823C" opacity="0.8"/>
+  <rect x="1252" y="408" width="120" height="24" rx="6" fill="#C8BFAE"/>
+  <line x1="120" y1="480" x2="1480" y2="480" stroke="#CFC8B8" stroke-width="4"/>
+  <text x="120" y="650" font-family="Arial, sans-serif" font-size="24" fill="#9C9484">Lab photo — replace</text>
+</svg>

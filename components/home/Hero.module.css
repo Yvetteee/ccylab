@@ -1,0 +1,102 @@
+.hero {
+  padding-top: var(--space-8);
+}
+
+/* Full-bleed photo band carrying the identity copy — the legacy hero */
+.band {
+  position: relative;
+  width: 100%;
+}
+
+/* The hero photo is full-bleed: strip the shared frame's border/radius.
+   D-F: the band height is CLAMPED, not ratio-scaled with viewport width —
+   min-height lifts the short mobile band, max-height caps the wide desktop
+   band, and object-fit:cover (from the image primitive) crops the photo. */
+.photo {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  /* mobile visual range ≈ 320-420px */
+  min-height: 320px;
+  max-height: 420px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.institution {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-3);
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  font-style: italic;
+  color: var(--color-foreground);
+}
+
+/* Welcome block beneath the hero — the lab's OPENING STATEMENT and the first
+   block of the main left editorial axis: its left edge matches WHAT WE STUDY
+   / Our Research below. The hero band above stays centered — that contrast
+   is intentional. */
+.welcome {
+  padding-top: var(--space-12);
+}
+
+.intro {
+  color: var(--color-muted);
+  max-width: 70ch;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  text-align: left;
+}
+
+/* Mobile-first: the hero stays compact; the overlay text scales down */
+@media (max-width: 767px) {
+  .hero {
+    padding-top: var(--space-4);
+  }
+
+  .title {
+    font-size: var(--text-3xl);
+  }
+
+  .tagline {
+    font-size: var(--text-lg);
+  }
+
+  .welcome {
+    padding-top: var(--space-8);
+  }
+}
+
+/* Desktop: hero band ~500-600px visual range (D-F), consistently capped */
+@media (min-width: 768px) {
+  .photo {
+    min-height: 500px;
+    max-height: 600px;
+  }
+
+  .title {
+    font-size: var(--text-5xl);
+  }
+}

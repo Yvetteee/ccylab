@@ -1,0 +1,203 @@
+/* Online application form — a focused task page, restrained to match the
+   site's editorial style (no cards, no shadows). */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 34rem;
+}
+
+.field,
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border: 0;
+  padding: 0;
+}
+
+.label {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.input,
+.textarea {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--color-foreground);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: var(--space-3);
+  width: 100%;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  /* D-B: focus is high-contrast neutral, not red-on-red */
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 1px var(--color-focus);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 7rem;
+  line-height: 1.6;
+}
+
+.radios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+}
+
+.radio input {
+  accent-color: var(--color-accent);
+  width: 1rem;
+  height: 1rem;
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* Real PDF file input — visually hidden but keyboard-reachable; the styled
+   button carries the visible affordance and the focus ring transfers. */
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.fileInput:focus-visible + .fileButton {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.fileButton {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: var(--text-sm);
+  color: var(--color-foreground);
+  background: var(--color-background);
+  cursor: pointer;
+}
+
+.fileButton:hover {
+  border-color: var(--color-foreground);
+  color: var(--color-foreground);
+}
+
+.fileName {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.fileError {
+  font-size: var(--text-sm);
+  color: #b91c1c;
+  margin: 0;
+}
+
+/* Honeypot — hidden from humans, keyboards and assistive technology. */
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.turnstileBlock {
+  min-height: 65px;
+}
+
+.statusSuccess,
+.statusError {
+  margin: 0;
+  font-size: var(--text-sm);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 4px 4px 0;
+}
+
+.statusSuccess {
+  color: #14532d;
+  background: #f0fdf4;
+  border-left: 3px solid #16a34a;
+}
+
+.statusError {
+  color: #b91c1c;
+  background: #fef2f2;
+  border-left: 3px solid #b91c1c;
+}
+
+.notice {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* Recruitment-use disclosure — quiet helper text next to the submit action. */
+.privacy {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+.submit {
+  align-self: flex-start;
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-accent);
+  color: var(--color-background);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--color-accent-strong, #0a4a3e);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Secondary email fallback — deliberately quieter than the primary button. */
+.fallback {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.fallback a {
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}

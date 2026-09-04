@@ -1,0 +1,6 @@
+/*
+ * Global styles entry point — imported once by the root layout.
+ * Keeps only imports; page/component styles are CSS Modules.
+ */
+@import "../styles/tokens.css";
+@import "../styles/base.css";

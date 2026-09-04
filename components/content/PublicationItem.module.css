@@ -1,0 +1,78 @@
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  /* Phase 5: 1.5rem → 1rem vertical padding per citation (~33% cut) —
+     academic bibliography density. Border still separates each row. */
+  padding: var(--space-4) 0;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.type {
+  font-size: var(--text-xs);
+  /* D-B: type-rail label is neutral; red is for the Featured signature */
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Legacy red emphasis on notable work (D-6) — replaces the legacy floating
+   "highly cited" callout with a semantic inline label. */
+.featured {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.title a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.authors {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.venue {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-muted);
+  overflow-wrap: anywhere;
+}
+
+.venue a {
+  font-style: normal;
+  /* D-B: ordinary links neutral */
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.venue a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 8rem 1fr;
+    gap: var(--space-8);
+  }
+}

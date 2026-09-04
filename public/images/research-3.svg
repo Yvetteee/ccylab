@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t">
+  <title id="t">Research figure placeholder — layered architecture</title>
+  <rect width="1200" height="900" fill="#F7F6F2"/>
+  <rect width="1200" height="900" fill="none" stroke="#DADADA" stroke-width="2"/>
+  <g fill="none" stroke-width="10">
+    <rect x="220" y="220" width="760" height="90" rx="8" stroke="#C7C1B4" fill="#FCFBF7"/>
+    <rect x="220" y="360" width="760" height="90" rx="8" stroke="#3E7A6B" fill="#F2F6F2" opacity="0.9"/>
+    <rect x="220" y="500" width="760" height="90" rx="8" stroke="#C7C1B4" fill="#FCFBF7"/>
+  </g>
+  <!-- signals crossing the functional layer -->
+  <g fill="#C9823C">
+    <circle cx="430" cy="405" r="22"/>
+    <circle cx="620" cy="405" r="22"/>
+    <circle cx="810" cy="405" r="22"/>
+  </g>
+  <g stroke="#C7C1B4" stroke-width="6">
+    <line x1="430" y1="265" x2="430" y2="360"/>
+    <line x1="620" y1="265" x2="620" y2="360"/>
+    <line x1="810" y1="450" x2="810" y2="500"/>
+  </g>
+  <g fill="#4E7F96">
+    <circle cx="430" cy="240" r="14"/>
+    <circle cx="620" cy="240" r="14"/>
+  </g>
+  <g fill="#8A5A2B">
+    <circle cx="810" cy="525" r="14"/>
+  </g>
+  <text x="120" y="830" font-family="Arial, sans-serif" font-size="26" fill="#9C9484">Research figure — replace</text>
+</svg>

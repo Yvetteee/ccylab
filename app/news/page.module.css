@@ -1,0 +1,26 @@
+.featured {
+  padding: var(--space-12) 0;
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.yearSection {
+  /* Phase 5: 3rem → 2rem vertical rhythm per news year group (~33% cut).
+     The featured story above keeps its 3rem band as the page's opener. */
+  padding: var(--space-8) 0;
+}
+
+.yearTitle {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-2);
+}
+
+.rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.empty {
+  padding: var(--space-12) 0;
+  color: var(--color-muted);
+}

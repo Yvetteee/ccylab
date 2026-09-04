@@ -1,0 +1,5 @@
+.note {
+  padding: var(--space-12) 0;
+  color: var(--color-muted);
+  max-width: 62ch;
+}

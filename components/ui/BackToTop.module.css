@@ -1,0 +1,45 @@
+/* Page-level navigation control — fixed near the lower-right viewport
+   corner, outside the footer's visual composition. Hidden near the top of
+   the page; appears after ~600px of scrolling. Restrained: color/opacity
+   transition only — no shadow, glow or motion. */
+
+.button {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-background);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: background 0.2s ease, opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover {
+  background: var(--color-accent-dark);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-background);
+  outline-offset: 2px;
+}
+
+@media (max-width: 639px) {
+  .button {
+    right: 18px;
+    bottom: 18px;
+  }
+}
