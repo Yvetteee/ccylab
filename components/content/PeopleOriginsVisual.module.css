@@ -1,0 +1,20 @@
+/* Legacy closing visual (members.html member.png, 1357×652) — quiet, wide,
+   centered inside the standard content container. The legacy cap of 900px
+   is preserved so the artwork stays subordinate to the directory above it.
+   width:100% + intrinsic-ratio frame keeps the full composition visible at
+   every breakpoint (no crop, no overflow, no absolute layers). */
+
+.figure {
+  margin: var(--space-16) auto 0;
+  max-width: 900px;
+  padding-bottom: var(--space-12);
+}
+
+.caption {
+  margin: var(--space-4) auto 0;
+  max-width: 60ch;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: var(--text-base);
+  line-height: 1.6;
+}

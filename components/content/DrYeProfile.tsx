@@ -5,8 +5,8 @@ import { piCareer, piEducation, piHonors, piPerson } from "@/content";
 import styles from "./DrYeProfile.module.css";
 
 /**
- * Standalone Dr. Ye profile (Variant B, /dr-ye) — the People PIProfile
- * identity grammar kept as-is (circular portrait + ONE right-hand text axis:
+ * Standalone Dr. Ye profile (Variant B, /dr-ye) — the PI identity grammar
+ * (circular portrait + ONE right-hand text axis:
  * bilingual name, current role line, contact links, signature quote panel,
  * bio) and extended with the legacy PI academic record: Academic Career and
  * Education as one period | content record system, Honors & Awards as a

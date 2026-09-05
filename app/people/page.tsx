@@ -2,6 +2,7 @@ import PageContainer from "@/components/ui/PageContainer";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
 import MemberRow from "@/components/content/MemberRow";
+import PeopleOriginsVisual from "@/components/content/PeopleOriginsVisual";
 import { people } from "@/content";
 import { groupPeopleByCategory } from "@/lib/people";
 import { createPageMetadata } from "@/lib/metadata";
@@ -24,12 +25,10 @@ const CURRENT_ROLES: readonly RoleCategory[] = [
 ];
 
 /**
- * People — a group of people doing research together, not a directory.
- * Variant B information architecture: the full PI academic profile lives on
- * the standalone /dr-ye page (DrYeProfile, sharing piPerson); this page lists
- * the TEAM only — members appear in a role-grouped CONTINUOUS ROSTER with a
- * portrait-oriented rectangular photo and text biography (MemberRow), no
- * uniform circular card grid. Alumni are compact text rows.
+ * People — team directory: concise entries (portrait, name, role, profile
+ * link) in a role-grouped continuous roster. Long-form member biographies
+ * live on the individual profile pages (/people/[slug]); the PI's complete
+ * academic profile is the standalone /dr-ye page and is not listed here.
  */
 export default function PeoplePage() {
   const currentGroups = groupPeopleByCategory(people).filter((group) =>
@@ -78,6 +77,8 @@ export default function PeoplePage() {
           </ul>
         </Section>
       ) : null}
+
+      <PeopleOriginsVisual />
     </PageContainer>
   );
 }

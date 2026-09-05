@@ -9,7 +9,11 @@ import styles from "./LatestNews.module.css";
 /**
  * Lab News — a living log, not cards: a small news image beside date +
  * headline + summary. Image sits above the text on mobile and to the side on
- * desktop. Dense and un-decorated. Only the three most recent items.
+ * desktop. Dense and un-decorated.
+ *
+ * TEMPORARY content-density decision: with only a handful of real items, the
+ * feed shows ALL current entries (no slice limit). Revisit a "latest N" cut
+ * when the news volume actually grows.
  */
 export default function LatestNews() {
   // Optional home section: hide it entirely when there are no items.
@@ -19,7 +23,7 @@ export default function LatestNews() {
     <HomeSection id="news" kicker="What&apos;s happening" title="Lab News">
       <PageContainer width="standard">
         <ol className={styles.list}>
-          {sortedNews.slice(0, 3).map((news) => (
+          {sortedNews.map((news) => (
             <li key={news.id} className={styles.item}>
               {news.image ? (
                 <div className={styles.media}>

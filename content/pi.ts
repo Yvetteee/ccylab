@@ -6,8 +6,9 @@ import type {
 } from "@/types/content";
 
 /**
- * Shared Chunchun Ye (PI) content — the ONE source behind both presentations:
- * PIProfile on /people (Variant A) and DrYeProfile on /dr-ye (Variant B).
+ * Shared Chunchun Ye (PI) content — the single source behind the PI's
+ * presentations: DrYeProfile on /dr-ye (Variant B, the full academic
+ * profile) and any PI-related views built on the same record.
  *
  * The structured academic record below is recovered verbatim from the legacy
  * PI page (https://www.ccylab.com/pi.html, cross-checked against the local

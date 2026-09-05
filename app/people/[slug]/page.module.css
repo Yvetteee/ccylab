@@ -1,0 +1,101 @@
+/* Member profile — deliberately simpler than the PI page (/dr-ye): a
+   PageHeader (name + role), a portrait/links identity row, then the
+   long-form content sections that used to inline on /people. */
+
+.back {
+  padding-top: var(--space-8);
+}
+
+.backLink {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.backLink:hover {
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Identity row — same rectangular-portrait grammar as the /people directory
+   (5 / 6 photo, no circle — the circle belongs to the PI only). */
+.identity {
+  display: grid;
+  grid-template-columns: minmax(6rem, 9rem) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+  padding-top: var(--space-8);
+}
+
+.photo {
+  border-radius: 0;
+}
+
+.placeholder {
+  aspect-ratio: 5 / 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  color: var(--color-muted);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.nameZh {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  padding: 0;
+}
+
+.links a {
+  font-size: var(--text-sm);
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Biography — readable academic measure, left-aligned ragged-right. */
+.bio {
+  max-width: 72ch;
+  line-height: 1.7;
+}
+
+/* Research interests — plain " · " separated line, matching the quiet
+   grammar the directory used to use for interests. */
+.interests {
+  color: var(--color-foreground);
+  max-width: 72ch;
+}
+
+@media (min-width: 641px) {
+  .identity {
+    grid-template-columns: minmax(12rem, 13rem) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
