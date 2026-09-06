@@ -53,7 +53,9 @@
 }
 
 .name {
-  font-size: var(--text-lg);
+  /* text-xl (20px): the member name is the directory row's visual anchor —
+     bridges the 32px group heading and the 14px role line. */
+  font-size: var(--text-xl);
 }
 
 .nameZh {

@@ -7,10 +7,17 @@
 }
 
 /* Role-grouped continuous roster (D-C): member rows stack vertically, each
-   a portrait-oriented rectangular photo + text biography. */
+   a portrait-oriented rectangular photo + directory entry. */
 .roster {
   display: flex;
   flex-direction: column;
+}
+
+/* Group rhythm — tightened ~25% vs the default section spacing (64px → 48px
+   each side of the divider), so groups stay clearly separated without the
+   page feeling loose. Doubled class beats the shared .first padding. */
+.groupSection.groupSection {
+  padding: var(--space-12) 0;
 }
 
 .alumniRow {

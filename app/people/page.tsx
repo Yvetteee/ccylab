@@ -55,6 +55,7 @@ export default function PeoplePage() {
             title={group.label}
             headingLevel={2}
             first={index === 0}
+            className={styles.groupSection}
           >
             <div className={styles.roster}>
               {group.members.map((person) => (
