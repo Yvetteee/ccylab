@@ -25,10 +25,11 @@ export const siteConfig = {
   description:
     "We are based in the School of Civil and Environmental Engineering at Nanyang Technological University, where our research focuses on advanced porous materials and membrane technologies to address pressing energy and environmental challenges. As an open and growing team, we are committed to excellence, freedom, diversity and inclusion.",
   /**
-   * Canonical deployment URL.
-   * TODO(pre-launch): replace with the actual production domain.
+   * Canonical site URL (production domain).
+   * DNS cutover pending: www.ccylab.com still serves the legacy GitHub Pages
+   * site until the domain is pointed at this deployment.
    */
-  url: "https://dsh-lab.ntu.edu.sg",
+  url: "https://www.ccylab.com",
   nav: [
     { label: "Home", href: "/" },
     { label: "Research", href: "/research" },
