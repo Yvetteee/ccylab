@@ -46,6 +46,7 @@ export const publicationThemes: PublicationTheme[] = [
     descriptor:
       "Nanofiltration and related liquid-separation membranes — heavy-metal removal, dye desalination, molecular nanofiltration and dehydration.",
     publicationIds: [
+      "pub-2026-science-hydrocarbon",
       "pub-2025-advmat-li-recycling",
       "pub-2019-cej-heavy-metal",
       "pub-2019-cej-dye-desal",

@@ -2,9 +2,20 @@ import Link from "next/link";
 import PageContainer from "@/components/ui/PageContainer";
 import HomeSection from "./HomeSection";
 import ResponsiveImage from "@/components/ui/ResponsiveImage";
-import { featuredPublications, sortedPublications } from "@/content";
+import { publications } from "@/content";
 import type { Publication } from "@/types/content";
 import styles from "./FeaturedResearch.module.css";
+
+/**
+ * Home-only editorial: the explicit FEATURED ORDER for the home page,
+ * resolved against the canonical publication data in content/publications.ts.
+ * Deliberately NOT derived from publication year — a newer paper must not
+ * automatically displace the designated main feature.
+ */
+const HOME_FEATURED_ORDER = [
+  "pub-2023-nature-triazine", // main
+  "pub-2026-science-hydrocarbon", // secondary
+];
 
 /**
  * Home-only editorial: a one-sentence "why this matters" per featured paper,
@@ -14,8 +25,6 @@ import styles from "./FeaturedResearch.module.css";
 const HIGHLIGHTS: Record<string, string> = {
   "pub-2023-nature-triazine":
     "Co-first-author work showing that rigid nanoconfinement in triazine framework membranes enables near-frictionless ion transport — a fundamental advance for membrane selectivity and energy storage.",
-  "pub-2020-natmat-hydrophilic":
-    "Hydrophilic microporous membranes that selectively separate ions by size and charge, enabling efficient flow-battery energy storage at scale.",
 };
 
 function publicationLink(pub: Publication): string {
@@ -33,9 +42,10 @@ function publicationLink(pub: Publication): string {
  * bibliography stays on /publications.
  */
 export default function FeaturedResearch() {
-  const featured = featuredPublications;
-  const rest = sortedPublications.filter((pub) => !pub.featured);
-  const [main, ...secondaries] = [...featured, ...rest].slice(0, 3);
+  const ordered = HOME_FEATURED_ORDER.map((id) =>
+    publications.find((pub) => pub.id === id)
+  ).filter((pub): pub is Publication => Boolean(pub));
+  const [main, ...secondaries] = ordered;
 
   // Optional home section: hide it entirely when there is nothing to show.
   if (!main && secondaries.length === 0) return null;

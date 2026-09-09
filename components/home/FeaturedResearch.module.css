@@ -19,7 +19,10 @@
 .mainTitle {
   font-size: var(--text-3xl);
   line-height: 1.2;
-  max-width: 30ch;
+  /* Full standard-container width: at desktop this composes the long main
+     title in ~2 lines (46ch tested — still 3 lines). Narrower viewports wrap
+     naturally to more lines. */
+  max-width: var(--container-width);
 }
 
 .mainTitle a:hover {
