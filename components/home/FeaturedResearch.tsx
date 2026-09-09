@@ -15,6 +15,7 @@ import styles from "./FeaturedResearch.module.css";
 const HOME_FEATURED_ORDER = [
   "pub-2023-nature-triazine", // main
   "pub-2026-science-hydrocarbon", // secondary
+  "pub-2025-joule-speek", // secondary
 ];
 
 /**

@@ -26,6 +26,7 @@ export default function FeaturedNews({ news }: FeaturedNewsProps) {
         ratio="3 / 2"
         fit="contain"
         sizes="100vw"
+        className={styles.image}
       />
       <div className={styles.body}>
         <p className={styles.meta}>

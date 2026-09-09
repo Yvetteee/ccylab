@@ -4,6 +4,14 @@
   gap: var(--space-6);
 }
 
+/* News-local frame override (see home LatestNews): the featured contain-fit
+   artwork should not sit inside the shared frame's border + surface fill.
+   Scoped to this component only. */
+.image.image {
+  border: 0;
+  background: transparent;
+}
+
 .body {
   display: flex;
   flex-direction: column;

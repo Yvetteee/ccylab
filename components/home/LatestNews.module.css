@@ -26,6 +26,14 @@
   border-radius: var(--radius-md);
 }
 
+/* News-local frame override: contain-fit news artwork looks awkward inside
+   the shared frame's visible border + surface fill. Scoped here only — the
+   ResponsiveImage primitive keeps its global treatment elsewhere. */
+.thumb.thumb {
+  border: 0;
+  background: transparent;
+}
+
 .body {
   display: flex;
   flex-direction: column;
