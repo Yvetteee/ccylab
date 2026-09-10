@@ -57,7 +57,13 @@ export default function PeoplePage() {
             first={index === 0}
             className={styles.groupSection}
           >
-            <div className={styles.roster}>
+            <div
+              className={
+                group.category === "phd"
+                  ? `${styles.roster} ${styles.rosterGrid}`
+                  : styles.roster
+              }
+            >
               {group.members.map((person) => (
                 <MemberRow key={person.id} person={person} />
               ))}

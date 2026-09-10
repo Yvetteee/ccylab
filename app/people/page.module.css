@@ -13,6 +13,26 @@
   flex-direction: column;
 }
 
+/* PhD density adaptation (scoped to this group only): on desktop the PhD
+   directory flows in a 2-column grid — member rows keep their horizontal
+   portrait/text composition, and their own separators are neutralised so no
+   line spans or clashes across columns (whitespace carries the grouping).
+   Below 1024px the group keeps the standard single-column roster. */
+@media (min-width: 1024px) {
+  .rosterGrid.rosterGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-16);
+  }
+
+  .rosterGrid.rosterGrid :global(article) {
+    border-top: 0;
+    border-bottom: 0;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+}
+
 /* Group rhythm — tightened ~25% vs the default section spacing (64px → 48px
    each side of the divider), so groups stay clearly separated without the
    page feeling loose. Doubled class beats the shared .first padding. */
