@@ -22,7 +22,7 @@ export default function SiteFooter() {
         <div className={styles.top}>
           <div className={styles.brandCluster}>
             <Image
-              src="/images/legacy/NTU_Logo.png"
+              src="/images/brand/ntu-logo.png"
               alt="Nanyang Technological University"
               width={89}
               height={32}

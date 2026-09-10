@@ -20,7 +20,7 @@ export const researchIntro =
   "We design porous materials and develop membrane technologies to tackle pressing challenges in energy and the environment.";
 
 /** Research overview banner (legacy researchmain.jpeg). */
-export const researchOverviewImage = "/images/legacy/researchmain.jpeg";
+export const researchOverviewImage = "/images/research/overview.jpeg";
 
 export const researchAreas: ResearchArea[] = [
   {
@@ -40,7 +40,7 @@ export const researchAreas: ResearchArea[] = [
         text: "Introduce functional groups to confer specific properties. For example, incorporating ion-conducting groups such as –SO₃⁻ or –COO⁻ enables efficient ion transport.",
       },
     ],
-    image: "/images/legacy/research3.jpeg",
+    image: "/images/research/research3.jpeg",
     keywords: [
       "function-guided material design",
       "building blocks with concavities",
@@ -70,7 +70,7 @@ export const researchAreas: ResearchArea[] = [
         text: "Use a range of fabrication methods suited to the material — from solution casting and spin coating, to scalable roll-to-roll processing, phase inversion and interfacial polymerisation, as well as newer approaches like electrospinning, dip-coating and even 3D printing.",
       },
     ],
-    image: "/images/legacy/research2.jpeg",
+    image: "/images/research/research2.jpeg",
     keywords: [
       "pore-channel engineering",
       "functional groups and gradients",
@@ -112,7 +112,7 @@ export const researchAreas: ResearchArea[] = [
         text: "For example, lithium recovery addresses the growing demand for batteries in electric vehicles and large-scale energy storage.",
       },
     ],
-    image: "/images/legacy/research1.jpeg",
+    image: "/images/research/research1.jpeg",
     keywords: [
       "energy storage and conversion",
       "carbon capture",

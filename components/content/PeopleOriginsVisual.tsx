@@ -12,7 +12,7 @@ export default function PeopleOriginsVisual() {
   return (
     <figure className={styles.figure}>
       <ResponsiveImage
-        src="/images/legacy/member.png"
+        src="/images/site/people-origins.png"
         alt="World map with flowers representing the global roots of the Ye Group team"
         ratio="1357 / 652"
         fit="contain"

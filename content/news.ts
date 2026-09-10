@@ -19,7 +19,7 @@ export const newsItems: NewsItem[] = [
     summary:
       "We are hiring PhD students and Postdoctoral Researchers! Join us to explore cutting-edge research in materials, membranes, and sustainable solutions for energy and the environment.",
     category: "Openings",
-    image: "/images/legacy/labnews1.png",
+    image: "/images/news/hiring.png",
   },
   {
     id: "news-kaiping-2026",
@@ -29,7 +29,7 @@ export const newsItems: NewsItem[] = [
     summary:
       "We are delighted to welcome Dr. Kaiping Zhu to the group as our first Postdoc researcher. With Kaiping joining us, we are now officially forming the smallest unit of a research group!",
     category: "Team",
-    image: "/images/legacy/labnewsMay1.jpg",
+    image: "/images/news/welcome-kaiping.jpg",
   },
   {
     id: "news-kim-2026",
@@ -39,7 +39,7 @@ export const newsItems: NewsItem[] = [
     summary:
       "Welcome Kim (Jiayi) Wu joining The Ye Lab as a Research Associate!",
     category: "Team",
-    image: "/images/legacy/labnewsMay2.jpg",
+    image: "/images/news/welcome-kim.jpg",
   },
   {
     id: "news-christine-2026",
@@ -49,7 +49,7 @@ export const newsItems: NewsItem[] = [
     summary:
       "We are excited to welcome our first PhD student Christine (Sunho) On joining the group!",
     category: "Team",
-    image: "/images/legacy/labnewsMay3.jpg",
+    image: "/images/news/welcome-christine.jpg",
   },
   {
     id: "news-new-chapter",
@@ -58,7 +58,7 @@ export const newsItems: NewsItem[] = [
     summary:
       "I'm delighted to share that this November I'll be joining NTU Singapore as an Assistant Professor in Civil and Environmental Engineering, and I look forward to beginning this new chapter.",
     category: "Announcement",
-    image: "/images/legacy/labnews2.png",
+    image: "/images/news/new-chapter.png",
   },
 ];
 

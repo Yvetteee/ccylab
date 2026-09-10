@@ -49,7 +49,7 @@ export default function ResearchPage() {
           >
             <div className={`${styles.row}${index % 2 ? ` ${styles.flip}` : ""}`}>
               <ResponsiveImage
-                src={area.image ?? "/images/legacy/research1.jpeg"}
+                src={area.image ?? "/images/research/research1.jpeg"}
                 alt={`${area.title} — Ye Group research`}
                 ratio="1 / 1"
                 sizes="(min-width: 900px) 40vw, 100vw"

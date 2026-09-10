@@ -2,10 +2,11 @@ import type { Person } from "@/types/content";
 import { piPerson } from "./pi";
 
 /**
- * People data — real lab members (source: Ye Group site, verified 2026-09-02).
- * Keep the shape identical; the People page groups by `category` and renders a
- * section only when members exist. Portraits are the real legacy photographs
- * migrated byte-for-byte from the ccylab source (public/images/legacy/).
+ * People data — real lab members (source: Ye Group site, verified 2026-09-02;
+ * member-confirmed refresh applied 2026-09). Keep the shape identical; the
+ * People page groups by `category` and renders a section only when members
+ * exist. Member portraits live in public/images/people/ under durable
+ * member-slug filenames (byte-identical to the original source photos).
  * The PI entry is the shared piPerson record (content/pi.ts) so /people and
  * /dr-ye render from one source.
  */
@@ -30,7 +31,7 @@ export const people: Person[] = [
     nameZh: "吴佳仪",
     role: "Research Associate",
     category: "assistant",
-    photo: "/images/legacy/jiayi-wu.png",
+    photo: "/images/people/kim-jiayi-wu.png",
     researchInterests: ["PIM Synthesis", "Structure–Property Relationships in Membranes"],
     email: "jiayi.wu@ntu.edu.sg",
     bio: "Kim obtained her integrated Master's degree in Chemistry from The University of Edinburgh in 2022, where she worked on the synthesis of novel polymers of intrinsic microporosity (PIMs) in Prof. Neil B. McKeown's group for her final year research project. After that, she continued her PhD studies in the McKeown group under an EPSRC-funded programme (SynHiSel). Her research interests include the synthesis and structure–property relationships of PIMs in membrane applications. In her leisure time, she enjoys photography, travelling, hiking, exercising, cooking, and music.",
@@ -44,7 +45,7 @@ export const people: Person[] = [
     nameLang: "ko",
     role: "PhD Student",
     category: "phd",
-    photo: "/images/legacy/christine.png",
+    photo: "/images/people/christine-sunho-on.png",
     researchInterests: ["Porous Materials", "Sustainable Energy Systems"],
     email: "SUNHO001@e.ntu.edu.sg",
     bio: "Christine received her bachelor's degree in Chemistry & Nanoscience from Ewha Womans University in 2025. During her undergraduate studies, she worked on the synthesis of metal-organic frameworks (MOFs) as porous materials for gas storage. She later conducted research on porous polymers for ion-exchange membrane applications during a study-abroad semester at the University of Edinburgh in Prof. Neil B. McKeown's group. Her research interests include porous materials and functional design for sustainable energy system applications. Outside of research, she enjoys baking, exploring coffee shops, seeing live performances, and traveling.",

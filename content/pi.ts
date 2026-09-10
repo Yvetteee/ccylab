@@ -119,7 +119,7 @@ export const piPerson: Person = {
   nameZh: "叶纯纯",
   role: "Principal Investigator",
   category: "pi",
-  photo: "/images/legacy/chunchun.JPG",
+  photo: "/images/people/chunchun-ye.jpg",
   researchInterests: [
     "Advanced Porous Materials",
     "Polymer Membranes",
