@@ -114,4 +114,11 @@ export const people: Person[] = [
     bio: "Qian received her bachelor's degree in Environmental Engineering from Tsinghua University in 2024 and continued her studies toward a Master's degree in Prof. Xi Chen's group, where she focused on selective lithium extraction from spent battery leachate. She joined Prof. Chunchun Ye's group as an exchange student to broaden her academic perspective and gain international research experience. Outside of research, she enjoys both appreciating and creating music, literature and art. Visiting period: July – October 2026. Research topic: Ion Sieving in Polymers of Intrinsic Microporosity for Selective Lithium Extraction.",
     active: true,
   },
+  {
+    id: "rini-lora-love",
+    name: "Rini Lora Love",
+    role: "Undergraduate Visiting Student from Columbia University (Global Career Fellowship programme)",
+    category: "alumni",
+    active: false,
+  },
 ];
