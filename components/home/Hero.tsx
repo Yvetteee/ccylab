@@ -24,7 +24,7 @@ export default function Hero() {
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.band}>
         <ResponsiveImage
-          src="/images/hero-campus.jpg"
+          src="/images/home/hero-campus.jpg"
           alt="NTU campus — where the research group is based"
           ratio="16 / 7"
           sizes="100vw"

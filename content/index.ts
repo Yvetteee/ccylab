@@ -19,7 +19,6 @@ export {
   researchIntro,
   researchOverviewImage,
 } from "./research-areas";
-export { projects } from "./projects";
 export { newsItems, sortedNews } from "./news";
 export { opportunities, phdOpportunity, postdocOpportunity } from "./opportunities";
 export type {

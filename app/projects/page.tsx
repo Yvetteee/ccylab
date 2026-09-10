@@ -24,10 +24,9 @@ export const metadata: Metadata = {
  * Projects — intentionally minimal for now. There is no authoritative list
  * of real funded/collaborative projects to publish yet, and the earlier
  * placeholder project cards were fictional AI/ML content that must not be
- * presented as Ye Group research. The route is kept for future reuse; until
- * real projects exist it shows a restrained availability note. The Project
- * data model and components remain in the codebase for when real content is
- * ready.
+ * presented as Ye Group research. The route and the Project data model in
+ * types/content.ts are kept for future reuse; until real projects exist it
+ * shows a restrained availability note.
  */
 export default function ProjectsPage() {
   return (

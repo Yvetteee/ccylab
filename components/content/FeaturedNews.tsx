@@ -21,7 +21,7 @@ export default function FeaturedNews({ news }: FeaturedNewsProps) {
   return (
     <article className={styles.featured}>
       <ResponsiveImage
-        src={news.image ?? "/images/hero-lab.svg"}
+        src={news.image ?? "/images/news/hero-lab.svg"}
         alt={news.image ? `Photo for ${news.title}` : `Placeholder image for ${news.title}`}
         ratio="3 / 2"
         fit="contain"
