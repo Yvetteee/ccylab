@@ -9,7 +9,7 @@ happens, where new assets belong, and the asset ownership policy.
 | --- | --- |
 | `app/` | Next.js App Router pages/routes, root layout, metadata, robots, sitemap. Each directory is a route (`dr-ye/`, `people/[slug]/`, `apply/[type]/`, `projects/` (intentionally minimal, noindex), …). |
 | `components/` | UI building blocks: `layout/` (header/nav/footer), `ui/` (PageContainer, Section, ResponsiveImage, …), `content/` (data-driven sections: MemberRow, DrYeProfile, NewsRow, PeopleOriginsVisual, …), `home/` (Hero, FeaturedResearch, LatestNews, …), `apply/` (ApplicationForm). |
-| `content/` | **Single source of truth for site content** — typed data files (`site.ts`, `people.ts`, `pi.ts`, `publications.ts`, `publication-themes.ts`, `research-areas.ts`, `news.ts`, `opportunities.ts`) consumed via the `@/content` barrel. `projects.ts` is an intentional empty scaffold for a future Projects page. |
+| `content/` | **Single source of truth for site content** — typed data files (`site.ts`, `people.ts`, `pi.ts`, `publications.ts`, `publication-themes.ts`, `research-areas.ts`, `news.ts`, `opportunities.ts`) consumed via the `@/content` barrel. There is intentionally no `projects.ts` — the minimal noindex `/projects` route and the `Project` /`ProjectStatus` types in `types/content.ts` are kept for future reuse. |
 | `lib/` | Pure helpers: metadata factory, people grouping, news/format helpers, indexing control. |
 | `types/` | Shared content types (`types/content.ts`). |
 | `styles/` | Design tokens (`tokens.css`) + base/reset styles. Components use CSS Modules. |
@@ -23,7 +23,7 @@ new production assets to `legacy/`; there is no `legacy/` directory anymore.
 | Path | Ownership |
 | --- | --- |
 | `public/images/people/` | All current member portraits (filename = member slug: `kaiping-zhu.jpg`, `christine-sunho-on.png`, `chunchun-ye.jpg`, …). |
-| `public/images/news/` | News feed images (`hiring.png`, `welcome-*.png/jpg`, `new-chapter.png`) and the news fallback graphic (`hero-lab.svg`). |
+| `public/images/news/` | News feed images (`hiring.png`, `welcome-*.png/jpg`, `new-chapter.png`). A News item without an image renders without an image block (no placeholder fallback).. |
 | `public/images/research/` | Research overview (`overview.jpeg`) and the three research-area images. |
 | `public/images/brand/` | Institutional marks (`ntu-logo.png`, used by the footer). |
 | `public/images/site/` | Shared site-wide visuals (`people-origins.png` — the People closing map). |

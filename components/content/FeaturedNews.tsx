@@ -20,14 +20,16 @@ export default function FeaturedNews({ news }: FeaturedNewsProps) {
 
   return (
     <article className={styles.featured}>
-      <ResponsiveImage
-        src={news.image ?? "/images/news/hero-lab.svg"}
-        alt={news.image ? `Photo for ${news.title}` : `Placeholder image for ${news.title}`}
-        ratio="3 / 2"
-        fit="contain"
-        sizes="100vw"
-        className={styles.image}
-      />
+      {news.image ? (
+        <ResponsiveImage
+          src={news.image}
+          alt={`Photo for ${news.title}`}
+          ratio="3 / 2"
+          fit="contain"
+          sizes="100vw"
+          className={styles.image}
+        />
+      ) : null}
       <div className={styles.body}>
         <p className={styles.meta}>
           <span className={styles.category}>{news.category}</span>

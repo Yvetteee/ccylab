@@ -81,8 +81,8 @@ photographs).
 
 - `content/projects.ts`: 5 fictional AI/ML project records deleted
   (records were unreachable — `app/projects/page.tsx` renders a static
-  availability note and never imports project data). File retained as an
-  empty typed scaffold (`export const projects: Project[] = []`).
+  availability note and never imports project data). The file and its barrel
+  export were removed entirely from the content layer.
 - `components/content/ProjectCard.tsx` + `.module.css`: sole consumer was
   the fictional data render; unreachable → removed.
 - `lib/projects.ts` (`groupProjectsByStatus`): sole consumer was the
