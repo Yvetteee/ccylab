@@ -77,6 +77,7 @@ export const people: Person[] = [
     role: "PhD Student",
     category: "phd",
     photo: "/images/people/yongbin-cho.png",
+    email: "CHOY0084@e.ntu.edu.sg",
     researchInterests: [
       "Polymer of Intrinsic Microporosity (PIM) membranes",
       "Membranes for electrochemical energy storage and conversion",
@@ -110,8 +111,9 @@ export const people: Person[] = [
     role: "Research Student",
     category: "visiting",
     photo: "/images/people/qian-xu.jpg",
+    email: "B250020@e.ntu.edu.sg",
     researchInterests: ["porous materials", "selective crystallization", "lithium extraction"],
-    bio: "Qian received her bachelor's degree in Environmental Engineering from Tsinghua University in 2024 and continued her studies toward a Master's degree in Prof. Xi Chen's group, where she focused on selective lithium extraction from spent battery leachate. She joined Prof. Chunchun Ye's group as an exchange student to broaden her academic perspective and gain international research experience. Outside of research, she enjoys both appreciating and creating music, literature and art. Visiting period: July – October 2026. Research topic: Ion Sieving in Polymers of Intrinsic Microporosity for Selective Lithium Extraction.",
+    bio: "Qian received her bachelor's degree in Environmental Engineering from Tsinghua University in 2024 and continued her studies toward a Master's degree in Prof. Xi Chen's group, where she focused on selective lithium extraction from spent battery leachate. She joined Prof. Chunchun Ye's group as an exchange student to broaden her academic perspective and gain international research experience. Outside of research, she enjoys both appreciating and creating music, literature and art.\nVisiting period: July – October 2026.\nResearch topic: Ion Sieving in Polymers of Intrinsic Microporosity for Selective Lithium Extraction.",
     active: true,
   },
   {
