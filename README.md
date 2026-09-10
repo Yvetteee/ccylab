@@ -144,7 +144,8 @@ recipients without explicit approval.
 
 ## Environment variables
 
-Names only — never commit values.
+Names only — never commit values. A committed template
+(`.env.example`) mirrors the site-side variable names.
 
 Next.js application (set in the deployment platform; read at build time):
 
