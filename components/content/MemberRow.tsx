@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Person } from "@/types/content";
 import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { getInitials } from "@/lib/format";
+import { portraitImageStyle } from "@/lib/people";
 import styles from "./MemberRow.module.css";
 
 interface MemberRowProps {
@@ -24,6 +25,7 @@ export default function MemberRow({ person }: MemberRowProps) {
           ratio="5 / 6"
           sizes="(min-width: 641px) 11rem, 7rem"
           className={styles.photo}
+          imgStyle={portraitImageStyle(person)}
         />
       ) : (
         <div

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Person, RoleCategory } from "@/types/content";
 
 export interface PersonGroup {
@@ -47,4 +48,17 @@ export function groupPeopleByCategory(people: Person[]): PersonGroup[] {
       .filter((p) => p.category === category && p.active !== false)
       .sort((a, b) => (a.order ?? 999) - (b.order ?? 999)),
   })).filter((group) => group.members.length > 0);
+}
+
+/**
+ * Optional per-member portrait crop tweak: returns the inline style for the
+ * portrait <img> when a member's record carries a zoom/origin override.
+ * Undefined for everyone else (default rendering).
+ */
+export function portraitImageStyle(person: Person): CSSProperties | undefined {
+  if (!person.portraitZoom) return undefined;
+  return {
+    transform: `scale(${person.portraitZoom})`,
+    transformOrigin: person.portraitOrigin ?? "50% 50%",
+  };
 }

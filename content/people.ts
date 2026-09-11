@@ -130,6 +130,8 @@ export const people: Person[] = [
       "Membrane separation",
     ],
     email: "jzhang193@e.ntu.edu.sg",
+    portraitZoom: 1.25,
+    portraitOrigin: "50% 45%",
     bio: "Jiayu works on polymers of intrinsic microporosity (PIMs) and ion-selective membranes, focusing on membrane design for precise ion separation. He received his B.Eng. in Resource Recycling Science and Engineering and M.Sc. in Chemical Engineering and Technology from East China University of Science and Technology, where he developed monovalent-selective cation exchange membranes via layer-by-layer self-assembly and worked on membrane-based lithium recovery from salt-lake brine. Outside of research, he enjoys running, badminton, anime, and is always curious about new things.",
     active: true,
   },

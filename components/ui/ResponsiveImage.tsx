@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import styles from "./ResponsiveImage.module.css";
 
 interface ResponsiveImageProps {
@@ -11,6 +12,9 @@ interface ResponsiveImageProps {
   sizes?: string;
   priority?: boolean;
   className?: string;
+  /** Optional inline style for the image itself (e.g. a per-portrait
+   * object-position / zoom tweak). Unused by default. */
+  imgStyle?: CSSProperties;
 }
 
 /**
@@ -26,6 +30,7 @@ export default function ResponsiveImage({
   sizes = "100vw",
   priority = false,
   className,
+  imgStyle,
 }: ResponsiveImageProps) {
   const isSvg = src.toLowerCase().endsWith(".svg");
 
@@ -41,6 +46,7 @@ export default function ResponsiveImage({
         sizes={sizes}
         priority={priority}
         className={fit === "contain" ? styles.contain : styles.cover}
+        style={imgStyle}
         unoptimized={isSvg}
       />
     </div>

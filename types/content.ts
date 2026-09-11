@@ -40,6 +40,16 @@ export interface Person {
   /** ORCID identifier (bare or full URL). */
   orcid?: string;
   personalWebsite?: string;
+  /**
+   * Optional per-member portrait crop tweak, used only when a source photo's
+   * composition needs it (e.g. loose framing). Applied at the presentation
+   * layer as an inline transform on the portrait inside the standard 5:6
+   * frame; other members are unaffected. 1 = default.
+   */
+  portraitZoom?: number;
+  /** Transform origin for portraitZoom (CSS percentages, e.g. "50% 45%") —
+   * typically the member's face position within the photo. */
+  portraitOrigin?: string;
   bio?: string;
   /**
    * PI signature quotation (D-C): restored in its signature role only —

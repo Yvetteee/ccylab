@@ -7,6 +7,7 @@ import Section from "@/components/ui/Section";
 import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { getInitials, orcidUrl } from "@/lib/format";
 import { people } from "@/content";
+import { portraitImageStyle } from "@/lib/people";
 import { createPageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
@@ -78,6 +79,7 @@ export default async function MemberProfilePage({
             ratio="5 / 6"
             sizes="(min-width: 641px) 13rem, 9rem"
             className={styles.photo}
+            imgStyle={portraitImageStyle(member)}
           />
         ) : (
           <div
