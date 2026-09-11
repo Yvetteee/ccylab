@@ -36,6 +36,12 @@
   font-size: var(--text-base);
   font-weight: 600;
   line-height: 1.45;
+  /* Local override of the global h1–h6 `text-wrap: balance`: for long
+     bibliography titles balance redistributes lines into an artificial ~50/50
+     split with a large ragged gap. `pretty` keeps greedy first-line fill
+     (first line clearly longer than the second) while letting the engine
+     avoid single-word orphan tails where it can. */
+  text-wrap: pretty;
 }
 
 .title a:hover {
