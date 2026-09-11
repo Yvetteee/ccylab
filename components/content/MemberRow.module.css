@@ -21,7 +21,9 @@
 }
 
 .row:last-child {
-  border-bottom: var(--border-width) solid var(--color-border);
+  /* No bottom border: the group-tail closing line duplicated the next
+     category's section border-top 48px below (double-line at every category
+     transition). The section separator alone carries that boundary. */
   padding-bottom: var(--space-8);
 }
 
