@@ -12,6 +12,15 @@ import type { NewsItem } from "@/types/content";
  */
 export const newsItems: NewsItem[] = [
   {
+    id: "news-group-dinner-2026-08-14",
+    title: "Aug 14, 2026: Ye Group Dinner",
+    date: "2026-08-14",
+    summary:
+      "The group enjoyed an evening together over dinner, taking some time to catch up outside the lab.",
+    category: "Team",
+    image: "/images/news/group-dinner-2026-08-14.jpg",
+  },
+  {
     id: "news-hiring",
     title: "We Are Hiring — PhD Students and Postdoctoral Researchers",
     date: "2026-05-01",
