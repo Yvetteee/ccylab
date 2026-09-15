@@ -12,18 +12,21 @@ import styles from "./LatestNews.module.css";
  * desktop. Dense and un-decorated.
  *
  * TEMPORARY content-density decision: with only a handful of real items, the
- * feed shows ALL current entries (no slice limit). Revisit a "latest N" cut
+ * feed shows ALL current entries (no slice limit) except items marked
+ * `showOnHome: false`, which stay on /news only. Revisit a "latest N" cut
  * when the news volume actually grows.
  */
 export default function LatestNews() {
+  const homeNews = sortedNews.filter((news) => news.showOnHome !== false);
+
   // Optional home section: hide it entirely when there are no items.
-  if (sortedNews.length === 0) return null;
+  if (homeNews.length === 0) return null;
 
   return (
     <HomeSection id="news" kicker="What&apos;s happening" title="Lab News">
       <PageContainer width="standard">
         <ol className={styles.list}>
-          {sortedNews.map((news) => (
+          {homeNews.map((news) => (
             <li key={news.id} className={styles.item}>
               {news.image ? (
                 <div className={styles.media}>

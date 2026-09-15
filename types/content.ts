@@ -195,6 +195,12 @@ export interface NewsItem {
   content?: string;
   image?: string;
   category: string;
+  /**
+   * Home-feed opt-out. The Home Lab News section shows the live feed by
+   * default; set false for entries that belong on /news only (e.g. arrival
+   * announcements without artwork). Omitted = shown on Home.
+   */
+  showOnHome?: boolean;
   /** Link out to an external announcement when there is no local detail page. */
   externalUrl?: string;
 }
