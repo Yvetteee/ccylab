@@ -25,21 +25,21 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: "news-phd-cohort-2026-08",
-    title: "Four New PhD Students Join the Ye Group",
+    title: "A Warm Welcome to Our New PhD Students",
     date: "2026-08-01",
     displayDate: "Aug 2026",
     summary:
-      "The Ye Group welcomed four new PhD students in August 2026: Chunlin Zhai, Yongbin Cho, Wenchang Wang, and Jiayu Zhang. We are glad to have them with us and look forward to the research ahead.",
+      "We are delighted to welcome Chunlin Zhai, Yongbin Cho, Wenchang Wang, and Jiayu Zhang, who joined the Ye Group as PhD students in August 2026. We look forward to growing, learning, and exploring new ideas together.",
     category: "Team",
     showOnHome: false,
   },
   {
     id: "news-qian-xu-2026-07",
-    title: "Qian Xu Joins the Ye Group as a Visiting Student",
+    title: "A Warm Welcome to Qian Xu",
     date: "2026-07-01",
     displayDate: "Jul 2026",
     summary:
-      "Qian Xu joined the Ye Group as a visiting student in July 2026.",
+      "We are pleased to welcome Qian Xu, who joined the Ye Group as a visiting student in July 2026. We look forward to a rewarding and inspiring time together.",
     category: "Team",
     showOnHome: false,
   },
