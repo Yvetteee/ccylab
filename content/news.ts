@@ -24,7 +24,7 @@ export const newsItems: NewsItem[] = [
     date: "2026-09-01",
     displayDate: "Sep 2026",
     summary:
-      "We were delighted to have Lora join the Ye Group from Columbia University through the GCF programme. During her time with us, she became part of the group’s research and everyday life in Singapore. We wish her all the best for what comes next and hope she takes home rewarding research experience, new friendships and many good memories.",
+      "We were delighted to have Lora join the Ye Group from Columbia University through the GCF programme. We hope she leaves Singapore with rewarding research experience, new friendships and many good memories, and we wish her all the best for what comes next.",
     category: "Team",
     image: "/images/news/lora-farewell-2026.jpg",
     imageAlt: "Lora, pictured during her time with the Ye Group",
@@ -68,7 +68,7 @@ export const newsItems: NewsItem[] = [
     date: "2026-07-01",
     displayDate: "Jul 2026",
     summary:
-      "We are delighted to share that Dr. Chunchun Ye received the NAMS Young Membrane Scientist Award at ICOM 2026 in San Antonio, Texas. The award recognises early-career contributions to membrane science and technology. During the conference, Dr. Ye presented her research and shared the new chapter of membrane research being built at NTU. It was also a wonderful opportunity to reconnect with colleagues across the membrane community and exchange perspectives on the future of membrane science.",
+      "We are delighted to share that Dr. Chunchun Ye received the NAMS Young Membrane Scientist Award at ICOM 2026 in San Antonio, Texas. During the conference, Dr. Ye presented her research and exchanged perspectives with colleagues across the membrane community.",
     category: "Announcement",
     image: "/images/news/icom-2026-nams-award.jpg",
     imageAlt:
