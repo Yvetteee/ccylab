@@ -57,6 +57,11 @@ export const piEducation: EducationRecord[] = [
 
 export const piHonors: HonorRecord[] = [
   {
+    year: "2026",
+    title: "NAMS Young Membrane Scientist Award",
+    organization: "North American Membrane Society",
+  },
+  {
     year: "2024",
     title: "Researcher Collaborations Grants",
     organization: "The Royal Society of Chemistry (RSC)",

@@ -1,0 +1,76 @@
+/* News story — single-column editorial flow on the shared container. */
+
+.back {
+  margin-bottom: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.meta {
+  display: flex;
+  gap: var(--space-4);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+  margin-bottom: var(--space-8);
+}
+
+.primaryImage {
+  display: block;
+  margin-bottom: var(--space-8);
+}
+
+/* Natural-aspect story image: intrinsic ratio preserved (no crop, no
+   stretch), centered when narrower than the column, capped so portrait
+   covers stay readable without becoming viewport-tall. */
+.primaryImage img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 78vh;
+  margin-inline: auto;
+}
+
+.imageHint {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.primaryImage:hover .imageHint {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.body {
+  color: var(--color-muted);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  max-width: none;
+}
+
+.gallery {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.galleryItem a {
+  display: block;
+}
+
+.caption {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}

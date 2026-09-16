@@ -12,8 +12,24 @@ import type { NewsItem } from "@/types/content";
  *
  * HOME VISIBILITY: items marked `showOnHome: false` appear on the News page
  * only and are excluded from the Home Lab News feed.
+ *
+ * FEATURED DISPLAY: the /news featured story is picked explicitly via
+ * `featuredOnNews` (exactly one item) — independent of chronology and of
+ * Home visibility.
  */
 export const newsItems: NewsItem[] = [
+  {
+    id: "news-lora-farewell-2026-09",
+    title: "A Warm Farewell to Lora",
+    date: "2026-09-01",
+    displayDate: "Sep 2026",
+    summary:
+      "We were delighted to have Lora join the Ye Group from Columbia University through the GCF programme. During her time with us, she became part of the group’s research and everyday life in Singapore. We wish her all the best for what comes next and hope she takes home rewarding research experience, new friendships and many good memories.",
+    category: "Team",
+    image: "/images/news/lora-farewell-2026.jpg",
+    imageAlt: "Lora, pictured during her time with the Ye Group",
+    showOnHome: true,
+  },
   {
     id: "news-group-dinner-2026-08-14",
     title: "Aug 14, 2026: Ye Group Dinner",
@@ -22,6 +38,8 @@ export const newsItems: NewsItem[] = [
       "The group enjoyed an evening together over dinner, taking some time to catch up outside the lab.",
     category: "Team",
     image: "/images/news/group-dinner-2026-08-14.jpg",
+    imageAlt: "Ye Group members gathered for the August 2026 group dinner",
+    featuredOnNews: true,
   },
   {
     id: "news-phd-cohort-2026-08",
@@ -42,6 +60,31 @@ export const newsItems: NewsItem[] = [
       "We are pleased to welcome Qian Xu, who joined the Ye Group as a visiting student in July 2026. We look forward to a rewarding and inspiring time together.",
     category: "Team",
     showOnHome: false,
+  },
+  {
+    id: "news-icom-2026-nams-award",
+    title:
+      "Dr. Chunchun Ye Receives the NAMS Young Membrane Scientist Award at ICOM 2026",
+    date: "2026-07-01",
+    displayDate: "Jul 2026",
+    summary:
+      "We are delighted to share that Dr. Chunchun Ye received the NAMS Young Membrane Scientist Award at ICOM 2026 in San Antonio, Texas. The award recognises early-career contributions to membrane science and technology. During the conference, Dr. Ye presented her research and shared the new chapter of membrane research being built at NTU. It was also a wonderful opportunity to reconnect with colleagues across the membrane community and exchange perspectives on the future of membrane science.",
+    category: "Announcement",
+    image: "/images/news/icom-2026-nams-award.jpg",
+    imageAlt:
+      "NAMS Young Membrane Scientist Award presentation at ICOM 2026 in San Antonio",
+    gallery: [
+      {
+        src: "/images/news/icom-2026-presentation.jpg",
+        alt: "Research presentation on intrinsic microporosity at ICOM 2026 in San Antonio",
+      },
+      {
+        src: "/images/news/icom-2026-group.jpg",
+        alt: "Conference attendees gathered at ICOM 2026 in San Antonio",
+      },
+    ],
+    showOnHome: true,
+    homeImage: "/images/news/icom-2026-presentation.jpg",
   },
   {
     id: "news-hiring",
@@ -98,3 +141,17 @@ export const newsItems: NewsItem[] = [
 export const sortedNews = [...newsItems].sort((a, b) =>
   b.date.localeCompare(a.date)
 );
+
+/**
+ * The explicit /news featured story. Featured display is independent of
+ * chronology (sortedNews) and of Home visibility (showOnHome). Exactly one
+ * item must carry `featuredOnNews` — a missing or duplicated flag fails at
+ * import time instead of silently falling back to the newest item.
+ */
+const featuredItems = newsItems.filter((item) => item.featuredOnNews);
+if (featuredItems.length !== 1) {
+  throw new Error(
+    `content/news: exactly one News item must set featuredOnNews (found ${featuredItems.length})`
+  );
+}
+export const featuredNews: NewsItem = featuredItems[0];

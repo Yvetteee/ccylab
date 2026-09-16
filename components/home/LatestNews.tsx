@@ -11,13 +11,17 @@ import styles from "./LatestNews.module.css";
  * headline + summary. Image sits above the text on mobile and to the side on
  * desktop. Dense and un-decorated.
  *
- * TEMPORARY content-density decision: with only a handful of real items, the
- * feed shows ALL current entries (no slice limit) except items marked
- * `showOnHome: false`, which stay on /news only. Revisit a "latest N" cut
- * when the news volume actually grows.
+ * Content density: the feed shows the latest six eligible entries (newest
+ * first) — items marked `showOnHome: false` stay on /news only, and older
+ * items fall out of the window as new ones arrive. The full chronology
+ * remains on /news.
  */
+const HOME_NEWS_LIMIT = 6;
+
 export default function LatestNews() {
-  const homeNews = sortedNews.filter((news) => news.showOnHome !== false);
+  const homeNews = sortedNews
+    .filter((news) => news.showOnHome !== false)
+    .slice(0, HOME_NEWS_LIMIT);
 
   // Optional home section: hide it entirely when there are no items.
   if (homeNews.length === 0) return null;
@@ -26,12 +30,14 @@ export default function LatestNews() {
     <HomeSection id="news" kicker="What&apos;s happening" title="Lab News">
       <PageContainer width="standard">
         <ol className={styles.list}>
-          {homeNews.map((news) => (
+          {homeNews.map((news) => {
+            const cover = news.homeImage ?? news.image;
+            return (
             <li key={news.id} className={styles.item}>
-              {news.image ? (
+              {cover ? (
                 <div className={styles.media}>
                   <ResponsiveImage
-                    src={news.image}
+                    src={cover}
                     alt=""
                     ratio="4 / 3"
                     fit="contain"
@@ -51,7 +57,8 @@ export default function LatestNews() {
                 <p className={styles.summary}>{news.summary}</p>
               </div>
             </li>
-          ))}
+            );
+          })}
         </ol>
 
         <p className={styles.link}>

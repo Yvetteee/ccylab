@@ -12,6 +12,11 @@
   background: transparent;
 }
 
+/* The featured image link (to the story page) must wrap the frame cleanly. */
+.imageLink {
+  display: block;
+}
+
 .body {
   display: flex;
   flex-direction: column;
