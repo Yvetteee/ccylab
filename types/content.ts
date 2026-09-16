@@ -211,6 +211,12 @@ export interface NewsItem {
   /** Concrete alt text for `image` — describes what is actually visible. */
   imageAlt?: string;
   /**
+   * Optional Home-specific cover for the horizontal Lab News thumbnail.
+   * Only for items whose `image` composition does not suit the 4:3
+   * landscape thumb (e.g. portrait covers); the detail page keeps `image`.
+   */
+  homeImage?: string;
+  /**
    * Explicit /news featured selection. Featured display is independent of
    * chronology and of Home visibility; exactly one item may set this.
    */

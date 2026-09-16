@@ -28,7 +28,7 @@ export const newsItems: NewsItem[] = [
     category: "Team",
     image: "/images/news/lora-farewell-2026.jpg",
     imageAlt: "Lora, pictured during her time with the Ye Group",
-    showOnHome: false,
+    showOnHome: true,
   },
   {
     id: "news-group-dinner-2026-08-14",
@@ -83,7 +83,8 @@ export const newsItems: NewsItem[] = [
         alt: "Conference attendees gathered at ICOM 2026 in San Antonio",
       },
     ],
-    showOnHome: false,
+    showOnHome: true,
+    homeImage: "/images/news/icom-2026-presentation.jpg",
   },
   {
     id: "news-hiring",
