@@ -27,6 +27,18 @@
   margin-bottom: var(--space-8);
 }
 
+/* Natural-aspect story image: intrinsic ratio preserved (no crop, no
+   stretch), centered when narrower than the column, capped so portrait
+   covers stay readable without becoming viewport-tall. */
+.primaryImage img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 78vh;
+  margin-inline: auto;
+}
+
 .imageHint {
   display: inline-block;
   margin-top: var(--space-2);

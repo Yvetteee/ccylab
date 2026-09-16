@@ -71,7 +71,18 @@ export const newsItems: NewsItem[] = [
       "We are delighted to share that Dr. Chunchun Ye received the NAMS Young Membrane Scientist Award at ICOM 2026 in San Antonio, Texas. The award recognises early-career contributions to membrane science and technology. During the conference, Dr. Ye presented her research and shared the new chapter of membrane research being built at NTU. It was also a wonderful opportunity to reconnect with colleagues across the membrane community and exchange perspectives on the future of membrane science.",
     category: "Announcement",
     image: "/images/news/icom-2026-nams-award.jpg",
-    imageAlt: "Dr. Chunchun Ye at the ICOM 2026 meeting in San Antonio, Texas",
+    imageAlt:
+      "NAMS Young Membrane Scientist Award presentation at ICOM 2026 in San Antonio",
+    gallery: [
+      {
+        src: "/images/news/icom-2026-presentation.jpg",
+        alt: "Research presentation on intrinsic microporosity at ICOM 2026 in San Antonio",
+      },
+      {
+        src: "/images/news/icom-2026-group.jpg",
+        alt: "Conference attendees gathered at ICOM 2026 in San Antonio",
+      },
+    ],
     showOnHome: false,
   },
   {

@@ -64,13 +64,12 @@ export default async function NewsStoryPage({ params }: NewsStoryPageProps) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <ResponsiveImage
+            {/* Natural aspect: story images keep their intrinsic composition
+                (portrait covers included) — no frame crop, no stretching. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={news.image}
               alt={news.imageAlt ?? `Photo for ${news.title}`}
-              ratio="4 / 3"
-              fit="contain"
-              sizes="(min-width: 1024px) 1152px, 100vw"
-              priority
             />
             <span className={styles.imageHint}>
               View full-size image →
