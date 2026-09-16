@@ -6,6 +6,15 @@ export interface NewsYearGroup {
 }
 
 /**
+ * Stable URL slug for a News story, derived from its id ("news-" prefix
+ * stripped). The id remains the single source of truth — no second
+ * identifier is stored.
+ */
+export function newsSlug(news: { id: string }): string {
+  return news.id.startsWith("news-") ? news.id.slice("news-".length) : news.id;
+}
+
+/**
  * Group news by year (newest first within each year), newest years first.
  * The News page renders one chronology per year.
  */

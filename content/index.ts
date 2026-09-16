@@ -19,7 +19,7 @@ export {
   researchIntro,
   researchOverviewImage,
 } from "./research-areas";
-export { newsItems, sortedNews } from "./news";
+export { newsItems, sortedNews, featuredNews } from "./news";
 export { opportunities, phdOpportunity, postdocOpportunity } from "./opportunities";
 export type {
   Person,
@@ -30,6 +30,7 @@ export type {
   ResearchArea,
   Project,
   NewsItem,
+  NewsImage,
   RoleCategory,
   PublicationType,
   ProjectStatus,

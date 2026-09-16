@@ -12,6 +12,10 @@ import type { NewsItem } from "@/types/content";
  *
  * HOME VISIBILITY: items marked `showOnHome: false` appear on the News page
  * only and are excluded from the Home Lab News feed.
+ *
+ * FEATURED DISPLAY: the /news featured story is picked explicitly via
+ * `featuredOnNews` (exactly one item) — independent of chronology and of
+ * Home visibility.
  */
 export const newsItems: NewsItem[] = [
   {
@@ -23,6 +27,7 @@ export const newsItems: NewsItem[] = [
       "We were delighted to have Lora join the Ye Group from Columbia University through the GCF programme. During her time with us, she became part of the group’s research and everyday life in Singapore. We wish her all the best for what comes next and hope she takes home rewarding research experience, new friendships and many good memories.",
     category: "Team",
     image: "/images/news/lora-farewell-2026.jpg",
+    imageAlt: "Lora, pictured during her time with the Ye Group",
     showOnHome: false,
   },
   {
@@ -33,6 +38,8 @@ export const newsItems: NewsItem[] = [
       "The group enjoyed an evening together over dinner, taking some time to catch up outside the lab.",
     category: "Team",
     image: "/images/news/group-dinner-2026-08-14.jpg",
+    imageAlt: "Ye Group members gathered for the August 2026 group dinner",
+    featuredOnNews: true,
   },
   {
     id: "news-phd-cohort-2026-08",
@@ -64,6 +71,7 @@ export const newsItems: NewsItem[] = [
       "We are delighted to share that Dr. Chunchun Ye received the NAMS Young Membrane Scientist Award at ICOM 2026 in San Antonio, Texas. The award recognises early-career contributions to membrane science and technology. During the conference, Dr. Ye presented her research and shared the new chapter of membrane research being built at NTU. It was also a wonderful opportunity to reconnect with colleagues across the membrane community and exchange perspectives on the future of membrane science.",
     category: "Announcement",
     image: "/images/news/icom-2026-nams-award.jpg",
+    imageAlt: "Dr. Chunchun Ye at the ICOM 2026 meeting in San Antonio, Texas",
     showOnHome: false,
   },
   {
@@ -121,3 +129,17 @@ export const newsItems: NewsItem[] = [
 export const sortedNews = [...newsItems].sort((a, b) =>
   b.date.localeCompare(a.date)
 );
+
+/**
+ * The explicit /news featured story. Featured display is independent of
+ * chronology (sortedNews) and of Home visibility (showOnHome). Exactly one
+ * item must carry `featuredOnNews` — a missing or duplicated flag fails at
+ * import time instead of silently falling back to the newest item.
+ */
+const featuredItems = newsItems.filter((item) => item.featuredOnNews);
+if (featuredItems.length !== 1) {
+  throw new Error(
+    `content/news: exactly one News item must set featuredOnNews (found ${featuredItems.length})`
+  );
+}
+export const featuredNews: NewsItem = featuredItems[0];

@@ -1,5 +1,7 @@
 import type { NewsItem } from "@/types/content";
+import Link from "next/link";
 import { newsDateDisplay, newsDateTime } from "@/lib/format";
+import { newsSlug } from "@/lib/news";
 import styles from "./NewsRow.module.css";
 
 interface NewsRowProps {
@@ -9,7 +11,8 @@ interface NewsRowProps {
 /**
  * One editorial archive row: date + category in a left rail (desktop), then
  * title, summary and an optional outbound link. No box, no card — separated
- * by a thin rule and whitespace.
+ * by a thin rule and whitespace. Without an external announcement the title
+ * links to the story's detail page (/news/[slug]).
  */
 export default function NewsRow({ news }: NewsRowProps) {
   // Only genuine http(s) external announcements open in a new tab; anything
@@ -17,6 +20,7 @@ export default function NewsRow({ news }: NewsRowProps) {
   const isExternal = news.externalUrl
     ? /^https?:\/\//.test(news.externalUrl)
     : false;
+  const detailHref = `/news/${newsSlug(news)}`;
 
   return (
     <li className={styles.row}>
@@ -37,7 +41,7 @@ export default function NewsRow({ news }: NewsRowProps) {
               {news.title}
             </a>
           ) : (
-            news.title
+            <Link href={detailHref}>{news.title}</Link>
           )}
         </h3>
         <p className={styles.summary}>{news.summary}</p>

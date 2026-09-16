@@ -176,6 +176,13 @@ export interface Project {
   relatedResearchAreas?: string[];
 }
 
+/** One image in a News story (the cover image uses `NewsItem.image`). */
+export interface NewsImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface NewsItem {
   id: string;
   title: string;
@@ -201,6 +208,18 @@ export interface NewsItem {
    * announcements without artwork). Omitted = shown on Home.
    */
   showOnHome?: boolean;
+  /** Concrete alt text for `image` — describes what is actually visible. */
+  imageAlt?: string;
+  /**
+   * Explicit /news featured selection. Featured display is independent of
+   * chronology and of Home visibility; exactly one item may set this.
+   */
+  featuredOnNews?: boolean;
+  /**
+   * Optional additional images for the story page, rendered below the body.
+   * `image` remains the cover/primary image everywhere else.
+   */
+  gallery?: NewsImage[];
   /** Link out to an external announcement when there is no local detail page. */
   externalUrl?: string;
 }
