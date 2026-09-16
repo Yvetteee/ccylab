@@ -15,6 +15,17 @@ import type { NewsItem } from "@/types/content";
  */
 export const newsItems: NewsItem[] = [
   {
+    id: "news-lora-farewell-2026-09",
+    title: "A Warm Farewell to Lora",
+    date: "2026-09-01",
+    displayDate: "Sep 2026",
+    summary:
+      "We were delighted to have Lora join the Ye Group from Columbia University through the GCF programme. During her time with us, she became part of the group’s research and everyday life in Singapore. We wish her all the best for what comes next and hope she takes home rewarding research experience, new friendships and many good memories.",
+    category: "Team",
+    image: "/images/news/lora-farewell-2026.jpg",
+    showOnHome: false,
+  },
+  {
     id: "news-group-dinner-2026-08-14",
     title: "Aug 14, 2026: Ye Group Dinner",
     date: "2026-08-14",
@@ -41,6 +52,18 @@ export const newsItems: NewsItem[] = [
     summary:
       "We are pleased to welcome Qian Xu, who joined the Ye Group as a visiting student in July 2026. We look forward to a rewarding and inspiring time together.",
     category: "Team",
+    showOnHome: false,
+  },
+  {
+    id: "news-icom-2026-nams-award",
+    title:
+      "Dr. Chunchun Ye Receives the NAMS Young Membrane Scientist Award at ICOM 2026",
+    date: "2026-07-01",
+    displayDate: "Jul 2026",
+    summary:
+      "We are delighted to share that Dr. Chunchun Ye received the NAMS Young Membrane Scientist Award at ICOM 2026 in San Antonio, Texas. The award recognises early-career contributions to membrane science and technology. During the conference, Dr. Ye presented her research and shared the new chapter of membrane research being built at NTU. It was also a wonderful opportunity to reconnect with colleagues across the membrane community and exchange perspectives on the future of membrane science.",
+    category: "Announcement",
+    image: "/images/news/icom-2026-nams-award.jpg",
     showOnHome: false,
   },
   {
