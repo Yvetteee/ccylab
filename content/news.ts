@@ -32,7 +32,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: "news-group-dinner-2026-08-14",
-    title: "Aug 14, 2026: Ye Group Dinner",
+    title: "Ye Group Dinner",
     date: "2026-08-14",
     summary:
       "The group enjoyed an evening together over dinner, taking some time to catch up outside the lab.",
@@ -98,7 +98,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: "news-kaiping-2026",
-    title: "Apr 2026: Welcome Dr. Kaiping Zhu to the group",
+    title: "Welcome Dr. Kaiping Zhu to the group",
     date: "2026-04-15",
     displayDate: "Apr 2026",
     summary:
@@ -108,7 +108,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: "news-kim-2026",
-    title: "Feb 2026: Welcome Kim (Jiayi) Wu to the group",
+    title: "Welcome Kim (Jiayi) Wu to the group",
     date: "2026-02-15",
     displayDate: "Feb 2026",
     summary:
@@ -118,7 +118,7 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: "news-christine-2026",
-    title: "Jan 2026: Welcome our first PhD student Christine (Sunho)",
+    title: "Welcome our first PhD student Christine (Sunho)",
     date: "2026-01-15",
     displayDate: "Jan 2026",
     summary:
