@@ -82,7 +82,7 @@
 
 /* Biography — readable academic measure, left-aligned ragged-right. */
 .bio {
-  max-width: 72ch;
+  max-width: none;
   line-height: 1.7;
   /* Data-driven line breaks (e.g. Qian Xu's visiting metadata) render as
      separate lines; prose without \n is unaffected. */

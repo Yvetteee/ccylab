@@ -22,5 +22,5 @@
 
 .description {
   color: var(--color-muted);
-  max-width: 60ch;
+  max-width: none;
 }

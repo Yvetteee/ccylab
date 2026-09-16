@@ -142,7 +142,7 @@
 
 /* Bio on the same right-hand text axis, same measure/leading as People. */
 .bio {
-  max-width: 74ch;
+  max-width: none;
   line-height: 1.7;
 }
 

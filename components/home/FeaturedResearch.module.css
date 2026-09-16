@@ -33,7 +33,7 @@
 
 .mainBlurb {
   color: var(--color-muted);
-  max-width: 70ch;
+  max-width: none;
 }
 
 .link {

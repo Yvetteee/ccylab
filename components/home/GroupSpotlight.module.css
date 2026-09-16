@@ -4,7 +4,7 @@
    section visually distinct. */
 
 .block {
-  max-width: 70ch;
+  max-width: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-6);

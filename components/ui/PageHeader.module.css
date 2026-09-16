@@ -15,7 +15,7 @@
 
 .description {
   color: var(--color-muted);
-  max-width: 65ch;
+  max-width: none;
 }
 
 @media (min-width: 768px) {

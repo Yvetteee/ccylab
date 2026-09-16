@@ -4,7 +4,7 @@
 
 .text {
   color: var(--color-muted);
-  max-width: 66ch;
+  max-width: none;
   margin: 0 auto;
   font-size: 1.0625rem;
   line-height: 1.75;
