@@ -26,6 +26,21 @@ export const people: Person[] = [
     active: true,
   },
   {
+    id: "pengfei-dong",
+    name: "Pengfei Dong",
+    nameZh: "董鹏飞",
+    role: "Research Fellow",
+    category: "postdoc",
+    photo: "/images/people/pengfei-dong.jpg",
+    researchInterests: [
+      "Design and Synthesis of Polymers of Intrinsic Microporosity (PIMs) and Their Functional Membranes for Selective Boron Capture",
+    ],
+    email: "CS-PENGFEI.DONG@ntu.edu.sg",
+    bio: "Pengfei Dong received his Ph.D. from Nanjing University and was an Assistant Researcher at Southeast University. His research focuses on interdisciplinary areas, specifically the design and synthesis of porous materials (MOFs, COFs, PIMs) and sensor technology development, food safety and bio-antimicrobials, as well as environmental pollutant analysis. He joined Prof. Chunchun Ye's group through the CSC program and looks forward to conducting in-depth exploration in the field of PIMs research. Outside of his academic work, he enjoys playing badminton and hiking.",
+    order: 2,
+    active: true,
+  },
+  {
     id: "kim-jiayi-wu",
     name: "Kim Jiayi Wu",
     nameZh: "吴佳仪",
