@@ -14,8 +14,13 @@ interface MemberRowProps {
  * and the link to the member's profile page (/people/[slug]), where the
  * long-form biography lives. The PI is not part of this directory; their
  * complete academic profile is the standalone /dr-ye page.
+ *
+ * Inactive members (alumni) have no profile page — their row renders without
+ * the profile link.
  */
 export default function MemberRow({ person }: MemberRowProps) {
+  const hasProfile = person.active !== false;
+
   return (
     <article className={styles.row}>
       {person.photo ? (
@@ -51,13 +56,15 @@ export default function MemberRow({ person }: MemberRowProps) {
            kept for clarity (photo/name/role directory summary). */}
         <p className={styles.role}>{person.role}</p>
 
-        <Link
-          href={`/people/${person.id}`}
-          className={styles.profileLink}
-          aria-label={`View profile of ${person.name}`}
-        >
-          View profile →
-        </Link>
+        {hasProfile ? (
+          <Link
+            href={`/people/${person.id}`}
+            className={styles.profileLink}
+            aria-label={`View profile of ${person.name}`}
+          >
+            View profile →
+          </Link>
+        ) : null}
       </div>
     </article>
   );

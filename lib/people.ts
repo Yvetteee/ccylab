@@ -11,7 +11,7 @@ export interface PersonGroup {
 export const CATEGORY_LABELS: Record<RoleCategory, string> = {
   pi: "Principal Investigator",
   postdoc: "Research Fellow",
-  assistant: "Research Assistants",
+  assistant: "Research Associate",
   phd: "PhD Students",
   master: "Master Students",
   visiting: "Visiting Researchers",

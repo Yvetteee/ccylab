@@ -74,14 +74,11 @@ export default function PeoplePage() {
 
       {alumni.length ? (
         <Section id="alumni" title="Alumni" headingLevel={2}>
-          <ul className={styles.alumni}>
+          <div className={styles.roster}>
             {alumni.map((person) => (
-              <li key={person.id} className={styles.alumniRow}>
-                <span className={styles.alumniName}>{person.name}</span>
-                <span className={styles.alumniRole}> — {person.role}</span>
-              </li>
+              <MemberRow key={person.id} person={person} />
             ))}
-          </ul>
+          </div>
         </Section>
       ) : null}
 
