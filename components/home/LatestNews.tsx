@@ -4,6 +4,7 @@ import HomeSection from "./HomeSection";
 import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import { sortedNews } from "@/content";
 import { newsDateDisplay, newsDateTime } from "@/lib/format";
+import { newsSlug } from "@/lib/news";
 import styles from "./LatestNews.module.css";
 
 /**
@@ -32,18 +33,25 @@ export default function LatestNews() {
         <ol className={styles.list}>
           {homeNews.map((news) => {
             const cover = news.homeImage ?? news.image;
+            const detailHref = `/news/${newsSlug(news)}`;
             return (
             <li key={news.id} className={styles.item}>
               {cover ? (
                 <div className={styles.media}>
-                  <ResponsiveImage
-                    src={cover}
-                    alt=""
-                    ratio="4 / 3"
-                    fit="contain"
-                    sizes="(min-width: 1024px) 300px, (min-width: 640px) 248px, 100vw"
-                    className={styles.thumb}
-                  />
+                  <Link
+                    href={detailHref}
+                    className={styles.imageLink}
+                    aria-label={`View story: ${news.title}`}
+                  >
+                    <ResponsiveImage
+                      src={cover}
+                      alt=""
+                      ratio="4 / 3"
+                      fit="contain"
+                      sizes="(min-width: 1024px) 300px, (min-width: 640px) 248px, 100vw"
+                      className={styles.thumb}
+                    />
+                  </Link>
                 </div>
               ) : null}
               <div className={styles.body}>
@@ -53,7 +61,9 @@ export default function LatestNews() {
                   </time>
                   <span className={styles.category}>{news.category}</span>
                 </div>
-                <h3 className={styles.title}>{news.title}</h3>
+                <h3 className={styles.title}>
+                  <Link href={detailHref}>{news.title}</Link>
+                </h3>
                 <p className={styles.summary}>{news.summary}</p>
               </div>
             </li>

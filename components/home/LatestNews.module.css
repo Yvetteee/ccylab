@@ -118,3 +118,10 @@
     width: 300px;
   }
 }
+
+/* News image doubles as a story link — block display keeps the 4/3 thumb
+   frame intact; the image itself stays decorative (alt="") because the
+   adjacent title link carries the accessible name. */
+.imageLink {
+  display: block;
+}
