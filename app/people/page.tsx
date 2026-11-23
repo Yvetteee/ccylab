@@ -74,7 +74,7 @@ export default function PeoplePage() {
 
       {alumni.length ? (
         <Section id="alumni" title="Alumni" headingLevel={2}>
-          <div className={styles.roster}>
+          <div className={`${styles.roster} ${styles.alumniRoster}`}>
             {alumni.map((person) => (
               <MemberRow key={person.id} person={person} />
             ))}

@@ -1,6 +1,14 @@
 /* Role-grouped continuous roster (D-C): member rows stack vertically, each
    a portrait-oriented rectangular photo + directory entry. Alumni share the
    same roster + row component as the current-member groups. */
+
+/* Alumni density adaptation (scoped to this group only): every other visible
+   group currently renders without row dividers (single-member sections; the
+   PhD grid neutralises its own), so the alumni rows drop their border-top to
+   match the surrounding design. Doubled class beats MemberRow's .row rule. */
+.alumniRoster.alumniRoster :global(article) {
+  border-top: 0;
+}
 .roster {
   display: flex;
   flex-direction: column;
