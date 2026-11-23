@@ -26,8 +26,15 @@ export const newsItems: NewsItem[] = [
     summary:
       "We were delighted to have Lora join the Ye Group from Columbia University through the GCF programme. We hope she leaves Singapore with rewarding research experience, new friendships and many good memories, and we wish her all the best for what comes next.",
     category: "Team",
-    image: "/images/news/lora-farewell-2026.jpg",
-    imageAlt: "Lora, pictured during her time with the Ye Group",
+    image: "/images/news/lora-farewell-group.jpg",
+    imageAlt:
+      "Ye Group members with Lora at the Global Connect Fellowship poster session",
+    gallery: [
+      {
+        src: "/images/news/lora-farewell-2026.jpg",
+        alt: "Lora, pictured during her time with the Ye Group",
+      },
+    ],
     showOnHome: true,
   },
   {
