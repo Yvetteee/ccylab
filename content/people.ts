@@ -29,8 +29,8 @@ export const people: Person[] = [
     id: "pengfei-dong",
     name: "Pengfei Dong",
     nameZh: "董鹏飞",
-    role: "Research Fellow",
-    category: "postdoc",
+    role: "Visiting Researcher (supported by the China Scholarship Council, CSC)",
+    category: "visiting",
     photo: "/images/people/pengfei-dong.jpg",
     researchInterests: [
       "Design and Synthesis of Polymers of Intrinsic Microporosity (PIMs) and Their Functional Membranes for Selective Boron Capture",
@@ -129,7 +129,7 @@ export const people: Person[] = [
     photo: "/images/people/qian-xu.jpg",
     email: "B250020@e.ntu.edu.sg",
     researchInterests: ["porous materials", "selective crystallization", "lithium extraction"],
-    bio: "Qian received her bachelor's degree in Environmental Engineering from Tsinghua University in 2024 and continued her studies toward a Master's degree in Prof. Xi Chen's group, where she focused on selective lithium extraction from spent battery leachate. She joined Prof. Chunchun Ye's group as an exchange student to broaden her academic perspective and gain international research experience. Outside of research, she enjoys both appreciating and creating music, literature and art.\nVisiting period: July – October 2026.\nResearch topic: Ion Sieving in Polymers of Intrinsic Microporosity for Selective Lithium Extraction.",
+    bio: "Qian received her bachelor's degree in Environmental Engineering from Tsinghua University in 2024 and continued her studies toward a Master's degree in Prof. Xi Chen's group, where she focused on selective lithium extraction from spent battery leachate. She joined Prof. Chunchun Ye's group through the GEM Trailblazer Exchange Programme to broaden her academic perspective and gain international research experience. Outside of research, she enjoys both appreciating and creating music, literature and art.\nVisiting period: July – October 2026.\nResearch topic: Ion Sieving in Polymers of Intrinsic Microporosity for Selective Lithium Extraction.",
     active: true,
   },
   {
@@ -153,7 +153,7 @@ export const people: Person[] = [
   {
     id: "rini-lora-love",
     name: "Rini Lora Love",
-    role: "Undergraduate Visiting Student from Columbia University (Global Career Fellowship programme)",
+    role: "Undergraduate Visiting Student from Columbia University (Global Career Fellowship programme), July – September 2026",
     category: "alumni",
     active: false,
   },

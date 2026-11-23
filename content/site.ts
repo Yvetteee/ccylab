@@ -46,7 +46,7 @@ export const siteConfig = {
     /** School / department. */
     school: "School of Civil and Environmental Engineering",
     /** Office / lab room (Contact page only — not repeated in the footer). */
-    room: "N1-01a-29",
+    room: "N1-01a-21",
     address: "50 Nanyang Avenue, Singapore 639798",
     email: "chunchun.ye@ntu.edu.sg",
     /** External map deep link — no maps API. */
