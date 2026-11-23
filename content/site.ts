@@ -49,9 +49,12 @@ export const siteConfig = {
     room: "N1-01a-21",
     address: "50 Nanyang Avenue, Singapore 639798",
     email: "chunchun.ye@ntu.edu.sg",
-    /** External map deep link — no maps API. */
-    mapUrl:
-      "https://www.google.com/maps/search/?api=1&query=50+Nanyang+Avenue+Singapore+639798",
+    /** External map deep link — no maps API. A place-ID (cid) URL resolving
+        to the same School of CEE place as the embedded map below (the cid is
+        the decimal form of the place id already in mapEmbedSrc), so the link
+        no longer lands on the generic postal-address search that Google
+        resolves to a campus parking lot. */
+    mapUrl: "https://maps.google.com/?cid=5705824614034380827",
     /** Official Google Maps "Embed a map" iframe src (maps/embed?pb=...).
         Obtained via Share → Embed a map → Copy HTML — not the Maps Embed
         API, no API key required. The pb string's `!1szh-CN` language tokens
