@@ -105,3 +105,11 @@
     min-height: 400px;
   }
 }
+
+/* Clarifies that the embed shows the school's location, while the room
+   number above carries the group office. */
+.mapNote {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}

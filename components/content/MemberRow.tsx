@@ -15,23 +15,46 @@ interface MemberRowProps {
  * long-form biography lives. The PI is not part of this directory; their
  * complete academic profile is the standalone /dr-ye page.
  *
- * Inactive members (alumni) have no profile page — their row renders without
- * the profile link.
+ * Inactive members (alumni) have no profile page — their row renders the
+ * portrait and name as static content, without the profile link.
  */
 export default function MemberRow({ person }: MemberRowProps) {
   const hasProfile = person.active !== false;
+  const profileHref = `/people/${person.id}`;
+  const nameLink = hasProfile ? (
+    <Link href={profileHref}>{person.name}</Link>
+  ) : (
+    person.name
+  );
 
   return (
     <article className={styles.row}>
       {person.photo ? (
-        <ResponsiveImage
-          src={person.photo}
-          alt={`Photo of ${person.name}`}
-          ratio="5 / 6"
-          sizes="(min-width: 641px) 11rem, 7rem"
-          className={styles.photo}
-          imgStyle={portraitImageStyle(person)}
-        />
+        hasProfile ? (
+          <Link
+            href={profileHref}
+            className={styles.photoLink}
+            aria-label={`View profile of ${person.name}`}
+          >
+            <ResponsiveImage
+              src={person.photo}
+              alt={`Photo of ${person.name}`}
+              ratio="5 / 6"
+              sizes="(min-width: 641px) 11rem, 7rem"
+              className={styles.photo}
+              imgStyle={portraitImageStyle(person)}
+            />
+          </Link>
+        ) : (
+          <ResponsiveImage
+            src={person.photo}
+            alt={`Photo of ${person.name}`}
+            ratio="5 / 6"
+            sizes="(min-width: 641px) 11rem, 7rem"
+            className={styles.photo}
+            imgStyle={portraitImageStyle(person)}
+          />
+        )
       ) : (
         <div
           className={styles.placeholder}
@@ -43,14 +66,11 @@ export default function MemberRow({ person }: MemberRowProps) {
       )}
 
       <div className={styles.body}>
-        <h3 className={styles.name}>
-          {person.name}
-          {person.nameZh ? (
-            <span lang={person.nameLang ?? "zh-Hans"} className={styles.nameZh}>
-              {person.nameZh}
-            </span>
-          ) : null}
-        </h3>
+        <h3 className={styles.name}>{nameLink}{person.nameZh ? (
+          <span lang={person.nameLang ?? "zh-Hans"} className={styles.nameZh}>
+            {person.nameZh}
+          </span>
+        ) : null}</h3>
 
         {/* Member-level role line: visually secondary to the group heading,
            kept for clarity (photo/name/role directory summary). */}
@@ -58,7 +78,7 @@ export default function MemberRow({ person }: MemberRowProps) {
 
         {hasProfile ? (
           <Link
-            href={`/people/${person.id}`}
+            href={profileHref}
             className={styles.profileLink}
             aria-label={`View profile of ${person.name}`}
           >

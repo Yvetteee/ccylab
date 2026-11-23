@@ -97,3 +97,9 @@
     gap: var(--space-4);
   }
 }
+
+/* Photo link — the portrait doubles as a profile entry point; block display
+   keeps the 5/6 frame intact inside the grid column. */
+.photoLink {
+  display: block;
+}

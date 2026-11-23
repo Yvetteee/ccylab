@@ -240,7 +240,7 @@ export const publications: Publication[] = [
       "Sulfated polyelectrolyte complex nanoparticles structured nanofiltration membrane for dye desalination",
     authors: ["Ye C.", "Zhao F.", "Wu J.", "Weng X.", "Zheng P.", "Mi Y.", "An Q.", "Gao C."],
     venue: "Chemical Engineering Journal",
-    year: 2019,
+    year: 2017,
     volume: "307",
     pages: "526–536",
     doi: "10.1016/j.cej.2016.08.122",
@@ -364,7 +364,7 @@ export const publications: Publication[] = [
     id: "pub-2024-chemsci-triptycene",
     title:
       "Triptycene-like naphthopleiadene as a readily accessible scaffold for supramolecular and materials chemistry",
-    authors: ["Amin M. K.", "Ye C.", "Pang S.", "Liu Y.", "Taylor D.", "Nicol G. S.", "McKeown N. B."],
+    authors: ["Amin M. K.", "Ye C.", "Pang S.", "Liu Y.", "Taylor D.", "Nichol G. S.", "McKeown N. B."],
     venue: "Chemical Science",
     year: 2024,
     volume: "15",

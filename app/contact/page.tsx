@@ -73,6 +73,10 @@ export default function ContactPage() {
               title="Research group location at Nanyang Technological University"
             />
           </div>
+          <p className={styles.mapNote}>
+            The map shows the school&apos;s location on the NTU campus; the
+            group office (room {contact.room}) is as listed above.
+          </p>
           <p className={styles.mapLink}>
             <a
               href={contact.mapUrl}

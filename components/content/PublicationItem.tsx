@@ -27,6 +27,7 @@ export default function PublicationItem({ publication }: PublicationItemProps) {
     publication.volume ? `vol. ${publication.volume}` : null,
     publication.issue ? `no. ${publication.issue}` : null,
     publication.pages ? `pp. ${publication.pages}` : null,
+    publication.year ? String(publication.year) : null,
   ]
     .filter(Boolean)
     .join(", ");

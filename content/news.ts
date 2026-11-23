@@ -119,7 +119,7 @@ export const newsItems: NewsItem[] = [
     date: "2026-02-15",
     displayDate: "Feb 2026",
     summary:
-      "Welcome Kim (Jiayi) Wu joining The Ye Lab as a Research Associate!",
+      "Welcome Kim (Jiayi) Wu to the group as a Research Associate!",
     category: "Team",
     image: "/images/news/welcome-kim.jpg",
   },
@@ -129,7 +129,7 @@ export const newsItems: NewsItem[] = [
     date: "2026-01-15",
     displayDate: "Jan 2026",
     summary:
-      "We are excited to welcome our first PhD student Christine (Sunho) On joining the group!",
+      "We are excited to welcome our first PhD student Christine (Sunho) On to the group!",
     category: "Team",
     image: "/images/news/welcome-christine.jpg",
   },

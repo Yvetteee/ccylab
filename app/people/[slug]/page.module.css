@@ -102,3 +102,9 @@
     gap: var(--space-8);
   }
 }
+
+/* Long institutional emails (e.g. CS-PENGFEI.DONG@ntu.edu.sg) must wrap
+   instead of clipping at the container edge on narrow screens. */
+.links a {
+  overflow-wrap: anywhere;
+}
