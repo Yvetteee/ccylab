@@ -153,6 +153,7 @@ export const people: Person[] = [
   {
     id: "rini-lora-love",
     name: "Rini Lora Love",
+    photo: "/images/people/rini-lora-love.jpg",
     role: "Undergraduate Visiting Student from Columbia University (Global Career Fellowship programme), July – September 2026",
     category: "alumni",
     active: false,

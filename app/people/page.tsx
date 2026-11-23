@@ -1,6 +1,7 @@
 import PageContainer from "@/components/ui/PageContainer";
 import PageHeader from "@/components/ui/PageHeader";
 import Section from "@/components/ui/Section";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import MemberRow from "@/components/content/MemberRow";
 import PeopleOriginsVisual from "@/components/content/PeopleOriginsVisual";
 import { people } from "@/content";
@@ -77,8 +78,18 @@ export default function PeoplePage() {
           <ul className={styles.alumni}>
             {alumni.map((person) => (
               <li key={person.id} className={styles.alumniRow}>
-                <span className={styles.alumniName}>{person.name}</span>
-                <span className={styles.alumniRole}> — {person.role}</span>
+                {person.photo ? (
+                  <ResponsiveImage
+                    src={person.photo}
+                    alt={`Photo of ${person.name}`}
+                    ratio="5 / 6"
+                    className={styles.alumniPhoto}
+                  />
+                ) : null}
+                <span className={styles.alumniBody}>
+                  <span className={styles.alumniName}>{person.name}</span>
+                  <span className={styles.alumniRole}> — {person.role}</span>
+                </span>
               </li>
             ))}
           </ul>
