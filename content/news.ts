@@ -19,6 +19,18 @@ import type { NewsItem } from "@/types/content";
  */
 export const newsItems: NewsItem[] = [
   {
+    id: "news-pengfei-dong-2026-11",
+    title: "Welcome Dr. Pengfei Dong to the group",
+    date: "2026-11-01",
+    displayDate: "Nov 2026",
+    summary:
+      "We are delighted to welcome Dr. Pengfei Dong to the Ye Group as a Visiting Researcher, supported by the China Scholarship Council (CSC). We look forward to exchanging ideas and working together during his visit.",
+    category: "Team",
+    image: "/images/people/pengfei-dong.jpg",
+    imageAlt: "Portrait of Dr. Pengfei Dong",
+    showOnHome: false,
+  },
+  {
     id: "news-lora-farewell-2026-09",
     title: "A Warm Farewell to Lora",
     date: "2026-09-01",
