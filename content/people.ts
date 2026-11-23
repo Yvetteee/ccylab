@@ -1,4 +1,4 @@
-import type { Person } from "@/types/content";
+import type { LabMascot, Person } from "@/types/content";
 import { piPerson } from "./pi";
 
 /**
@@ -159,3 +159,16 @@ export const people: Person[] = [
     active: false,
   },
 ];
+
+export const labMascot: LabMascot = {
+  name: "Scone",
+  breed: "Cavapoo",
+  birthDate: "2026-05-26",
+  birthDateLabel: "26 May 2026",
+  photo: "/images/people/scone.jpg",
+  photoAlt: "Scone, the Ye Group's Cavapoo mascot, sitting at a desk",
+  introduction: [
+    "Meet Scone, our Cavapoo and resident food critic. With his rather charming heart-shaped nose, he has expensive tastes and little patience for ordinary dog food. He loves Greek yoghurt, cheese, mantou, sourdough and fruit, but nothing quite beats the pricey freeze-dried meat his mum buys him.",
+    "When not curled up in someone's arms, he enjoys walks, collecting leaves and sitting politely whenever someone approaches. His contributions to membrane science remain under review, but his talent for winning hearts is beyond doubt.",
+  ],
+};

@@ -69,6 +69,16 @@ export interface Person {
   active: boolean;
 }
 
+export interface LabMascot {
+  name: string;
+  breed: string;
+  birthDate: string;
+  birthDateLabel: string;
+  photo: string;
+  photoAlt: string;
+  introduction: readonly string[];
+}
+
 /* ---- Structured PI academic record (standalone /dr-ye page) ---- */
 
 /** One position held by the PI, displayed as period | role/unit/institution. */

@@ -6,7 +6,7 @@
  */
 export { siteConfig, navItems } from "./site";
 export type { NavItem } from "./site";
-export { people } from "./people";
+export { labMascot, people } from "./people";
 export { piPerson, piCareer, piEducation, piHonors } from "./pi";
 export {
   publications,

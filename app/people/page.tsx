@@ -1,9 +1,11 @@
 import PageContainer from "@/components/ui/PageContainer";
 import PageHeader from "@/components/ui/PageHeader";
+import ResponsiveImage from "@/components/ui/ResponsiveImage";
 import Section from "@/components/ui/Section";
 import MemberRow from "@/components/content/MemberRow";
+import memberStyles from "@/components/content/MemberRow.module.css";
 import PeopleOriginsVisual from "@/components/content/PeopleOriginsVisual";
-import { people } from "@/content";
+import { labMascot, people } from "@/content";
 import { groupPeopleByCategory } from "@/lib/people";
 import { createPageMetadata } from "@/lib/metadata";
 import type { RoleCategory } from "@/types/content";
@@ -81,6 +83,37 @@ export default function PeoplePage() {
           </div>
         </Section>
       ) : null}
+
+      <Section
+        id="lab-mascot"
+        title="Lab Mascot"
+        headingLevel={2}
+        className={styles.groupSection}
+      >
+        <article className={`${memberStyles.row} ${styles.mascotRow}`}>
+          <ResponsiveImage
+            src={labMascot.photo}
+            alt={labMascot.photoAlt}
+            ratio="5 / 6"
+            sizes="(min-width: 641px) 11rem, 7rem"
+            className={`${memberStyles.photo} ${styles.mascotPhoto}`}
+          />
+          <div className={`${memberStyles.body} ${styles.mascotIdentity}`}>
+            <h3 className={memberStyles.name}>{labMascot.name}</h3>
+            <p className={memberStyles.role}>
+              {labMascot.breed} |{" "}
+              <time dateTime={labMascot.birthDate}>
+                Born {labMascot.birthDateLabel}
+              </time>
+            </p>
+          </div>
+          <div className={styles.mascotIntroduction}>
+            {labMascot.introduction.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </article>
+      </Section>
 
       <PeopleOriginsVisual />
     </PageContainer>
