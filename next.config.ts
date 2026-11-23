@@ -43,8 +43,28 @@ const securityHeaders = [
   },
 ];
 
+// Permanent redirects from the legacy GitHub Pages site's .html URLs (the
+// pre-launch site served index/pi/members/publications/research/join.html)
+// to their Next.js equivalents, so bookmarks and old links survive the
+// platform move. Exact paths only — no catch-all rewrites.
+const legacyRedirects = [
+  { source: "/index.html", destination: "/" },
+  { source: "/pi.html", destination: "/dr-ye" },
+  { source: "/members.html", destination: "/people" },
+  { source: "/publications.html", destination: "/publications" },
+  { source: "/research.html", destination: "/research" },
+  { source: "/join.html", destination: "/join" },
+].map(({ source, destination }) => ({
+  source,
+  destination,
+  permanent: true,
+}));
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return legacyRedirects;
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
