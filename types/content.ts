@@ -79,6 +79,8 @@ export interface LabMascot {
   offDutyPhoto: string;
   offDutyPhotoAlt: string;
   introduction: readonly string[];
+  researchInterests: readonly string[];
+  closingRemark: string;
 }
 
 /* ---- Structured PI academic record (standalone /dr-ye page) ---- */

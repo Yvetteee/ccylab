@@ -2,7 +2,7 @@
   display: grid;
   align-items: start;
   gap: var(--space-6);
-  padding: var(--space-8) 0 var(--section-space);
+  padding-top: var(--space-8);
 }
 
 .portrait {
@@ -13,6 +13,11 @@
   display: grid;
   gap: var(--space-4);
   max-width: 72ch;
+}
+
+.closingRemark {
+  margin-top: var(--space-3);
+  color: var(--color-muted);
 }
 
 @media (min-width: 768px) {

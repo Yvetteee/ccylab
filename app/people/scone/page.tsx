@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageContainer from "@/components/ui/PageContainer";
 import PageHeader from "@/components/ui/PageHeader";
 import ResponsiveImage from "@/components/ui/ResponsiveImage";
+import Section from "@/components/ui/Section";
 import { labMascot } from "@/content";
 import { createPageMetadata } from "@/lib/metadata";
 import memberStyles from "../[slug]/page.module.css";
@@ -49,6 +50,15 @@ export default function SconeProfilePage() {
           ))}
         </div>
       </div>
+
+      <Section id="research-interests" title="Research Interests" first>
+        <p className={memberStyles.interests}>
+          {labMascot.researchInterests.join(" · ")}
+        </p>
+        <p className={styles.closingRemark}>
+          <em>{labMascot.closingRemark}</em>
+        </p>
+      </Section>
     </PageContainer>
   );
 }
