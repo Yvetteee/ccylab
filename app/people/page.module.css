@@ -49,9 +49,9 @@
 .mascotRow.mascotRow {
   grid-template-areas:
     "photo identity"
-    "photo introduction";
-  grid-template-rows: auto 1fr;
-  row-gap: var(--space-3);
+    "photo invitation";
+  grid-template-rows: 1fr 1fr;
+  row-gap: var(--space-1);
   align-items: start;
   border-top: 0;
   padding-top: 0;
@@ -59,6 +59,7 @@
 
 .mascotPhoto {
   grid-area: photo;
+  align-self: center;
 }
 
 .mascotPhoto img {
@@ -67,25 +68,93 @@
 
 .mascotIdentity {
   grid-area: identity;
+  align-self: end;
 }
 
-.mascotIntroduction {
-  grid-area: introduction;
-  display: grid;
-  gap: var(--space-3);
-  max-width: 72ch;
+.mascotInvitation {
+  grid-area: invitation;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-size: var(--text-sm);
+}
+
+.mascotInvitationText {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.mascotInvitation:hover {
+  text-decoration: none;
+}
+
+.mascotArrow {
+  --mascot-arrow-offset: -4px, 0;
+  color: var(--color-accent);
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+.mascotArrow::before {
+  content: "←";
+  display: inline-block;
+  animation: mascotNudge 1.8s ease-in-out 2;
+}
+
+.mascotInvitation:is(:hover, :focus-visible) .mascotArrow::before {
+  animation-name: mascotNudgeReplay;
+}
+
+@keyframes mascotNudge {
+  50% {
+    transform: translate(var(--mascot-arrow-offset));
+  }
+}
+
+@keyframes mascotNudgeReplay {
+  50% {
+    transform: translate(var(--mascot-arrow-offset));
+  }
 }
 
 @media (max-width: 640px) {
   .mascotRow.mascotRow {
     grid-template-areas:
       "photo identity"
-      "introduction introduction";
+      "invitation invitation";
     grid-template-rows: auto auto;
-    row-gap: var(--space-4);
+    row-gap: var(--space-2);
   }
 
   .mascotIdentity {
     align-self: center;
+  }
+
+  .mascotInvitation {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding-block: var(--space-1);
+  }
+
+  .mascotArrow {
+    --mascot-arrow-offset: 0, -4px;
+    /* Match the shared mobile portrait column so the arrow points at its centre. */
+    width: 7rem;
+    text-align: center;
+  }
+
+  .mascotArrow::before {
+    content: "↑";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascotArrow::before,
+  .mascotInvitation:is(:hover, :focus-visible) .mascotArrow::before {
+    animation: none;
   }
 }

@@ -117,19 +117,16 @@ export default function PeoplePage() {
                 Born {labMascot.birthDateLabel}
               </time>
             </p>
-            <Link
-              href={mascotProfileHref}
-              className={memberStyles.profileLink}
-              aria-label={`View profile of ${labMascot.name}`}
-            >
-              View profile →
-            </Link>
+            <p>Resident food critic</p>
           </div>
-          <div className={styles.mascotIntroduction}>
-            {labMascot.introduction.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
+          <Link
+            href={mascotProfileHref}
+            className={styles.mascotInvitation}
+            aria-label={`Pet me to learn more about ${labMascot.name}`}
+          >
+            <span className={styles.mascotArrow} aria-hidden="true" />
+            <span className={styles.mascotInvitationText}>Pet me to learn more</span>
+          </Link>
         </article>
       </Section>
 
