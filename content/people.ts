@@ -167,6 +167,8 @@ export const labMascot: LabMascot = {
   birthDateLabel: "26 May 2026",
   photo: "/images/people/scone.jpg",
   photoAlt: "Scone, the Ye Group's Cavapoo mascot, sitting at a desk",
+  offDutyPhoto: "/images/people/scone-off-duty.jpg",
+  offDutyPhotoAlt: "Scone lying on a mat with a striped sock over his muzzle",
   introduction: [
     "Meet Scone, our Cavapoo and resident food critic. With his rather charming heart-shaped nose, he has expensive tastes and little patience for ordinary dog food. He loves Greek yoghurt, cheese, mantou, sourdough and fruit, but nothing quite beats the pricey freeze-dried meat his mum buys him.",
     "When not curled up in someone's arms, he enjoys walks, collecting leaves and sitting politely whenever someone approaches. His contributions to membrane science remain under review, but his talent for winning hearts is beyond doubt.",

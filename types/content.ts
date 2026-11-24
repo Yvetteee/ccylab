@@ -76,6 +76,8 @@ export interface LabMascot {
   birthDateLabel: string;
   photo: string;
   photoAlt: string;
+  offDutyPhoto: string;
+  offDutyPhotoAlt: string;
   introduction: readonly string[];
 }
 

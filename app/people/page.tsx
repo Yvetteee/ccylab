@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PageContainer from "@/components/ui/PageContainer";
 import PageHeader from "@/components/ui/PageHeader";
 import ResponsiveImage from "@/components/ui/ResponsiveImage";
@@ -16,6 +17,8 @@ export const metadata = createPageMetadata({
   description: "Members of The Ye Group at Nanyang Technological University.",
   path: "/people",
 });
+
+const mascotProfileHref = "/people/scone";
 
 /** Current non-PI roles shown, in display order. Dormant roles (master,
  * visiting, alumni) stay hidden until real members exist. */
@@ -91,21 +94,36 @@ export default function PeoplePage() {
         className={styles.groupSection}
       >
         <article className={`${memberStyles.row} ${styles.mascotRow}`}>
-          <ResponsiveImage
-            src={labMascot.photo}
-            alt={labMascot.photoAlt}
-            ratio="5 / 6"
-            sizes="(min-width: 641px) 11rem, 7rem"
-            className={`${memberStyles.photo} ${styles.mascotPhoto}`}
-          />
+          <Link
+            href={mascotProfileHref}
+            className={`${memberStyles.photoLink} ${styles.mascotPhoto}`}
+            aria-label={`View profile of ${labMascot.name}`}
+          >
+            <ResponsiveImage
+              src={labMascot.photo}
+              alt={labMascot.photoAlt}
+              ratio="5 / 6"
+              sizes="(min-width: 641px) 11rem, 7rem"
+              className={memberStyles.photo}
+            />
+          </Link>
           <div className={`${memberStyles.body} ${styles.mascotIdentity}`}>
-            <h3 className={memberStyles.name}>{labMascot.name}</h3>
+            <h3 className={memberStyles.name}>
+              <Link href={mascotProfileHref}>{labMascot.name}</Link>
+            </h3>
             <p className={memberStyles.role}>
               {labMascot.breed} |{" "}
               <time dateTime={labMascot.birthDate}>
                 Born {labMascot.birthDateLabel}
               </time>
             </p>
+            <Link
+              href={mascotProfileHref}
+              className={memberStyles.profileLink}
+              aria-label={`View profile of ${labMascot.name}`}
+            >
+              View profile →
+            </Link>
           </div>
           <div className={styles.mascotIntroduction}>
             {labMascot.introduction.map((paragraph) => (

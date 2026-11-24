@@ -1,0 +1,23 @@
+.profile {
+  display: grid;
+  align-items: start;
+  gap: var(--space-6);
+  padding: var(--space-8) 0 var(--section-space);
+}
+
+.portrait {
+  max-width: 22rem;
+}
+
+.introduction {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 72ch;
+}
+
+@media (min-width: 768px) {
+  .profile {
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
