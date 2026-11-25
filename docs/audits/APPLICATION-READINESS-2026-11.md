@@ -132,15 +132,39 @@ The next approval is for two synthetic emails only, a small PhD PDF and a near-l
 
 ## P3.2–P3.3 hosted acceptance checkpoint
 
-On 2026-11-25, both the authoritative DNS and a public recursive resolver returned NXDOMAIN for the three [Resend verification records](#pending-resend-dns-verification). Approval to publish them was still pending. Resend verification remains open. The same provider-issued values from the preceding authenticated dashboard check apply. The production website and its indexed rollback deployment were kept in place.
+On 2026-11-25, the three approved [Resend DNS records](#pending-resend-dns-verification) were added in Squarespace. The authoritative servers and Google Public DNS returned the expected TXT and CNAME values. Resend showed `send.ccylab.com` as Verified. The website, existing mail routing and protection records were preserved. The approved test sender is `The Ye Group Applications <applications@send.ccylab.com>`. The scope covers two synthetic test messages to the designated NTU test mailbox. [Resend sending domain](https://resend.com/domains/1bf0c478-1ec0-45ae-a05c-3d1357246cc6)
 
-The existing Wrangler session returned an expired-token error. A browser OAuth attempt requested account and identity read, Worker deployment, and Worker tail permissions. The callback timed out. Recover authorization using the existing Cloudflare account and the CLI device flow. Use `wrangler.testing.toml` and explicitly select `application-submit-isolated-test` for any upload or credential operation. Leave the historical `application-submit` deployment untouched.
+Wrangler's recovered device session had Worker deployment and tail permission on the expected Cloudflare account. Hosted checks ran on separate Worker `application-submit-isolated-test`, version `cb69e868-654f-430b-a3cc-c32346c173a8`, from application source `028635a5e53fcb254c2f41cb2ebf460a0d3893c8`. Ingress required the protected loopback relay's bearer, and the relay required its own sign-in. The Worker accepted only the exact loopback origin and expected Turnstile hostname `localhost`. The historic Worker and public application configuration were preserved. The 64 passing local tests remain the component baseline.
 
-Prepared two valid synthetic one-page PDFs outside Git. Both were parsed and rendered. These hashes identify the exact originals for a later inbox comparison.
+| Hosted check | Observed evidence |
+| --- | --- |
+| Isolation | Anonymous loopback and direct Worker submissions returned `401`. The authenticated Worker rejected an unrelated Origin with `403 origin_not_allowed`. The test bearer was absent from the served frontend assets. |
+| Turnstile denial | An invalid token returned `403 turnstile_failed`. |
+| Streamed request bound | A body exceeding 21 MiB without `Content-Length` returned `413 file_too_large`, Ray `a5feec82ab94ae68-SIN`. |
+| Per-email rate limit | `429`, Ray `a5feeda9e92bf890-SIN`. |
+| Endpoint rate limit | `429`, Ray `a5feedfa5f47f890-SIN`. |
 
-| Case | Original bytes | Original SHA-256 |
-| --- | ---: | --- |
-| E2E-01, PhD with a small PDF | 1,700 | `448d302877f18580b81b3314e73531a4ab4be6d01ba704f8ef21169496d98496` |
-| E2E-02, Postdoc with a near-limit PDF | 20,838,022 | `7146de1ba5b4e98c478021348494be8cff45440ab5df060898ad2e6e979ec15d` |
+The authenticated loopback attachment check limited the selection to the two prepared synthetic PDFs and verified SHA-256 in the browser before upload. Both used real Cloudflare Turnstile tokens. The Worker traces recorded normal request execution and reached the Resend branch, after Siteverify, PDF validation and payload construction. With the sending credential absent, both returned `502 delivery_failed` as expected. The traces establish completion of the server processing path. Exact CPU and peak memory figures are unavailable.
 
-The 64-test baseline and local isolated runtime evidence remain the validated baseline. The separate hosted Worker, real Turnstile, hosted limits and CPU measurements, Resend acceptance and delivery, inbox receipt, and received hashes have no new passing evidence. Before approving precisely the two planned sends, verify the hosted anonymous and foreign-origin denials with delivery credentials absent, then confirm the approved sender and the designated test mailbox owner. Keep public Vercel application configuration and indexing unchanged.
+| Case | Original bytes | Original SHA-256 | Worker submission ID and Ray |
+| --- | ---: | --- | --- |
+| E2E-01, PhD with August intake | 1,700 | `448d302877f18580b81b3314e73531a4ab4be6d01ba704f8ef21169496d98496` | `f897d225-ea3f-47fb-a592-1a3873a68df7`, `a5ff06cbcf0d8350-SIN` |
+| E2E-02, Postdoc near the 20 MiB limit | 20,838,022 | `7146de1ba5b4e98c478021348494be8cff45440ab5df060898ad2e6e979ec15d` | `6b6007f9-330f-4542-8bc3-f7a4b70f59de`, `a5ff071a4d68fd0f-SIN` |
+
+### Controlled delivery
+
+The dedicated Resend `CCYLAB P3.3 Isolated Test` key was created with Sending access restricted to `send.ccylab.com`. `RESEND_API_KEY` was installed as a secret on `application-submit-isolated-test` only. The active test version was `05500521-66ec-4296-91cf-7e45f1d22c90`, with anonymous POST still returning `401`. The loopback relay allowed exactly two upstream submissions. Both returned `200`, the Worker recorded `accepted`, and Resend showed `Delivered` for both messages. The Resend message details confirmed the approved From identity, the same designated NTU recipient, and the unique synthetic Reply-To addresses below. The PhD message included August Intake. The Postdoc message had no intake field.
+
+| Case | Worker submission ID and Ray | Resend delivery record | Expected Reply-To |
+| --- | --- | --- | --- |
+| E2E-01, PhD | `e05a9571-0c76-4b26-aab7-87e9418b586b`, `a5ff0fc6db284f45-SIN` | [`01a211af-1a16-7149-868e-9ed94cf1b143`](https://resend.com/emails/01a211af-1a16-7149-868e-9ed94cf1b143) | `phd-probe@example.test` |
+| E2E-02, Postdoc | `0c361cf5-8e42-46db-b654-115285c5626c`, `a5ff10514ce46905-SIN` | [`01a211af-7716-728b-9652-d4bd26054ec8`](https://resend.com/emails/01a211af-7716-728b-9652-d4bd26054ec8) | `postdoc-probe@example.test` |
+
+Institutional inbox receipt, mailbox-side Reply-To, PDF openability and received SHA-256 comparisons are pending. Provider delivery establishes the receiving server accepted the messages. P3.3 closes after the inbox checks are recorded.
+
+### P3.4 minimum activation plan
+
+1. Close P3.3. Obtain separate approval for the monitored institutional recipient, optional fallback, retention, mailbox access and public activation. Confirm the final PDF limit against the received Postdoc fixture.
+2. Bind a separate Production Worker to the approved sender and recipient, the exact `https://www.ccylab.com` origin, a matching Production Turnstile widget and both rate limits. Keep secrets in the Production Worker. Set only the public form variables on the Vercel Production target and keep the existing indexing policy.
+3. Record the Production Worker rollback version and the indexed Vercel rollback deployment `dpl_A7rMVanqRS8UJBn7eUWDBG3qKu7h`. Stage a Vercel Production build without changing domains. Check application links, form CSP, application noindex and the exact www Origin preflight.
+4. With separate authorization, promote that deployment and verify the live routes. Use one separately authorized synthetic test to the approved official recipient. On a critical failure, disable public intake and restore the recorded Worker configuration and Vercel deployment.
