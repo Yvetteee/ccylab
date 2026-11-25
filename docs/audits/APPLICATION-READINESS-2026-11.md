@@ -129,3 +129,18 @@ Worker type checking and **64 tests** passed (42 baseline, 22 added). Both Wrang
 Make the DNS records visible and verify the Resend domain first. To exercise the hosted Cloudflare runtime, obtain Wrangler access for the **separate test Worker only**, then put the test endpoint behind an Access policy or private service ingress before installing sender and recipient credentials. Restrict the test frontend, retain the Worker bearer check, and use the exact test origin and Turnstile hostname. The current Vercel projects lack verified Preview protection and the Hobby Vercel Function body limit cannot proxy a 20 MiB PDF plus multipart overhead. A restricted local streaming relay to the isolated Worker or a Cloudflare-hosted authenticated testing path avoids that limit. Confirm CPU and memory on the real Workers Free runtime with the near-limit request. [Vercel request size limits](https://vercel.com/docs/functions/limitations#request-body-size) · [Cloudflare Worker access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/)
 
 The next approval is for two synthetic emails only, a small PhD PDF and a near-limit Postdoc PDF, from the proposed From identity to the previously designated NTU test mailbox. Confirm the mailbox owner can verify receipt and attachment checksums. Use non-delivery probes for negative tests. The eventual Production recipient, optional fallback and data-handling policy require separate approval. Keep public Vercel application variables unset and retain the indexed website rollback deployment.
+
+## P3.2–P3.3 hosted acceptance checkpoint
+
+On 2026-11-25, both the authoritative DNS and a public recursive resolver returned NXDOMAIN for the three [Resend verification records](#pending-resend-dns-verification). Approval to publish them was still pending. Resend verification remains open. The same provider-issued values from the preceding authenticated dashboard check apply. The production website and its indexed rollback deployment were kept in place.
+
+The existing Wrangler session returned an expired-token error. A browser OAuth attempt requested account and identity read, Worker deployment, and Worker tail permissions. The callback timed out. Recover authorization using the existing Cloudflare account and the CLI device flow. Use `wrangler.testing.toml` and explicitly select `application-submit-isolated-test` for any upload or credential operation. Leave the historical `application-submit` deployment untouched.
+
+Prepared two valid synthetic one-page PDFs outside Git. Both were parsed and rendered. These hashes identify the exact originals for a later inbox comparison.
+
+| Case | Original bytes | Original SHA-256 |
+| --- | ---: | --- |
+| E2E-01, PhD with a small PDF | 1,700 | `448d302877f18580b81b3314e73531a4ab4be6d01ba704f8ef21169496d98496` |
+| E2E-02, Postdoc with a near-limit PDF | 20,838,022 | `7146de1ba5b4e98c478021348494be8cff45440ab5df060898ad2e6e979ec15d` |
+
+The 64-test baseline and local isolated runtime evidence remain the validated baseline. The separate hosted Worker, real Turnstile, hosted limits and CPU measurements, Resend acceptance and delivery, inbox receipt, and received hashes have no new passing evidence. Before approving precisely the two planned sends, verify the hosted anonymous and foreign-origin denials with delivery credentials absent, then confirm the approved sender and the designated test mailbox owner. Keep public Vercel application configuration and indexing unchanged.
