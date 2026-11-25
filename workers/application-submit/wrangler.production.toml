@@ -1,0 +1,21 @@
+name = "application-submit-production"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+workers_dev = false
+preview_urls = false
+routes = []
+
+[[ratelimits]]
+name = "RATE_LIMITER_GLOBAL"
+namespace_id = "31041"
+simple = { limit = 20, period = 60 }
+
+[[ratelimits]]
+name = "RATE_LIMITER_EMAIL"
+namespace_id = "31042"
+simple = { limit = 3, period = 60 }
+
+[vars]
+ALLOWED_ORIGINS = "https://www.ccylab.com"
+TURNSTILE_EXPECTED_HOSTNAME = "www.ccylab.com"
+APPLICATION_FROM_EMAIL = "The Ye Group Applications <applications@send.ccylab.com>"

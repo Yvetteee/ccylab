@@ -160,11 +160,34 @@ The dedicated Resend `CCYLAB P3.3 Isolated Test` key was created with Sending ac
 | E2E-01, PhD | `e05a9571-0c76-4b26-aab7-87e9418b586b`, `a5ff0fc6db284f45-SIN` | [`01a211af-1a16-7149-868e-9ed94cf1b143`](https://resend.com/emails/01a211af-1a16-7149-868e-9ed94cf1b143) | `phd-probe@example.test` |
 | E2E-02, Postdoc | `0c361cf5-8e42-46db-b654-115285c5626c`, `a5ff10514ce46905-SIN` | [`01a211af-7716-728b-9652-d4bd26054ec8`](https://resend.com/emails/01a211af-7716-728b-9652-d4bd26054ec8) | `postdoc-probe@example.test` |
 
-Institutional inbox receipt, mailbox-side Reply-To, PDF openability and received SHA-256 comparisons are pending. Provider delivery establishes the receiving server accepted the messages. P3.3 closes after the inbox checks are recorded.
+On 2026-11-25, the mailbox owner confirmed on the NTU mobile client that both authorized test emails arrived and that the message contents were correct. The Resend records independently confirm delivery, the expected sender and recipient, and provider-side Reply-To. Full Reply-To headers in the NTU client, received PDF openability and SHA-256 comparisons against the originals remain pending. The hosted loopback acceptance used the two pre-verified fixture files. The earlier 64-test local run covers wrong-host or expired Turnstile, duplicate file parts, retry and simulated provider failure. This delivery run did not repeat those cases with additional e-mails. The retry/idempotency check against actual mailbox delivery was not performed. Exact hosted CPU and memory figures are unavailable. P3.3 retains these limitations and does not have an unconditional PASS.
 
-### P3.4 minimum activation plan
+The loopback relay has stopped. Cloudflare reports no targets for the preserved isolated test Worker, and its former public URL returns `404`. The test Worker no longer has a Resend binding. Resend showed exactly two uses of its named test key before revocation and then removed the key from inventory. The legacy Onboarding key remains in place. The controlled test produced exactly the two authorized messages. The fixture originals and previously committed test code were retained.
 
-1. Close P3.3. Obtain separate approval for the monitored institutional recipient, optional fallback, retention, mailbox access and public activation. Confirm the final PDF limit against the received Postdoc fixture.
-2. Bind a separate Production Worker to the approved sender and recipient, the exact `https://www.ccylab.com` origin, a matching Production Turnstile widget and both rate limits. Keep secrets in the Production Worker. Set only the public form variables on the Vercel Production target and keep the existing indexing policy.
-3. Record the Production Worker rollback version and the indexed Vercel rollback deployment `dpl_A7rMVanqRS8UJBn7eUWDBG3qKu7h`. Stage a Vercel Production build without changing domains. Check application links, form CSP, application noindex and the exact www Origin preflight.
-4. With separate authorization, promote that deployment and verify the live routes. Use one separately authorized synthetic test to the approved official recipient. On a critical failure, disable public intake and restore the recorded Worker configuration and Vercel deployment.
+### P3.4 Production preparation
+
+Cloudflare created `application-submit-production` from the accepted handler with current private version `9a9b3be3-b5a9-44aa-836a-ea281c2594ba`. The default configuration disables workers.dev, version previews, and routes. The public URL returns `404`. The Worker has no recipient. The staged configuration is tracked in [wrangler.production.toml](../../workers/application-submit/wrangler.production.toml).
+
+| Component | Prepared configuration |
+| --- | --- |
+| Origin and server-side hostname | Only `https://www.ccylab.com` in allowed origins and only `www.ccylab.com` accepted from Siteverify. |
+| Turnstile | `Ye Group Applications Production`, Managed, `www.ccylab.com` only, with pre-clearance off. The matching Production secret is bound to the private Worker. The official Siteverify endpoint rejected a deliberately invalid token with `invalid-input-response` and no secret error. A successful real challenge on the canonical site is a release check. |
+| Cloudflare rate limits | `RATE_LIMITER_GLOBAL`, namespace `31041`, 20 requests per 60 seconds. `RATE_LIMITER_EMAIL`, namespace `31042`, 3 requests per 60 seconds. Both are distinct from the isolated test bindings. |
+| Sender and provider | `The Ye Group Applications <applications@send.ccylab.com>`. Dedicated `CCYLAB P3.4 Production` Resend credential with Sending access limited to `send.ccylab.com` is bound only to the private Production Worker. Resend reported zero uses at preparation. |
+| Application contract | The accepted handler preserves the applicant Reply-To, 20 MiB PDF limit and 21 MiB total request limit. |
+
+Vercel's indexed Production baseline remains `dpl_A7rMVanqRS8UJBn7eUWDBG3qKu7h`. Both public application routes return `200` with their Submit controls disabled and application noindex in place. The project has no Git deploy link. These values are prepared for the authorized rollout.
+
+| Vercel Production variable | Activation value |
+| --- | --- |
+| `NEXT_PUBLIC_APPLICATION_API_URL` | `https://application-submit-production.shaonianradius.workers.dev/` |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | `0x4AAAAAAGSENc4bifRf3vFn` |
+| `NEXT_PUBLIC_APPLICATION_FALLBACK_EMAIL` | Set only if an approved fallback mailbox is provided. |
+| `SITE_INDEXABLE` | Keep the existing `true` value. |
+
+### Activation and rollback
+
+1. Obtain approval for the official monitored institutional recipient, an approved fallback address or explicit omission, mailbox access, retention/deletion, and final public release. Record the disposition of the remaining P3.3 mailbox and attachment checks. Do not infer approval from the test recipient or the published recruitment contact.
+2. Add the authorized `APPLICATION_TO_EMAIL` as a Worker secret while ingress is closed. Add the approved public variables to Vercel Production. Stage the approved website source with `vercel deploy --prod --skip-domain`. Verify both staged application routes, form configuration, CSP, application noindex, and site indexing. The www-only widget requires positive browser validation on the canonical hostname.
+3. After release authorization, enable the Production Worker's workers.dev endpoint, preserving the disabled version-preview setting. Check the exact canonical Origin preflight, foreign-Origin denial, and invalid-token rejection. Promote the exact validated Vercel deployment with `vercel promote`. Check both routes and Turnstile on `www.ccylab.com`. Run any official-inbox smoke submission only within its separately approved authorization. A success includes actual mailbox receipt and integrity evidence for the approved fixture.
+4. On a critical failure, disable the Production Worker's workers.dev endpoint using the recorded private configuration. Restore Vercel deployment `dpl_A7rMVanqRS8UJBn7eUWDBG3qKu7h` and the pre-activation application-variable set. Verify the public forms are disabled, the Worker URL is closed, canonical domains still resolve as before and site indexing remains active.
