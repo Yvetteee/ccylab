@@ -55,6 +55,6 @@ For docs-only updates, review links and scope, run `git diff --check` and confir
 
 ## Online applications
 
-**Implemented and previously tested; Production activation pending.** Both application pages load with submission disabled. The Vercel application variables are absent, so the form shows neither the Turnstile widget nor a form email fallback. The recruitment contact on Join Us serves a separate purpose and carries no authorization to receive form submissions.
+**Production configured and staged; public submissions are paused.** The official website still serves both application pages with submission disabled, and Join Us continues to offer email submission. The separate Production Worker has the approved NTU recipient and its public ingress is off. The pending Vercel candidate has the Worker URL and Turnstile public key. The in-form email fallback is awaiting approval.
 
 The [application readiness audit and activation plan](docs/audits/APPLICATION-READINESS-2026-11.md) separates live checks, local tests and unverified provider settings. The [Worker README](workers/application-submit/README.md) describes the current handler, local tests and configuration names. [The frontend template](.env.example) is reference material for development. Configure recipient identities in the appropriate platform after approval and keep credentials out of Git.

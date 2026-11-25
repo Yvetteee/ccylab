@@ -1,6 +1,6 @@
 # application-submit (Cloudflare Worker)
 
-**Implemented and previously tested; Production activation pending.** The [November readiness audit](../../docs/audits/APPLICATION-READINESS-2026-11.md) records endpoint reachability, evidence limits and activation gates.
+**Production configured and staged; public ingress is off.** [wrangler.production.toml](wrangler.production.toml) records the closed configuration. The [Phase 3 acceptance record](../../docs/audits/APPLICATION-READINESS-2026-11.md#p34-recipient-configuration-and-staged-deployment) records the active private version, staged Vercel deployment, maintenance responsibilities and rollback.
 
 ## Request and delivery
 
