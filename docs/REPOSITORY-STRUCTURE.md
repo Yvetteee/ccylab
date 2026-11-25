@@ -13,7 +13,7 @@ happens, where new assets belong, and the asset ownership policy.
 | `lib/` | Pure helpers: metadata factory, people grouping, news/format helpers, indexing control. |
 | `types/` | Shared content types (`types/content.ts`). |
 | `styles/` | Design tokens (`tokens.css`) + base/reset styles. Components use CSS Modules. |
-| `workers/application-submit/` | Independent Cloudflare Worker sub-project for application intake via Resend. Has its own package.json, Vitest tests and `wrangler.toml`. Production activation is pending. |
+| `workers/application-submit/` | Live Cloudflare application intake via Resend. `wrangler.production.toml` is the Production configuration. The historical `wrangler.toml`, isolated test configuration and Vitest suite are retained. |
 
 ## Static assets — `public/images/`
 
@@ -48,8 +48,8 @@ working instructions).
 - [PEOPLE-FINAL-V1.md](PEOPLE-FINAL-V1.md) — frozen People design authority.
 - `docs/REPOSITORY-STRUCTURE.md` — this document.
 - [Phase 1 and Phase 2 release record](history/PRODUCTION-RELEASE-PHASE-1-AND-2-2026-11.md) — website release, domain cutover, indexing and rollback evidence.
-- [Phase 3 application readiness audit](audits/APPLICATION-READINESS-2026-11.md) — current evidence, open gates and the pending activation plan.
-- [Worker README](../workers/application-submit/README.md) — application handler and local test documentation.
+- [Phase 3 production and acceptance record](audits/APPLICATION-READINESS-2026-11.md#production-activation-and-acceptance) — live configuration, verification and remaining acceptance evidence.
+- [Worker README](../workers/application-submit/README.md) — application contract, local tests, routine checks and emergency recovery.
 - `docs/audits/` and `docs/history/` also retain pre-launch, cleanup, integration and design reports as point-in-time evidence.
 
 ## Not tracked
