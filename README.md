@@ -1,194 +1,60 @@
-# The Ye Group Website (v2)
+# The Ye Group Website
 
-Repository for the research group website of **Chunchun Ye (CCY Lab)**,
-School of Civil and Environmental Engineering, Nanyang Technological
-University. The site presents the group's research, publications, news and
-open positions, and receives PhD / postdoc applications online.
+The Ye Group at Nanyang Technological University publishes its research, publications, news and open positions on [www.ccylab.com](https://www.ccylab.com/).
 
-This branch (`website-v2`) carries the new website architecture. The previous
-static site still lives on `main`.
+## Production and maintenance branches
 
-## Current status (migration note)
-
-- `main` is the **legacy production** branch: a static HTML site published via
-  GitHub Pages (`CNAME` retained at the repository root).
-- `website-v2` is the **new architecture** branch: a Next.js application.
-- Production cutover has **not** happened: www.ccylab.com is still served by
-  the legacy deployment, and no deployment channel is configured in this
-  repository for `website-v2` yet.
-- Do not change production deployment, DNS or domain settings without an
-  explicit, confirmed decision.
-
-Remove or rewrite this note once the production cutover is complete.
-
-## Tech stack
-
-- **Next.js 16** (App Router) + **React 19** + **TypeScript**
-- CSS Modules with central design tokens (`styles/tokens.css`)
-- Content as typed TypeScript data files (no CMS, no database)
-- **Cloudflare Worker** (`workers/application-submit/`) — server-side
-  application intake
-- **Resend** — transactional email delivery from the Worker
-- **Cloudflare Turnstile** — spam/abuse protection on the application form
-- Intended hosting for this branch: Vercel (not yet connected in this
-  repository)
-
-## Repository structure
-
-```text
-app/                  Pages and routes (App Router)
-  dr-ye/              PI profile page (/dr-ye)
-  apply/[type]/       Application form pages (/apply/phd, /apply/postdoc)
-  robots.ts, sitemap.ts
-components/
-  layout/             SiteHeader, MainNavigation, SiteFooter
-  ui/                 PageContainer, Section, PageHeader, ResponsiveImage, ...
-  content/            Data-driven sections: PIProfile, MemberRow, NewsRow, ...
-  apply/              Application form (client component)
-  home/               Home page sections
-content/              Single source of truth for site content (typed data)
-lib/                  Helpers: metadata factory, grouping/formatting, indexing
-types/                Shared content types
-styles/               Design tokens + base styles
-public/images/        Static assets (incl. public/images/legacy/ originals)
-workers/
-  application-submit/ Cloudflare Worker: receives applications, sends email
-docs/                 Design-decision and migration documentation
-```
-
-## Content maintenance
-
-Page content lives in `content/` — edit the typed data file, commit, deploy.
-TypeScript keeps the shape honest; a section renders only when its data
-exists.
-
-| To update | Edit |
+| Item | Verified baseline on 2026-11-25 |
 | --- | --- |
-| Site identity, navigation, contact details | `content/site.ts` |
-| PI profile (bio, career, education, awards, quote) | `content/pi.ts` (rendered on `/dr-ye`) |
-| Team members and their bios | `content/people.ts` (listed on `/people`) |
-| Research areas | `content/research-areas.ts` |
-| Publications | `content/publications.ts`, themes in `content/publication-themes.ts` |
-| Projects | `content/projects.ts` |
-| News items | `content/news.ts` |
-| Join Us / vacancy text | `content/opportunities.ts` |
-| Images | `public/images/` (legacy originals under `public/images/legacy/`) |
+| Hosting | Vercel project `shaonianradius-4833/ccylab-v2` |
+| Public and fallback URLs | [Canonical website](https://www.ccylab.com/), [permanent apex redirect](https://ccylab.com/), [stable Vercel alias](https://ccylab-v2.vercel.app/) |
+| Live deployment | `dpl_A7rMVanqRS8UJBn7eUWDBG3qKu7h` from source `15029e994439f1eea69d4d625271b1ca2a60df47` |
+| Previous Production reference | `dpl_AMUoCr2CUynWkqx2pxFZnqhdEchW` has the same source and the earlier noindex build settings |
+| `website-v2` | Active maintenance branch. Documentation-only commits can advance Git HEAD independently of the live source. |
+| `main` | Frozen legacy GitHub Pages source. [The retained Pages URL](https://yvetteee.github.io/ccylab/) redirects to the public site. |
 
-News items carry a `date` (sort key) plus an optional `displayDate` (shown to
-visitors), so dates are never displayed with more precision than the source
-supports. After editing content, run `npm run build` locally before pushing.
+Squarespace handles domain registration and renewal. The domain administrator manages the authoritative DNS zone. Vercel serves the website and automatically renews its managed TLS certificates while validation succeeds. GitHub holds the source and release notes. Routine content releases use the existing domain records. DNS values, rollback constraints and verification evidence are in the [Phase 1 and Phase 2 release record](docs/history/PRODUCTION-RELEASE-PHASE-1-AND-2-2026-11.md). See [Vercel certificate renewal](https://vercel.com/docs/domains/working-with-ssl#automatic-certificate-renewal).
 
-## Local development
+`SITE_INDEXABLE=true` is scoped to Vercel Production. [Production robots.txt](https://www.ccylab.com/robots.txt) allows crawling and advertises the [canonical sitemap](https://www.ccylab.com/sitemap.xml) of main navigation routes. Preview defaults to blocked crawling and `noindex, nofollow`. `/apply/phd`, `/apply/postdoc` and `/projects` stay out of the sitemap and use `noindex, nofollow` in Production. Crawl permission and a sitemap make pages eligible for indexing. Search-engine inclusion depends on the search engine.
+
+## Content and local development
+
+The site uses Next.js App Router, React, TypeScript and CSS Modules. Edit the typed content data and follow the [repository structure and asset guide](docs/REPOSITORY-STRUCTURE.md).
+
+| To update | File or directory |
+| --- | --- |
+| Site identity, navigation and public contact details | [content/site.ts](content/site.ts) |
+| PI profile | [content/pi.ts](content/pi.ts) |
+| People and lab mascot | [content/people.ts](content/people.ts) |
+| Research areas | [content/research-areas.ts](content/research-areas.ts) |
+| Publications and themes | [content/publications.ts](content/publications.ts), [content/publication-themes.ts](content/publication-themes.ts) |
+| News | [content/news.ts](content/news.ts) |
+| Recruitment copy | [content/opportunities.ts](content/opportunities.ts) |
+| Images and design tokens | [public/images](public/images), [styles/tokens.css](styles/tokens.css) |
+
+Use an active Node.js LTS release and npm. News dates use a sort date with an optional display date for sources that give only a month or year.
 
 ```bash
-npm install     # once per clone
-npm run dev     # development server
-npm run lint    # eslint
+npm ci
+npm run dev
+npm run lint
 npx tsc --noEmit
-npm run build   # production build
-npm start       # serve the production build locally
+npm run build
+git diff --check
 ```
 
-Requires Node.js (a current LTS release; no version is pinned in this
-repository) and npm.
+## Content release workflow
 
-## Branch model
+1. Start from the current `website-v2` and run the technical checks above.
+2. Deploy a Vercel Preview and verify the actual Preview URL, including the affected pages, navigation and noindex behavior. Record the validated commit SHA.
+3. Fast-forward and push `website-v2`. The project uses manual Vercel CLI deployments. Confirm the remote SHA and record the current Production deployment as the rollback target.
+4. Stage that revision using `vercel deploy --prod --skip-domain`. Validate the staged deployment and confirm the Production aliases still resolve to the previous deployment.
+5. Run `vercel promote <validated-deployment>` for that exact deployment. Verify the canonical site, stable alias and deployed source SHA. Check the apex HTTPS redirect, indexing and affected routes. Record the live deployment and rollback reference.
 
-| Branch | Role |
-| --- | --- |
-| `main` | Legacy static site — current production (frozen content) |
-| `website-v2` | New Next.js site — maintenance and validation branch |
+For docs-only updates, review links and scope, run `git diff --check` and confirm the push will leave Production in place. A rollback restores the target deployment's build-time settings, so check indexing and other environment-dependent behavior before choosing it. See [Vercel deploy](https://vercel.com/docs/cli/deploy), [promote](https://vercel.com/docs/cli/promote) and [rollback](https://vercel.com/docs/cli/rollback).
 
-Practical rules:
+## Online applications
 
-- Never force-push; do not commit to `main`.
-- Significant changes land on `website-v2` and are validated in a preview
-  deployment before any production decision.
-- Production cutover (deployment + DNS) is a separate, explicitly confirmed
-  change — not part of routine content maintenance.
+**Implemented and previously tested; Production activation pending.** Both application pages load with submission disabled. The Vercel application variables are absent, so the form shows neither the Turnstile widget nor a form email fallback. The recruitment contact on Join Us serves a separate purpose and carries no authorization to receive form submissions.
 
-## Deployment
-
-Current reality:
-
-```text
-main (static site)   →  GitHub Pages  →  www.ccylab.com   (production, legacy)
-website-v2 (Next.js) →  (deployment channel not yet connected in this repo)
-```
-
-The intended flow for `website-v2` is GitHub → Vercel → preview URL for
-validation, with production only after an explicit cutover decision. Vercel
-injects environment variables at build time, so changing indexability or
-application settings requires a redeployment.
-
-## Join Us / application form
-
-- `/join` presents open positions (content in `content/opportunities.ts`).
-- `/apply/phd` and `/apply/postdoc` render the application form
-  (`components/apply/ApplicationForm.tsx`): application details plus **one CV
-  PDF (≤ 20 MB)**.
-- The form posts to a Cloudflare Worker (`workers/application-submit/`) which
-  validates the submission (allowed origins, size limits, honeypot, Turnstile
-  verification, PDF magic bytes) and delivers it by email through **Resend**.
-- Everything runs **server-side** in the Worker; nothing about an applicant is
-  persisted, and the browser never holds any API key or secret. Worker
-  credentials are Cloudflare secrets (`wrangler secret put`), never committed.
-- When `NEXT_PUBLIC_APPLICATION_API_URL` is not configured, the form falls
-  back to a clearly-labelled email submission instead of online submission.
-
-Current email state: the integration is configured and tested for the
-preview/test phase only, with an approved NTU test recipient. Production
-sending still requires a verified sender domain (and possibly DNS records)
-and an authorised production recipient. Do not point the form at production
-recipients without explicit approval.
-
-## Environment variables
-
-Names only — never commit values. A committed template
-(`.env.example`) mirrors the site-side variable names.
-
-Next.js application (set in the deployment platform; read at build time):
-
-| Variable | Purpose |
-| --- | --- |
-| `SITE_INDEXABLE` | Server-only; `true` enables search-engine indexing (`app/robots.ts`, meta robots). Default keeps the site unindexed. |
-| `NEXT_PUBLIC_APPLICATION_API_URL` | URL of the application Worker. Empty disables online submission (email fallback). |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Public Turnstile site key; empty skips the widget. |
-| `NEXT_PUBLIC_APPLICATION_FALLBACK_EMAIL` | Recipient shown in the email-fallback path. |
-
-Cloudflare Worker (secrets/vars on the Worker, never in the repo):
-
-| Variable | Purpose |
-| --- | --- |
-| `RESEND_API_KEY` | Resend API key used to deliver application emails. |
-| `APPLICATION_FROM_EMAIL` | Verified sender address. |
-| `APPLICATION_TO_EMAIL` | Application recipient (test phase only for now). |
-| `TURNSTILE_SECRET_KEY` | Server-side Turnstile verification key. |
-| `ALLOWED_ORIGINS` | Comma-separated origins allowed to submit. |
-
-## Domains & DNS
-
-- `www.ccylab.com` is the public website domain. DNS is managed separately
-  from this repository (registrar / DNS provider, domain administrator).
-- The `CNAME` file at the repository root belongs to the legacy GitHub Pages
-  setup on `main`; leave it untouched while that deployment is live.
-- Moving production to Vercel later requires a DNS cutover by the domain
-  administrator; enabling production email sending may additionally require
-  sender-domain verification records. Neither has been done yet.
-
-## Safety notes
-
-- Never commit `.env` files, API keys, tokens, secrets, `node_modules/`,
-  `.next/` or build caches.
-- Resend / Turnstile / Worker credentials live only in platform environment
-  variables and Cloudflare secrets.
-- Do not modify production deployment, DNS or domain settings without an
-  explicit, confirmed decision; validate significant changes in a preview
-  first.
-
-## Further documentation
-
-`docs/` contains the design-decision and migration records produced while
-building this version (legacy design DNA, per-page audits, content mapping,
-application-flow design). They are historical references, not living
-operational docs.
+The [application readiness audit and activation plan](docs/audits/APPLICATION-READINESS-2026-11.md) separates live checks, local tests and unverified provider settings. The [Worker README](workers/application-submit/README.md) describes the current handler, local tests and configuration names. [The frontend template](.env.example) is reference material for development. Configure recipient identities in the appropriate platform after approval and keep credentials out of Git.
