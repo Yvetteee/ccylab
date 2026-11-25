@@ -8,9 +8,12 @@ const VALID_UUID = "3f2504e0-4f89-41d3-9a0c-0305e82c3301";
 const ENV: Env = {
   RESEND_API_KEY: "test-resend-key",
   APPLICATION_FROM_EMAIL: "applications@test.example",
-  APPLICATION_TO_EMAIL: "JZHANG193@e.ntu.edu.sg",
+  APPLICATION_TO_EMAIL: "intake@example.test",
   TURNSTILE_SECRET_KEY: "test-turnstile-secret",
+  TURNSTILE_EXPECTED_HOSTNAME: "localhost",
   ALLOWED_ORIGINS: ORIGIN,
+  RATE_LIMITER_GLOBAL: { limit: async () => ({ success: true }) },
+  RATE_LIMITER_EMAIL: { limit: async () => ({ success: true }) },
 };
 
 function pdfFile(size = 1024): File {
@@ -58,7 +61,7 @@ beforeEach(() => {
       const url = String(input instanceof Request ? input.url : input);
       resendCalls.push({ url, init: init ?? {} });
       if (url.includes("siteverify")) {
-        return new Response(JSON.stringify({ success: true }), {
+        return new Response(JSON.stringify({ success: true, hostname: "localhost" }), {
           status: 200,
         });
       }
@@ -122,6 +125,56 @@ describe("application worker", () => {
     expect(response.status).toBe(400);
   });
 
+  it("uses the native limiter arguments and the normalized applicant email", async () => {
+    const limit = vi.fn(async () => ({ success: true }));
+    const form = applicationForm();
+    form.set("email", " Jane@University.EDU ");
+    const response = await handler.fetch(postRequest(form), {
+      ...ENV,
+      RATE_LIMITER_GLOBAL: { limit },
+      RATE_LIMITER_EMAIL: { limit },
+    });
+    expect(response.status).toBe(200);
+    expect(limit.mock.calls).toEqual([
+      [{ key: "endpoint" }],
+      [{ key: "email:jane@university.edu" }],
+    ]);
+  });
+
+  it.each(["RATE_LIMITER_GLOBAL", "RATE_LIMITER_EMAIL"] as const)(
+    "returns 429 before outbound calls when %s denies the request",
+    async (binding) => {
+      const response = await handler.fetch(postRequest(applicationForm()), {
+        ...ENV,
+        [binding]: { limit: async () => ({ success: false }) },
+      });
+      expect(response.status).toBe(429);
+      expect(await response.json()).toMatchObject({ error: "rate_limited" });
+      expect(resendCalls).toHaveLength(0);
+    }
+  );
+
+  it("fails closed with 503 when the endpoint limiter is missing", async () => {
+    const response = await handler.fetch(postRequest(applicationForm()), {
+      ...ENV,
+      RATE_LIMITER_GLOBAL: undefined,
+    });
+    expect(response.status).toBe(503);
+    expect(await response.json()).toMatchObject({ error: "service_unavailable" });
+    expect(resendCalls).toHaveLength(0);
+  });
+
+  it("fails closed with 503 when the per-email limiter throws", async () => {
+    const response = await handler.fetch(postRequest(applicationForm()), {
+      ...ENV,
+      RATE_LIMITER_EMAIL: {
+        async limit() { throw new Error("unavailable"); },
+      },
+    });
+    expect(response.status).toBe(503);
+    expect(resendCalls).toHaveLength(0);
+  });
+
   it("rejects a filled honeypot generically", async () => {
     const response = await handler.fetch(
       postRequest(applicationForm({ honeypot: "https://spam.example" })),
@@ -149,6 +202,52 @@ describe("application worker", () => {
     expect(invalid.status).toBe(403);
     const body = (await invalid.json()) as { error: string };
     expect(body.error).toBe("turnstile_failed");
+  });
+
+  it.each([
+    { success: true, hostname: "other.example" },
+    { success: true },
+    { success: false, hostname: "localhost", "error-codes": ["timeout-or-duplicate"] },
+    { success: true, hostname: "localhost", action: "wrong_action" },
+  ])("rejects a non-matching Siteverify response without sending: %j", async (result) => {
+    const verify = vi.fn(async () => Response.json(result));
+    vi.stubGlobal("fetch", verify);
+    const response = await handler.fetch(postRequest(applicationForm()), {
+      ...ENV,
+      TURNSTILE_EXPECTED_ACTION: "apply",
+    });
+    expect(response.status).toBe(403);
+    expect(verify).toHaveBeenCalledTimes(1);
+    expect(String((verify.mock.calls[0] as unknown[])[0])).toContain("siteverify");
+  });
+
+  it("accepts Siteverify when hostname and configured action both match", async () => {
+    const fetcher = vi.fn(async (url: string) => url.includes("siteverify")
+      ? Response.json({ success: true, hostname: "localhost", action: "apply" })
+      : Response.json({ id: "mocked" }));
+    vi.stubGlobal("fetch", fetcher);
+    const response = await handler.fetch(postRequest(applicationForm()), {
+      ...ENV,
+      TURNSTILE_EXPECTED_ACTION: "apply",
+    });
+    expect(response.status).toBe(200);
+    expect(fetcher).toHaveBeenCalledTimes(2);
+  });
+
+  it("fails closed without a configured Turnstile hostname", async () => {
+    const response = await handler.fetch(postRequest(applicationForm()), {
+      ...ENV,
+      TURNSTILE_EXPECTED_HOSTNAME: "",
+    });
+    expect(response.status).toBe(403);
+    expect(resendCalls).toHaveLength(0);
+  });
+
+  it("rejects a Siteverify outage before emailing", async () => {
+    const verify = vi.fn(async () => { throw new Error("unavailable"); });
+    vi.stubGlobal("fetch", verify);
+    expect((await handler.fetch(postRequest(applicationForm()), ENV)).status).toBe(403);
+    expect(verify).toHaveBeenCalledTimes(1);
   });
 
   it("rejects invalid application metadata", async () => {
@@ -208,7 +307,7 @@ describe("application worker", () => {
       to: string;
       attachments: { filename: string }[];
     };
-    expect(payload.to).toBe("JZHANG193@e.ntu.edu.sg");
+    expect(payload.to).toBe("intake@example.test");
     expect(payload.attachments[0].filename).toBe(
       `phd-application-${VALID_UUID}.pdf`
     );
@@ -222,9 +321,9 @@ describe("application worker", () => {
     expect(response.status).toBe(200);
   });
 
-  it("processes a near-limit (~19 MiB) PDF without runtime errors", async () => {
+  it("processes a PDF at the 20 MiB limit with mocked delivery", async () => {
     const nearLimit = applicationForm();
-    nearLimit.set("pdf", pdfFile(19 * 1024 * 1024));
+    nearLimit.set("pdf", pdfFile(20 * 1024 * 1024));
     const response = await handler.fetch(postRequest(nearLimit), ENV);
     expect(response.status).toBe(200);
     const resendCall = resendCalls.find((call) =>
@@ -234,7 +333,7 @@ describe("application worker", () => {
       attachments: { content: string }[];
     };
     // attachment survived the base64 round-trip
-    expect(payload.attachments[0].content.length).toBeGreaterThan(19_000_000);
+    expect(payload.attachments[0].content.length).toBe(27_962_028);
   }, 30_000);
 
   it("derives a stable idempotency key across retries", async () => {
@@ -252,7 +351,7 @@ describe("application worker", () => {
       vi.fn(async (input: RequestInfo | URL) => {
         const url = String(input instanceof Request ? input.url : input);
         if (url.includes("siteverify")) {
-          return new Response(JSON.stringify({ success: true }), {
+          return new Response(JSON.stringify({ success: true, hostname: "localhost" }), {
             status: 200,
           });
         }

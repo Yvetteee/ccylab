@@ -57,7 +57,7 @@ function errorMessageFor(code: string): string {
     case "invalid_pdf":
       return "Please upload a valid PDF.";
     case "file_too_large":
-      return "The file exceeds the 20 MB limit.";
+      return "The file exceeds the 20 MiB limit.";
     case "turnstile_failed":
       return "Verification failed. Please try again.";
     case "rate_limited":
@@ -195,7 +195,7 @@ export default function ApplicationForm({ opportunity }: ApplicationFormProps) {
       return;
     }
     if (file.size > MAX_PDF_BYTES) {
-      setPdfError("The file exceeds the 20 MB limit.");
+      setPdfError("The file exceeds the 20 MiB limit.");
       setPdfFile(null);
       event.target.value = "";
       return;
@@ -408,7 +408,7 @@ export default function ApplicationForm({ opportunity }: ApplicationFormProps) {
         </label>
         <p className={styles.hint}>
           Please upload one PDF containing your application materials
-          (max&nbsp;20&nbsp;MB).
+          (max&nbsp;20&nbsp;MiB).
         </p>
         <input
           className={styles.fileInput}

@@ -13,24 +13,19 @@ export interface Env {
   APPLICATION_TO_EMAIL: string;
   /** Cloudflare Turnstile secret key (secret). */
   TURNSTILE_SECRET_KEY: string;
+  /** Exact hostname Siteverify must return for this environment. */
+  TURNSTILE_EXPECTED_HOSTNAME: string;
+  /** Set only when the widget client explicitly requests this action. */
+  TURNSTILE_EXPECTED_ACTION?: string;
   /** Comma-separated list of origins allowed to submit applications. */
   ALLOWED_ORIGINS: string;
-  /**
-   * Optional native Workers rate-limiting bindings. The handler uses them
-   * only when the deployment provides them
-   * (RATE_LIMIT_BINDING_REQUIRES_DEPLOYMENT_CONFIGURATION otherwise).
-   */
-  RATE_LIMITER_GLOBAL?: RateLimitBinding;
-  RATE_LIMITER_EMAIL?: RateLimitBinding;
-}
-
-export interface RateLimitBinding {
-  limit(key: string): Promise<{ success: boolean }>;
+  RATE_LIMITER_GLOBAL?: RateLimit;
+  RATE_LIMITER_EMAIL?: RateLimit;
 }
 
 /** Parse the comma-separated ALLOWED_ORIGINS list once per request. */
-export function allowedOrigins(raw: string): string[] {
-  return raw
+export function allowedOrigins(raw?: string): string[] {
+  return (raw ?? "")
     .split(",")
     .map((value) => value.trim())
     .filter(Boolean);

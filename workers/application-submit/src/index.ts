@@ -5,13 +5,13 @@
  * validate it, deliver it through Resend, return a result. Not a database,
  * archive or admin system — nothing about the applicant is persisted.
  *
- * Validation order is cheap-first: method → origin → content-type → size
- * signal → rate limit → metadata fields → honeypot → Turnstile (network) →
- * PDF (bytes) → Resend (network).
+ * Reject denied origins before parsing. Bound the request as the multipart
+ * parser reads it and verify Turnstile before reading the PDF for delivery.
  */
 import type { Env } from "./config";
 import { isAllowedOrigin } from "./config";
 import { buildResendPayload, sendApplicationEmail } from "./email";
+import { MAX_REQUEST_BYTES, readApplicationMultipart } from "./multipart";
 import {
   hasPdfMagicBytes,
   isHoneypotFilled,
@@ -20,8 +20,6 @@ import {
   validatePdfMetadata,
 } from "./validate";
 import { verifyTurnstileToken } from "./turnstile";
-
-const MAX_REQUEST_BYTES = 21 * 1024 * 1024; // 20 MiB PDF + multipart overhead
 
 function logEvent(
   submissionId: string,
@@ -49,6 +47,8 @@ function jsonResponse(
 ): Response {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
+    "Cache-Control": "no-store",
+    "Vary": "Origin",
   };
   if (origin) headers["Access-Control-Allow-Origin"] = origin;
   return new Response(JSON.stringify(body), { status, headers });
@@ -66,8 +66,29 @@ function handleOptions(request: Request, env: Env): Response {
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Max-Age": "86400",
+      "Vary": "Origin",
     },
   });
+}
+
+async function checkRateLimit(
+  limiter: RateLimit | undefined,
+  key: string,
+  category: "global" | "email",
+  origin: string
+): Promise<Response | undefined> {
+  try {
+    const result = await limiter?.limit({ key });
+    if (result?.success === true) return;
+    if (result?.success === false) {
+      logEvent("", "", "rate_limited", category);
+      return jsonResponse(429, { ok: false, error: "rate_limited" }, origin);
+    }
+  } catch {
+    // A broken binding is unavailable, even when it returns an invalid result.
+  }
+  logEvent("", "", "failed", `rate_limit_${category}_unavailable`);
+  return jsonResponse(503, { ok: false, error: "service_unavailable" }, origin);
 }
 
 export default {
@@ -88,31 +109,24 @@ export default {
     const cors = origin;
 
     const contentType = request.headers.get("Content-Type") ?? "";
-    if (!contentType.startsWith("multipart/form-data")) {
+    if (!/^multipart\/form-data\s*(?:;|$)/i.test(contentType)) {
       return jsonResponse(400, { ok: false, error: "invalid_content_type" }, cors);
     }
 
-    // Early defensive size signal — File.size remains the final truth.
+    // The declared length is an early rejection hint. The parser counts bytes.
     const contentLength = Number(request.headers.get("Content-Length") ?? "0");
     if (contentLength > MAX_REQUEST_BYTES) {
-      return jsonResponse(400, { ok: false, error: "file_too_large" }, cors);
+      return jsonResponse(413, { ok: false, error: "file_too_large" }, cors);
     }
 
-    // Endpoint-wide rate limit (deployment-provided binding only).
-    if (env.RATE_LIMITER_GLOBAL) {
-      const result = await env.RATE_LIMITER_GLOBAL.limit("endpoint");
-      if (!result.success) {
-        logEvent("", "", "rate_limited", "global");
-        return jsonResponse(429, { ok: false, error: "rate_limited" }, cors);
-      }
-    }
+    const globalLimit = await checkRateLimit(env.RATE_LIMITER_GLOBAL, "endpoint", "global", cors);
+    if (globalLimit) return globalLimit;
 
-    let form: FormData;
-    try {
-      form = await request.formData();
-    } catch {
-      return jsonResponse(400, { ok: false, error: "invalid_request" }, cors);
+    const multipart = await readApplicationMultipart(request, contentType);
+    if (!multipart.ok) {
+      return jsonResponse(multipart.status, { ok: false, error: multipart.error }, cors);
     }
+    const { form } = multipart;
 
     // Honeypot: humans never fill this; bots get a generic rejection.
     if (isHoneypotFilled(form)) {
@@ -127,22 +141,21 @@ export default {
     }
     const application = fields.fields;
 
-    // Per-applicant rate limit on the normalized email.
-    if (env.RATE_LIMITER_EMAIL) {
-      const result = await env.RATE_LIMITER_EMAIL.limit(
-        `email:${application.email.toLowerCase()}`
-      );
-      if (!result.success) {
-        logEvent(application.submissionId, application.applicationType, "rate_limited", "email");
-        return jsonResponse(429, { ok: false, error: "rate_limited" }, cors);
-      }
-    }
+    const emailLimit = await checkRateLimit(
+      env.RATE_LIMITER_EMAIL,
+      `email:${application.email.toLowerCase()}`,
+      "email",
+      cors
+    );
+    if (emailLimit) return emailLimit;
 
     // Turnstile server verification — mandatory, before file work.
     const turnstileToken = String(form.get("cf-turnstile-response") ?? "");
     const turnstileOk = await verifyTurnstileToken(
       turnstileToken,
-      env.TURNSTILE_SECRET_KEY
+      env.TURNSTILE_SECRET_KEY,
+      env.TURNSTILE_EXPECTED_HOSTNAME,
+      env.TURNSTILE_EXPECTED_ACTION
     );
     if (!turnstileOk) {
       logEvent(application.submissionId, application.applicationType, "rejected", "turnstile");

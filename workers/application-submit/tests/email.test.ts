@@ -25,6 +25,7 @@ const ENV = {
   APPLICATION_FROM_EMAIL: "applications@test.example",
   APPLICATION_TO_EMAIL: "JZHANG193@e.ntu.edu.sg",
   TURNSTILE_SECRET_KEY: "secret",
+  TURNSTILE_EXPECTED_HOSTNAME: "localhost",
   ALLOWED_ORIGINS: "http://localhost:3000",
 };
 

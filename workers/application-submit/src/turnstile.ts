@@ -7,9 +7,13 @@ const SITEVERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverif
 
 export async function verifyTurnstileToken(
   token: string,
-  secretKey: string
+  secretKey: string,
+  expectedHostname: string,
+  expectedAction?: string
 ): Promise<boolean> {
-  if (!token || !secretKey) return false;
+  const hostname = expectedHostname?.trim().toLowerCase();
+  const action = expectedAction?.trim();
+  if (!token || !secretKey || !hostname) return false;
   try {
     const response = await fetch(SITEVERIFY_URL, {
       method: "POST",
@@ -18,8 +22,15 @@ export async function verifyTurnstileToken(
       signal: AbortSignal.timeout(10_000),
     });
     if (!response.ok) return false;
-    const result = (await response.json()) as { success?: boolean };
-    return result.success === true;
+    const result = (await response.json()) as {
+      success?: boolean;
+      hostname?: string;
+      action?: string;
+    } | null;
+    return result?.success === true &&
+      typeof result.hostname === "string" &&
+      result.hostname.toLowerCase() === hostname &&
+      (!action || result.action === action);
   } catch {
     return false;
   }

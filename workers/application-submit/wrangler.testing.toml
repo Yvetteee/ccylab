@@ -1,0 +1,17 @@
+name = "application-submit-isolated-test"
+main = "src/testing.ts"
+compatibility_date = "2026-08-01"
+workers_dev = false
+preview_urls = false
+
+# No routes, credentials or applicant mailbox are configured here.
+# The loopback acceptance harness provides synthetic settings and blocks egress.
+[[ratelimits]]
+name = "RATE_LIMITER_GLOBAL"
+namespace_id = "31031"
+simple = { limit = 20, period = 60 }
+
+[[ratelimits]]
+name = "RATE_LIMITER_EMAIL"
+namespace_id = "31032"
+simple = { limit = 3, period = 60 }
